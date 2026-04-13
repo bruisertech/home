@@ -4,9 +4,9 @@ $(document).ready(function() {
     var percent = 0;
     var int = null;
 
-    // Simulate loading progress
+    // Simulate loading progress (faster now to match the new animation time)
     int = setInterval(function () {
-        percent += 20; // Increase by 20% every 500ms -> total 2.5 seconds
+        percent += 20; // Increase by 20% every 300ms -> total 1.5 seconds
 
         // Update progress bar
         $('.loading-bar .bar').css({width: percent + "%"});
@@ -40,5 +40,5 @@ $(document).ready(function() {
 
             }, 300); // Small delay to let the user see 100%
         }
-    }, 500);
+    }, 300);
 });

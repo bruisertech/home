@@ -42,16 +42,23 @@ section.preload svg {
 /* SVG Path Drawing Animation Setup */
 section.preload svg .p-anim {
     fill: transparent;
-    stroke: #ffffff; /* White stroke for visibility on red bg */
-    stroke-width: 5;
+    /* Stroke color will be inherited from the class now, not globally white */
+    stroke-width: 8; /* Slightly thicker for a natural brush stroke feel */
     stroke-dasharray: 25000; /* Approximate large number for detailed SVG */
     stroke-dashoffset: 25000;
     animation-name: draw;
-    animation-duration: 3.5s; /* Sync loosely with the 2.5s preloader total */
+    animation-duration: 1.5s; /* Fast brush stroke! */
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
 }
+
+/* Individual stroke colors matching their final fill */
+section.preload svg .cls-1 { stroke: #d2584a; }
+section.preload svg .cls-2 { stroke: #4c5159; }
+section.preload svg .cls-3 { stroke: #fbf9ee; }
+section.preload svg .cls-4 { stroke: #4e535b; }
+section.preload svg .cls-5 { stroke: #d25a4c; }
 
 /* Specific fill colors mapped from the SVG classes, forced with !important to override transparent fill after animation */
 .finished-loading .cls-1 { fill: #d2584a !important; stroke: transparent !important; }
@@ -61,9 +68,9 @@ section.preload svg .p-anim {
 .finished-loading .cls-5 { fill: #d25a4c !important; stroke: transparent !important; }
 
 @keyframes draw {
-    0% { stroke-dashoffset: 25000; fill: transparent; stroke: #ffffff;}
-    80% { stroke-dashoffset: 0; fill: transparent; stroke: #ffffff;}
-    100% { stroke-dashoffset: 0; fill: transparent; stroke: transparent;}
+    0% { stroke-dashoffset: 25000; fill: transparent; }
+    80% { stroke-dashoffset: 0; fill: transparent; }
+    100% { stroke-dashoffset: 0; fill: transparent; }
 }
 
 /* Add custom animation for filling color at 100% to sync with JS state */
