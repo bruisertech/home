@@ -44,7 +44,7 @@ body {
     height: 100vh;
     pointer-events: none;
     overflow: hidden;
-    z-index: -2; /* Above bg, behind content */
+    z-index: -1; /* Above bg, behind content */
 }
 
 .particle-wrapper {

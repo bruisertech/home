@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { background: #d2584a; }
+#main-content { position: relative; z-index: 1; }
+#dynamic-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #d2584a; z-index: -3; }
+#particle-system { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; }
+</style>
+</head>
+<body>
+<div id="main-content">
+  <div id="dynamic-bg"></div>
+  <div id="particle-system">
+    <div style="position: absolute; z-index: -3; color: white;">+</div>
+  </div>
+  <div>Content</div>
+</div>
+</body>
+</html>
