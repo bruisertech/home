@@ -119,7 +119,7 @@ body {
 }
 
 .massive-text {
-    font-size: 20vw; /* Slightly smaller to fit logo */
+    font-size: 15vw; /* Slightly smaller to fit logo and kerning */
     letter-spacing: 0.05em;
     margin: 0;
     text-align: center;
