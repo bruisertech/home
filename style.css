@@ -1,9 +1,14 @@
+@font-face {
+    font-family: 'LT Saeada Black';
+    /* Using Impact as fallback for the brutalist aesthetic since we don't have the font file locally */
+    src: local('Impact');
+}
+
 :root {
     --bg-black: #050505;
-    --bg-red: #120202;
-    --text-white: #fbf9ee;
-    --accent-red: #d2584a;
-    --font-serif: 'Playfair Display', serif;
+    --bg-red: #d2584a; /* Main Bruiser Red */
+    --text-white: #fbf9ee; /* Lens white */
+    --font-brutal: 'LT Saeada Black', Impact, sans-serif;
     --font-mono: 'Space Mono', monospace;
 }
 
@@ -14,48 +19,10 @@
 }
 
 body {
-    background-color: var(--bg-black);
+    background-color: var(--bg-red); /* Body is red to seamlessly transition from preloader */
     font-family: var(--font-mono);
     color: var(--text-white);
     overflow: hidden; /* Prevent scroll while loading */
-}
-
-#dynamic-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--bg-black);
-    z-index: -5; /* Placed behind all particle layers */
-}
-
-/* Dynamic Particle System */
-#particle-system {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.particle-wrapper {
-    position: absolute;
-    /* This wrapper will handle the scroll parallax (Y-axis) */
-    will-change: transform;
-}
-
-.tech-particle {
-    color: var(--accent-red);
-    font-family: var(--font-mono);
-    font-weight: bold;
-    user-select: none;
-    /* Subtle glow */
-    text-shadow: 0 0 8px rgba(210, 88, 74, 0.4);
-    will-change: transform;
-    /* GSAP will animate transform here for the breathing effect */
 }
 
 /* Main Content Structure */
@@ -64,33 +31,64 @@ body {
     visibility: hidden;
 }
 
-.serif-title {
-    font-family: var(--font-serif);
-    font-size: 4rem;
-    line-height: 1.1;
-    margin-bottom: 20px;
+/* Block background classes for contrast */
+.bg-red {
+    background-color: var(--bg-red);
+    color: var(--text-white);
+}
+
+.bg-dark {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+}
+
+.brutal-title {
+    font-family: var(--font-brutal);
+    text-transform: uppercase;
+    line-height: 0.9;
 }
 
 .mono-desc {
     font-family: var(--font-mono);
     font-size: 1.2rem;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
-/* SECTION_00: HERO */
-.hero-section {
-    min-height: 100vh;
+/* SECTION_00: BRUTAL HERO */
+.brutal-hero {
+    height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 10%;
+    align-items: center;
     position: relative;
+    overflow: hidden;
+}
+
+.massive-text {
+    font-size: 25vw; /* Massive scaling to touch edges */
+    letter-spacing: -2vw;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+    will-change: transform, opacity;
+}
+
+.hero-sub {
+    margin-top: -2vw; /* Pull text close to massive text */
+    text-align: center;
+}
+
+.absolute-status {
+    position: absolute;
+    top: 40px;
+    left: 40px;
 }
 
 .system-status {
-    color: var(--accent-red);
+    color: var(--text-white);
     font-size: 1rem;
-    margin-bottom: 40px;
     display: flex;
     align-items: center;
 }
@@ -98,7 +96,7 @@ body {
 .status-indicator {
     width: 8px;
     height: 8px;
-    background-color: var(--accent-red);
+    background-color: var(--text-white);
     display: inline-block;
     margin-right: 10px;
     border-radius: 50%;
@@ -123,35 +121,72 @@ body {
 }
 
 .module-card {
-    border-top: 1px solid rgba(251, 249, 238, 0.2);
-    padding-top: 20px;
+    border: 1px solid var(--text-white);
+    padding: 40px 30px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.module-card:hover {
+    background-color: var(--text-white);
+    color: var(--bg-red);
 }
 
 .module-title {
     font-size: 1.1rem;
-    color: var(--accent-red);
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+    font-weight: bold;
 }
 
 .module-desc {
     font-size: 0.95rem;
-    opacity: 0.7;
     line-height: 1.6;
 }
 
+/* MARQUEE INTERMEDIO */
+.marquee-section {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    padding: 30px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgba(251, 249, 238, 0.2);
+    border-bottom: 1px solid rgba(251, 249, 238, 0.2);
+}
+
+.marquee-content {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    animation: marquee-anim 15s linear infinite;
+    will-change: transform;
+}
+
+.marquee-content span {
+    padding-right: 50px;
+}
+
+@keyframes marquee-anim {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.3333%); /* Based on 3 identical spans */ }
+}
+
+
 /* SECTION_02: DEPLOYED_SYSTEMS */
 .projects-section {
-    padding: 100px 0;
+    padding: 150px 0;
 }
 
 .project-container {
     padding: 0 10%;
-    margin-bottom: 150px;
+    margin-bottom: 200px;
 }
 
 .project-parallax {
     width: 100%;
-    height: 70vh;
+    height: 80vh;
     overflow: hidden;
     position: relative;
     margin-bottom: 30px;
@@ -159,10 +194,10 @@ body {
 
 .project-img {
     width: 100%;
-    height: 120%; /* Extra height for parallax */
+    height: 130%; /* Extra height for parallax */
     background-size: cover;
     background-position: center;
-    top: -10%;
+    top: -15%;
     position: absolute;
     /* Placeholder colors since we don't have images */
     background-color: #222;
@@ -173,15 +208,18 @@ body {
 .bg-project-3 { background-color: #151515; }
 
 .project-title {
-    font-family: var(--font-serif);
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: var(--text-white);
+}
+
+.project-title span {
+    color: var(--bg-red); /* Adding slight accent dynamically via css if wanted, though we will just rely on GSAP or keep it white/red as instructed. We'll use text-white in HTML and style it directly */
 }
 
 .project-desc {
-    font-size: 1.1rem;
-    opacity: 0.7;
-    color: var(--accent-red);
+    font-size: 1.2rem;
+    opacity: 0.8;
 }
 
 /* SECTION_03: FOOTER_TERMINAL */
@@ -192,19 +230,19 @@ body {
 
 .cta-container {
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
 }
 
 .cta-link {
-    font-size: 3rem;
+    font-size: 8vw;
     color: var(--text-white);
     text-decoration: none;
-    font-weight: bold;
     transition: color 0.3s;
+    display: inline-block;
 }
 
 .cta-link:hover {
-    color: var(--accent-red);
+    color: var(--bg-red);
 }
 
 .footer-bottom {
@@ -223,7 +261,7 @@ body {
 }
 
 .social-links a:hover {
-    color: var(--accent-red);
+    color: var(--bg-red);
 }
 
 /* SplitType utility classes */

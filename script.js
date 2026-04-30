@@ -80,75 +80,6 @@ $(document).ready(function() {
         }, 600); // Wait 600ms to show the flicker
     }
 
-    function initTechParticles() {
-        const container = document.getElementById('particle-system');
-        const techSymbols = ['+', '[ ]', '//', '0x8F', 'init_sys', '>', '< />', '_px', '10110'];
-
-        const layers = [
-            { count: 20, zIndex: -3, sizeMin: 0.5, sizeMax: 1.0, opacity: 0.02, speedMin: 50, speedMax: 150, blur: 0 },
-            { count: 15, zIndex: -2, sizeMin: 1.0, sizeMax: 2.0, opacity: 0.05, speedMin: 200, speedMax: 400, blur: 0 },
-            { count: 10, zIndex: -1, sizeMin: 2.5, sizeMax: 4.5, opacity: 0.12, speedMin: 600, speedMax: 1200, blur: 2 }
-        ];
-
-        layers.forEach(layer => {
-            for (let i = 0; i < layer.count; i++) {
-                // Create wrapper for scroll parallax
-                const wrapper = document.createElement('div');
-                wrapper.className = 'particle-wrapper';
-                wrapper.style.zIndex = layer.zIndex;
-
-                // Random initial position covering an extended viewport area
-                const startX = Math.random() * 100;
-                const startY = Math.random() * 150 - 25; // -25vh to 125vh
-                wrapper.style.left = `${startX}vw`;
-                wrapper.style.top = `${startY}vh`;
-
-                // Create actual particle for breathing animation
-                const particle = document.createElement('div');
-                particle.className = 'tech-particle';
-                particle.textContent = techSymbols[Math.floor(Math.random() * techSymbols.length)];
-
-                // Size and opacity from layer config
-                const size = Math.random() * (layer.sizeMax - layer.sizeMin) + layer.sizeMin;
-                particle.style.fontSize = `${size}rem`;
-                particle.style.opacity = layer.opacity;
-                if (layer.blur > 0) {
-                    particle.style.filter = `blur(${layer.blur}px)`;
-                }
-
-                wrapper.appendChild(particle);
-                container.appendChild(wrapper);
-
-                // Breathing Animation (Floating) - purely transforms
-                gsap.to(particle, {
-                    x: `random(-40, 40)`,
-                    y: `random(-40, 40)`,
-                    rotation: `random(-25, 25)`,
-                    duration: `random(6, 12)`,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: 'sine.inOut'
-                });
-
-                // Scroll Parallax (Depth effect)
-                // Decide direction: mostly up (-y), rarely down (+y)
-                const directionMultiplier = Math.random() > 0.8 ? 1 : -1;
-                const speed = (Math.random() * (layer.speedMax - layer.speedMin) + layer.speedMin) * directionMultiplier;
-
-                gsap.to(wrapper, {
-                    y: speed,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: 'body',
-                        start: "top top",
-                        end: "bottom top",
-                        scrub: true
-                    }
-                });
-            }
-        });
-    }
-
     function initMainSite() {
         // Show main content
         const mainContent = document.getElementById('main-content');
@@ -192,14 +123,24 @@ $(document).ready(function() {
             });
         });
 
-        // 2. Tech Particle System (Dynamic Background)
-        initTechParticles();
+        // 2. Brutal Hero Animation
+        gsap.to('.massive-text', {
+            scale: 1.5,
+            opacity: 0,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.brutal-hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
 
-        // 4. Project Images Parallax
+        // 3. Project Images Parallax (Massive)
         const projectImgs = document.querySelectorAll('.project-img');
         projectImgs.forEach(img => {
             gsap.to(img, {
-                y: '20%',
+                y: '30%',
                 ease: 'none',
                 scrollTrigger: {
                     trigger: img.parentElement,
