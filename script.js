@@ -61,34 +61,105 @@ $(document).ready(function() {
         // 4. Flicker effect on the terminal text
         terminalContainer.classList.add('flicker');
 
-        // 5. Hide terminal and enable Lenis smooth scrolling after short flicker
+        // 5. Transition to Main Site after short flicker
         setTimeout(() => {
             terminalContainer.classList.add('hide');
             terminalContainer.classList.remove('flicker');
 
-            // Enable scrolling
-            $('body').css('overflow', 'auto');
-
-            // Initialize Lenis
-            const lenis = new Lenis({
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                direction: 'vertical',
-                gestureDirection: 'vertical',
-                smooth: true,
-                mouseMultiplier: 1,
-                smoothTouch: false,
-                touchMultiplier: 2,
-                infinite: false,
+            // Slide up the preloader using GSAP
+            gsap.to('.preload', {
+                y: '-100%',
+                ease: 'power4.inOut',
+                duration: 1.5,
+                onComplete: () => {
+                    $('.preload').hide();
+                    initMainSite();
+                }
             });
 
-            function raf(time) {
-                lenis.raf(time);
-                requestAnimationFrame(raf);
-            }
-
-            requestAnimationFrame(raf);
         }, 600); // Wait 600ms to show the flicker
+    }
+
+    function initMainSite() {
+        // Show main content
+        const mainContent = document.getElementById('main-content');
+        mainContent.style.visibility = 'visible';
+        gsap.to(mainContent, { opacity: 1, duration: 0.5 });
+
+        // Enable scrolling
+        $('body').css('overflow', 'auto');
+
+        // Initialize Lenis
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+        });
+
+        // Integrate Lenis with ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+
+        // 1. Text Reveal Animation (SplitType + GSAP)
+        const revealTexts = document.querySelectorAll('.reveal-text');
+        revealTexts.forEach(text => {
+            const split = new SplitType(text, { types: 'words, chars' });
+            gsap.to(split.chars, {
+                y: 0,
+                ease: "power4.out",
+                duration: 1.2,
+                stagger: 0.02,
+                scrollTrigger: {
+                    trigger: text,
+                    start: "top 85%",
+                }
+            });
+        });
+
+        // 2. Background Color Transition
+        gsap.to('#dynamic-bg', {
+            backgroundColor: '#120202', // bg-red
+            scrollTrigger: {
+                trigger: '.capabilities-section',
+                start: "top center",
+                end: "bottom center",
+                scrub: true,
+            }
+        });
+
+        // 3. Digital Noise Parallax
+        gsap.to('.noise-symbol', {
+            y: (i, el) => -100 * (i % 3 + 1), // Different speeds
+            ease: "none",
+            scrollTrigger: {
+                trigger: 'body',
+                start: "top top",
+                end: "bottom bottom",
+                scrub: true
+            }
+        });
+
+        // 4. Project Images Parallax
+        const projectImgs = document.querySelectorAll('.project-img');
+        projectImgs.forEach(img => {
+            gsap.to(img, {
+                y: '20%',
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: img.parentElement,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+        });
     }
 
     // Start everything
