@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logo Animation Preloader</title>
+    <title>Bruiser Tech - Digital Architecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -47,11 +50,102 @@
 
     <!-- Content to show after preloader ends -->
     <main id="main-content">
-        <!-- Kept empty. The logo will just persist above this. -->
+
+        <!-- Background elements -->
+        <div id="dynamic-bg"></div>
+        <div id="noise-container">
+            <!-- Populated via JS or static symbols -->
+            <span class="noise-symbol" style="top: 10%; left: 5%;">+</span>
+            <span class="noise-symbol" style="top: 25%; left: 80%;">//</span>
+            <span class="noise-symbol" style="top: 40%; left: 15%;">[0x9A]</span>
+            <span class="noise-symbol" style="top: 60%; left: 85%;">_px</span>
+            <span class="noise-symbol" style="top: 80%; left: 10%;">+</span>
+            <span class="noise-symbol" style="top: 90%; left: 70%;">//</span>
+        </div>
+
+        <!-- SECTION_00: HERO -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="system-status">
+                    <span class="status-indicator"></span> &gt; SYSTEM_STATUS: ONLINE
+                </div>
+                <h1 class="reveal-text serif-title">DIGITAL ARCHITECTURE & FULL-STACK MASTERY.</h1>
+                <p class="reveal-text mono-desc">Construimos ecosistemas digitales de alto rendimiento. Desde el código fuente hasta la conversión final.</p>
+            </div>
+        </section>
+
+        <!-- SECTION_01: CAPABILITIES_GRID -->
+        <section class="capabilities-section">
+            <div class="grid-container">
+                <div class="module-card reveal-text">
+                    <h3 class="module-title">[ MODULE_01: CUSTOM_SOFTWARE & APPS ]</h3>
+                    <p class="module-desc">Desarrollo de programas a medida, aplicaciones móviles y herramientas lógicas complejas.</p>
+                </div>
+                <div class="module-card reveal-text">
+                    <h3 class="module-title">[ MODULE_02: WEB_ARCH & E-COMMERCE ]</h3>
+                    <p class="module-desc">Sitios web corporativos, tiendas online escalables (WooCommerce/PHP) y desarrollo de APIs REST.</p>
+                </div>
+                <div class="module-card reveal-text">
+                    <h3 class="module-title">[ MODULE_03: UI/UX & BRAND_DESIGN ]</h3>
+                    <p class="module-desc">Diseño de interfaces, dirección de arte, paletas cinemáticas y propuestas de marca de alto impacto.</p>
+                </div>
+                <div class="module-card reveal-text">
+                    <h3 class="module-title">[ MODULE_04: GROWTH & OPTIMIZATION ]</h3>
+                    <p class="module-desc">Marketing digital avanzado, integración de Meta Pixel, SEO técnico y optimización de conversión.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION_02: DEPLOYED_SYSTEMS -->
+        <section class="projects-section">
+            <div class="project-container">
+                <div class="project-parallax">
+                    <div class="project-img bg-project-1"></div>
+                </div>
+                <h2 class="project-title reveal-text">System 01: [ BruiserCrypto_Engine ]</h2>
+                <p class="project-desc reveal-text">Trading Tools & Technical Analysis (Binance, EMA, VWAP).</p>
+            </div>
+
+            <div class="project-container">
+                <div class="project-parallax">
+                    <div class="project-img bg-project-2"></div>
+                </div>
+                <h2 class="project-title reveal-text">System 02: [ LH_Parfum_Core ]</h2>
+                <p class="project-desc reveal-text">E-commerce Custom Theme & Catalog Management.</p>
+            </div>
+
+            <div class="project-container">
+                <div class="project-parallax">
+                    <div class="project-img bg-project-3"></div>
+                </div>
+                <h2 class="project-title reveal-text">System 03: [ CoffeeBones_Identity ]</h2>
+                <p class="project-desc reveal-text">Web Proposal & Digital Presence.</p>
+            </div>
+        </section>
+
+        <!-- SECTION_03: FOOTER_TERMINAL -->
+        <footer class="footer-section">
+            <div class="cta-container reveal-text">
+                <a href="#" class="cta-link">&gt; INITIATE_PROTOCOL( CONTACT );</a>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#">GITHUB</a>
+                    <a href="#">LINKEDIN</a>
+                    <a href="#">TWITTER</a>
+                </div>
+                <p class="copyright">Bruiser Tech &copy; 2026. Compiled in Cali, CO.</p>
+            </div>
+        </footer>
     </main>
 
     <!-- Lenis for smooth scrolling -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- SplitType -->
+    <script src="https://unpkg.com/split-type"></script>
     <script src="script.js"></script>
 </body>
 </html>
