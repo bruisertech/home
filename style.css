@@ -25,20 +25,57 @@ body {
     overflow: hidden; /* Prevent scroll while loading */
 }
 
+#dynamic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-red);
+    z-index: -3; /* Behind everything */
+}
+
+/* Dynamic Particle System */
+#particle-system {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -2; /* Above bg, behind content */
+}
+
+.particle-wrapper {
+    position: absolute;
+    will-change: transform;
+}
+
+.tech-particle-white {
+    color: var(--text-white);
+    font-family: var(--font-mono);
+    font-weight: bold;
+    user-select: none;
+    text-shadow: 0 0 8px rgba(251, 249, 238, 0.4); /* White glow */
+    will-change: transform;
+}
+
+
 /* Main Content Structure */
 #main-content {
     opacity: 0; /* Hidden initially, revealed after preloader */
     visibility: hidden;
+    z-index: 1; /* Content above background layers */
+    position: relative;
 }
 
-/* Block background classes for contrast */
-.bg-red {
-    background-color: var(--bg-red);
-    color: var(--text-white);
+/* Block background classes for contrast (now transparent to let dynamic-bg show) */
+.bg-red, .bg-dark {
+    background-color: transparent;
 }
 
 .bg-dark {
-    background-color: var(--bg-black);
     color: var(--text-white);
 }
 
@@ -64,20 +101,36 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding-top: 10vh; /* Give space for absolute elements */
 }
 
-.massive-text {
-    font-size: 25vw; /* Massive scaling to touch edges */
-    letter-spacing: -2vw;
-    margin: 0;
-    text-align: center;
-    white-space: nowrap;
+.hero-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw; /* Space between logo and text */
+    z-index: -1; /* Placed behind main readable content but above bg */
     will-change: transform, opacity;
 }
 
-.hero-sub {
-    margin-top: -2vw; /* Pull text close to massive text */
+.hero-logo {
+    width: 15vw; /* Scale proportionally to text */
+    height: auto;
+}
+
+.massive-text {
+    font-size: 20vw; /* Slightly smaller to fit logo */
+    letter-spacing: -1.5vw;
+    margin: 0;
     text-align: center;
+    white-space: nowrap;
+    text-transform: lowercase; /* Enforcement of lowercase */
+}
+
+.hero-sub {
+    margin-top: 5vh; /* Safe distance below the massive element */
+    text-align: center;
+    z-index: 1; /* Keep readable above parallaxed massive text */
 }
 
 .absolute-status {
