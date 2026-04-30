@@ -80,6 +80,61 @@ $(document).ready(function() {
         }, 600); // Wait 600ms to show the flicker
     }
 
+    function initTechParticles() {
+        const container = document.getElementById('particle-system');
+        const numParticles = Math.floor(Math.random() * 6) + 15; // 15 to 20 particles
+        const techSymbols = ['+', '[ ]', '//', '0x9A', '_px', '>', '< />'];
+
+        for (let i = 0; i < numParticles; i++) {
+            // Create wrapper for scroll parallax
+            const wrapper = document.createElement('div');
+            wrapper.className = 'particle-wrapper';
+
+            // Random initial position covering the viewport
+            const startX = Math.random() * 100;
+            const startY = Math.random() * 100;
+            wrapper.style.left = `${startX}vw`;
+            wrapper.style.top = `${startY}vh`;
+
+            // Create actual particle for breathing animation
+            const particle = document.createElement('div');
+            particle.className = 'tech-particle';
+            particle.textContent = techSymbols[Math.floor(Math.random() * techSymbols.length)];
+
+            // Random size and opacity (5% to 20%)
+            const size = Math.random() * 1.5 + 0.8; // 0.8rem to 2.3rem
+            particle.style.fontSize = `${size}rem`;
+            particle.style.opacity = (Math.random() * 0.15 + 0.05).toFixed(2);
+
+            wrapper.appendChild(particle);
+            container.appendChild(wrapper);
+
+            // Breathing Animation (Floating)
+            gsap.to(particle, {
+                x: `random(-30, 30)`,
+                y: `random(-30, 30)`,
+                rotation: `random(-15, 15)`,
+                duration: `random(4, 8)`,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut'
+            });
+
+            // Scroll Parallax (Depth effect)
+            const speed = Math.random() * 200 + 50; // Random speed factor
+            gsap.to(wrapper, {
+                y: -speed,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: 'body',
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true
+                }
+            });
+        }
+    }
+
     function initMainSite() {
         // Show main content
         const mainContent = document.getElementById('main-content');
@@ -123,28 +178,8 @@ $(document).ready(function() {
             });
         });
 
-        // 2. Background Color Transition
-        gsap.to('#dynamic-bg', {
-            backgroundColor: '#120202', // bg-red
-            scrollTrigger: {
-                trigger: '.capabilities-section',
-                start: "top center",
-                end: "bottom center",
-                scrub: true,
-            }
-        });
-
-        // 3. Digital Noise Parallax
-        gsap.to('.noise-symbol', {
-            y: (i, el) => -100 * (i % 3 + 1), // Different speeds
-            ease: "none",
-            scrollTrigger: {
-                trigger: 'body',
-                start: "top top",
-                end: "bottom bottom",
-                scrub: true
-            }
-        });
+        // 2. Tech Particle System (Dynamic Background)
+        initTechParticles();
 
         // 4. Project Images Parallax
         const projectImgs = document.querySelectorAll('.project-img');

@@ -27,29 +27,34 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: var(--bg-black);
-    z-index: -2;
-    transition: background-color 0.5s ease;
+    z-index: -3; /* Placed behind particles */
 }
 
-/* Noise Container (Parallax) */
-#noise-container {
-    position: absolute;
+/* Dynamic Particle System */
+#particle-system {
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 300vh; /* Cover scrolling area */
-    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
     pointer-events: none;
     overflow: hidden;
 }
 
-.noise-symbol {
+.particle-wrapper {
     position: absolute;
-    color: var(--text-white);
-    opacity: 0.03;
-    font-size: 24px;
+    /* This wrapper will handle the scroll parallax (Y-axis) */
+}
+
+.tech-particle {
+    color: var(--accent-red);
+    font-family: var(--font-mono);
     font-weight: bold;
     user-select: none;
+    /* Subtle glow */
+    text-shadow: 0 0 8px rgba(210, 88, 74, 0.4);
+    /* GSAP will animate transform here for the breathing effect */
 }
 
 /* Main Content Structure */
