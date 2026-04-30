@@ -80,6 +80,72 @@ $(document).ready(function() {
         }, 600); // Wait 600ms to show the flicker
     }
 
+    function initTechParticles() {
+        const container = document.getElementById('particle-system');
+        // Tech symbols using white color now
+        const techSymbols = ['+', '[ ]', '//', '0x8F', 'init_sys', '>', '< />', '_px', '10110'];
+
+        // 3 Layers for extreme depth (Z-Index -3, -2, -1) with white lens color and low opacity
+        const layers = [
+            { count: 20, zIndex: -3, sizeMin: 0.5, sizeMax: 1.0, opacity: 0.03, speedMin: 20, speedMax: 100, blur: 0 },
+            { count: 15, zIndex: -2, sizeMin: 1.0, sizeMax: 2.0, opacity: 0.05, speedMin: 150, speedMax: 300, blur: 0 },
+            { count: 10, zIndex: -1, sizeMin: 2.5, sizeMax: 4.5, opacity: 0.08, speedMin: 400, speedMax: 900, blur: 1 }
+        ];
+
+        layers.forEach(layer => {
+            for (let i = 0; i < layer.count; i++) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'particle-wrapper';
+                wrapper.style.zIndex = layer.zIndex;
+
+                const startX = Math.random() * 100;
+                const startY = Math.random() * 150 - 25;
+                wrapper.style.left = `${startX}vw`;
+                wrapper.style.top = `${startY}vh`;
+
+                const particle = document.createElement('div');
+                particle.className = 'tech-particle-white';
+                particle.textContent = techSymbols[Math.floor(Math.random() * techSymbols.length)];
+
+                const size = Math.random() * (layer.sizeMax - layer.sizeMin) + layer.sizeMin;
+                particle.style.fontSize = `${size}rem`;
+                particle.style.opacity = layer.opacity;
+                if (layer.blur > 0) {
+                    particle.style.filter = `blur(${layer.blur}px)`;
+                }
+
+                wrapper.appendChild(particle);
+                container.appendChild(wrapper);
+
+                // Breathing Animation
+                gsap.to(particle, {
+                    x: `random(-40, 40)`,
+                    y: `random(-40, 40)`,
+                    rotation: `random(-25, 25)`,
+                    duration: `random(6, 12)`,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+
+                // Scroll Parallax (Mostly up, some down)
+                const directionMultiplier = Math.random() > 0.8 ? 1 : -1;
+                const speed = (Math.random() * (layer.speedMax - layer.speedMin) + layer.speedMin) * directionMultiplier;
+
+                gsap.to(wrapper, {
+                    y: speed,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: 'body',
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            }
+        });
+    }
+
     function initMainSite() {
         // Show main content
         const mainContent = document.getElementById('main-content');
@@ -123,10 +189,22 @@ $(document).ready(function() {
             });
         });
 
-        // 2. Brutal Hero Animation
-        gsap.to('.massive-text', {
+        // 2. Background Color Transition
+        gsap.to('#dynamic-bg', {
+            backgroundColor: '#050505', // Transition to black
+            scrollTrigger: {
+                trigger: '.projects-section',
+                start: "top center",
+                end: "bottom center",
+                scrub: true,
+            }
+        });
+
+        // 3. Brutal Hero Animation (Applies to both logo and text via .hero-center)
+        gsap.to('.hero-center', {
             scale: 1.5,
             opacity: 0,
+            y: 100, // Slight parallax
             ease: 'none',
             scrollTrigger: {
                 trigger: '.brutal-hero',
@@ -136,7 +214,10 @@ $(document).ready(function() {
             }
         });
 
-        // 3. Project Images Parallax (Massive)
+        // 4. Initialize Particle Ecosystem
+        initTechParticles();
+
+        // 5. Project Images Parallax (Massive)
         const projectImgs = document.querySelectorAll('.project-img');
         projectImgs.forEach(img => {
             gsap.to(img, {
