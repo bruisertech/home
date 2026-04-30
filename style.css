@@ -27,7 +27,7 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: var(--bg-black);
-    z-index: -3; /* Placed behind particles */
+    z-index: -5; /* Placed behind all particle layers */
 }
 
 /* Dynamic Particle System */
@@ -37,7 +37,6 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -2;
     pointer-events: none;
     overflow: hidden;
 }
@@ -45,6 +44,7 @@ body {
 .particle-wrapper {
     position: absolute;
     /* This wrapper will handle the scroll parallax (Y-axis) */
+    will-change: transform;
 }
 
 .tech-particle {
@@ -54,6 +54,7 @@ body {
     user-select: none;
     /* Subtle glow */
     text-shadow: 0 0 8px rgba(210, 88, 74, 0.4);
+    will-change: transform;
     /* GSAP will animate transform here for the breathing effect */
 }
 

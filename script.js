@@ -82,57 +82,71 @@ $(document).ready(function() {
 
     function initTechParticles() {
         const container = document.getElementById('particle-system');
-        const numParticles = Math.floor(Math.random() * 6) + 15; // 15 to 20 particles
-        const techSymbols = ['+', '[ ]', '//', '0x9A', '_px', '>', '< />'];
+        const techSymbols = ['+', '[ ]', '//', '0x8F', 'init_sys', '>', '< />', '_px', '10110'];
 
-        for (let i = 0; i < numParticles; i++) {
-            // Create wrapper for scroll parallax
-            const wrapper = document.createElement('div');
-            wrapper.className = 'particle-wrapper';
+        const layers = [
+            { count: 20, zIndex: -3, sizeMin: 0.5, sizeMax: 1.0, opacity: 0.02, speedMin: 50, speedMax: 150, blur: 0 },
+            { count: 15, zIndex: -2, sizeMin: 1.0, sizeMax: 2.0, opacity: 0.05, speedMin: 200, speedMax: 400, blur: 0 },
+            { count: 10, zIndex: -1, sizeMin: 2.5, sizeMax: 4.5, opacity: 0.12, speedMin: 600, speedMax: 1200, blur: 2 }
+        ];
 
-            // Random initial position covering the viewport
-            const startX = Math.random() * 100;
-            const startY = Math.random() * 100;
-            wrapper.style.left = `${startX}vw`;
-            wrapper.style.top = `${startY}vh`;
+        layers.forEach(layer => {
+            for (let i = 0; i < layer.count; i++) {
+                // Create wrapper for scroll parallax
+                const wrapper = document.createElement('div');
+                wrapper.className = 'particle-wrapper';
+                wrapper.style.zIndex = layer.zIndex;
 
-            // Create actual particle for breathing animation
-            const particle = document.createElement('div');
-            particle.className = 'tech-particle';
-            particle.textContent = techSymbols[Math.floor(Math.random() * techSymbols.length)];
+                // Random initial position covering an extended viewport area
+                const startX = Math.random() * 100;
+                const startY = Math.random() * 150 - 25; // -25vh to 125vh
+                wrapper.style.left = `${startX}vw`;
+                wrapper.style.top = `${startY}vh`;
 
-            // Random size and opacity (5% to 20%)
-            const size = Math.random() * 1.5 + 0.8; // 0.8rem to 2.3rem
-            particle.style.fontSize = `${size}rem`;
-            particle.style.opacity = (Math.random() * 0.15 + 0.05).toFixed(2);
+                // Create actual particle for breathing animation
+                const particle = document.createElement('div');
+                particle.className = 'tech-particle';
+                particle.textContent = techSymbols[Math.floor(Math.random() * techSymbols.length)];
 
-            wrapper.appendChild(particle);
-            container.appendChild(wrapper);
-
-            // Breathing Animation (Floating)
-            gsap.to(particle, {
-                x: `random(-30, 30)`,
-                y: `random(-30, 30)`,
-                rotation: `random(-15, 15)`,
-                duration: `random(4, 8)`,
-                repeat: -1,
-                yoyo: true,
-                ease: 'sine.inOut'
-            });
-
-            // Scroll Parallax (Depth effect)
-            const speed = Math.random() * 200 + 50; // Random speed factor
-            gsap.to(wrapper, {
-                y: -speed,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: 'body',
-                    start: "top top",
-                    end: "bottom bottom",
-                    scrub: true
+                // Size and opacity from layer config
+                const size = Math.random() * (layer.sizeMax - layer.sizeMin) + layer.sizeMin;
+                particle.style.fontSize = `${size}rem`;
+                particle.style.opacity = layer.opacity;
+                if (layer.blur > 0) {
+                    particle.style.filter = `blur(${layer.blur}px)`;
                 }
-            });
-        }
+
+                wrapper.appendChild(particle);
+                container.appendChild(wrapper);
+
+                // Breathing Animation (Floating) - purely transforms
+                gsap.to(particle, {
+                    x: `random(-40, 40)`,
+                    y: `random(-40, 40)`,
+                    rotation: `random(-25, 25)`,
+                    duration: `random(6, 12)`,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+
+                // Scroll Parallax (Depth effect)
+                // Decide direction: mostly up (-y), rarely down (+y)
+                const directionMultiplier = Math.random() > 0.8 ? 1 : -1;
+                const speed = (Math.random() * (layer.speedMax - layer.speedMin) + layer.speedMin) * directionMultiplier;
+
+                gsap.to(wrapper, {
+                    y: speed,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: 'body',
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            }
+        });
     }
 
     function initMainSite() {
