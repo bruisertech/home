@@ -217,6 +217,7 @@ $(document).ready(function() {
         // 4. Initialize Particle Ecosystem
         initTechParticles();
 
+
         // 5. Project Images Parallax (Massive)
         const projectImgs = document.querySelectorAll('.project-img');
         projectImgs.forEach(img => {
@@ -231,6 +232,120 @@ $(document).ready(function() {
                 }
             });
         });
+
+        // 6. Glassmorphism Module Cards (Drawing border, Text Scramble, Descriptions, Micro-details)
+
+        // Random Hex Generator for bottom corners
+        function generateRandomHex() {
+            return '0x' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0').toUpperCase();
+        }
+
+        // Random System Version for top corners
+        function generateRandomVersion() {
+            const major = Math.floor(Math.random() * 10);
+            const minor = Math.floor(Math.random() * 20);
+            return `v${major}.${minor}.x`;
+        }
+
+        // Scramble logic
+        const chars = '!<>-_\\/[]{}—=+*^?#________';
+        function scrambleText(element, finalString, duration = 800) {
+            let startTime = null;
+
+            function update(time) {
+                if (!startTime) startTime = time;
+                const elapsed = time - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // Calculate how many characters of the final string should be revealed
+                const revealCount = Math.floor(progress * finalString.length);
+
+                let currentStr = finalString.substring(0, revealCount);
+
+                // Add scrambled characters for the rest
+                for(let i = revealCount; i < finalString.length; i++) {
+                    currentStr += chars[Math.floor(Math.random() * chars.length)];
+                }
+
+                element.innerText = currentStr;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    element.innerText = finalString;
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        const moduleCards = document.querySelectorAll('.module-card');
+        moduleCards.forEach((card, index) => {
+            const rect = card.querySelector('.module-border-svg rect');
+            const title = card.querySelector('.module-title');
+            const desc = card.querySelector('.module-desc');
+            const originalText = title.getAttribute('data-original-text');
+
+            // Corner elements
+            const tl = card.querySelector('.top-left');
+            const tr = card.querySelector('.top-right');
+            const bl = card.querySelector('.bottom-left');
+            const br = card.querySelector('.bottom-right');
+
+            // Set up SVG Stroke Dash Array/Offset
+            // We use 2000 as a safely large number for 100% width/height rect perimeters
+            gsap.set(rect, { strokeDasharray: 3000, strokeDashoffset: 3000 });
+
+            // Set up infinite loop for corners
+            let loopInterval;
+
+            ScrollTrigger.create({
+                trigger: card,
+                start: "top 85%",
+                onEnter: () => {
+                    // 1. Draw SVG Border
+                    gsap.to(rect, {
+                        strokeDashoffset: 0,
+                        duration: 1.5,
+                        ease: "power2.inOut"
+                    });
+
+                    // 2. Scramble Title
+                    scrambleText(title, originalText, 800);
+
+                    // 3. Fade up description right after scramble (around 0.8s later)
+                    gsap.to(desc, {
+                        opacity: 0.8,
+                        y: 0,
+                        duration: 0.8,
+                        delay: 0.8,
+                        ease: "power2.out"
+                    });
+
+                    // 4. Start corner data loop
+                    clearInterval(loopInterval);
+                    loopInterval = setInterval(() => {
+                        if (tl) tl.innerText = `SYS.${generateRandomVersion()}`;
+                        if (tr) tr.innerText = `COORD.${(Math.random()*100).toFixed(2)}`;
+                        if (bl) bl.innerText = generateRandomHex();
+                        if (br) br.innerText = generateRandomHex();
+                    }, 100);
+                },
+                onLeave: () => clearInterval(loopInterval),
+                onEnterBack: () => {
+                    // Restart loop if they scroll back up
+                    clearInterval(loopInterval);
+                    loopInterval = setInterval(() => {
+                        if (tl) tl.innerText = `SYS.${generateRandomVersion()}`;
+                        if (tr) tr.innerText = `COORD.${(Math.random()*100).toFixed(2)}`;
+                        if (bl) bl.innerText = generateRandomHex();
+                        if (br) br.innerText = generateRandomHex();
+                    }, 100);
+                },
+                onLeaveBack: () => clearInterval(loopInterval)
+            });
+        });
+
     }
 
     // Start everything
