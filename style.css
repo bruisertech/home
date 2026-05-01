@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'LT Saeada Black';
     /* Using Impact as fallback for the brutalist aesthetic since we don't have the font file locally */
-    src: local('Impact');
+    src: url('LTSaeada-Black.otf') format('opentype'), local('Impact');
 }
 
 :root {
@@ -120,7 +120,7 @@ body {
 
 .massive-text {
     font-size: 15vw; /* Slightly smaller to fit logo and kerning */
-    letter-spacing: 0.05em;
+    letter-spacing: -0.05em; /* Adjusted to look good with the new font */
     margin: 0;
     text-align: center;
     white-space: nowrap;
