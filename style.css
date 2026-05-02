@@ -268,45 +268,45 @@ body {
 
 /* SECTION_02: DEPLOYED_SYSTEMS */
 .projects-section {
-    padding: 150px 0;
+    padding: 100px 0 0;
+    /* Adjust padding to remove excessive space for snapping */
 }
 
 .project-container {
-    padding: 0 10%;
-    margin-bottom: 200px;
+    padding: 100px 10%;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
 }
 
-.project-parallax {
+.project-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between stacked images */
     width: 100%;
-    height: 80vh;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 30px;
+    margin-top: 40px;
 }
 
-.project-img {
+.project-img-stacked {
     width: 100%;
-    height: 130%; /* Extra height for parallax */
-    background-size: cover;
-    background-position: center;
-    top: -15%;
-    position: absolute;
-    /* Placeholder colors since we don't have images */
-    background-color: #222;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid rgba(251, 249, 238, 0.1);
 }
 
-.bg-project-1 { background-color: #1a1a1a; }
-.bg-project-2 { background-color: #2a2a2a; }
-.bg-project-3 { background-color: #151515; }
 
 .project-title {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin-bottom: 20px;
     color: var(--text-white);
+    /* For custom font LT Saeada Black, already applied via .brutal-title if needed, else explicit: */
+    font-family: 'LT Saeada Black', sans-serif;
+    line-height: 1.1;
+    word-break: break-word; /* Ensure it fits on mobile */
 }
 
 .project-title span {
-    color: var(--bg-red); /* Adding slight accent dynamically via css if wanted, though we will just rely on GSAP or keep it white/red as instructed. We'll use text-white in HTML and style it directly */
+    color: var(--bg-red);
 }
 
 .project-desc {
@@ -318,6 +318,8 @@ body {
 .footer-section {
     padding: 100px 10% 50px;
     border-top: 1px solid rgba(251, 249, 238, 0.1);
+    /* For reel effect to allow scroll down to footer properly on mobile */
+    scroll-snap-align: end;
 }
 
 .cta-container {
@@ -326,15 +328,31 @@ body {
 }
 
 .cta-link {
-    font-size: 8vw;
+    font-size: 4vw; /* Adjusted for standard viewing */
     color: var(--text-white);
     text-decoration: none;
     transition: color 0.3s;
     display: inline-block;
+    word-break: break-all; /* Prevent overflow on tight screens */
+}
+
+.cta-link .red-text {
+    color: var(--bg-red);
+    transition: color 0.3s;
 }
 
 .cta-link:hover {
     color: var(--bg-red);
+}
+
+.cta-link:hover .red-text {
+    color: var(--text-white);
+}
+
+@media (max-width: 768px) {
+    .cta-link {
+        font-size: 6vw; /* Larger relatively on mobile but fits on one line compared to 8vw */
+    }
 }
 
 .footer-bottom {
@@ -532,6 +550,22 @@ section.preload svg.fill-colors .p-anim {
 
     .module-card::after {
         font-size: 12rem; /* slightly smaller on mobile */
+    }
+
+    .projects-section {
+        scroll-snap-align: none;
+    }
+
+    .project-snap {
+        min-height: 100vh;
+        scroll-snap-align: start; /* Snap per project on mobile */
+        padding: 60px 5%;
+        margin-bottom: 0; /* remove bottom margin for flush snapping */
+        justify-content: flex-start;
+    }
+
+    .project-title {
+        font-size: 2.5rem; /* Resize massive text for mobile */
     }
 }
 
