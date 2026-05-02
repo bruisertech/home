@@ -155,23 +155,7 @@ $(document).ready(function() {
         // Enable scrolling
         $('body').css('overflow', 'auto');
 
-        // Initialize Lenis
-        const lenis = new Lenis({
-            duration: 0.8, // Faster, fluid scroll
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-        });
 
-        // Integrate Lenis with ScrollTrigger
-        lenis.on('scroll', ScrollTrigger.update);
-
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
-
-        gsap.ticker.lagSmoothing(0);
 
         // 1. Text Reveal Animation (SplitType + GSAP)
         const revealTexts = document.querySelectorAll('.reveal-text');
@@ -254,7 +238,10 @@ $(document).ready(function() {
                 }
 
                 if (targetSection) {
-                    lenis.scrollTo(targetSection, { duration: 1.2, ease: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
                 }
             });
         }
@@ -393,43 +380,8 @@ $(document).ready(function() {
         });
 
 
-        // 8. Magnetic Scroll Hijacking (Snap)
-        // Desktop: Snap to entire .capabilities-section
-        // Mobile: Snap to individual .module-card
-        let matchMedia = gsap.matchMedia();
 
-        matchMedia.add("(min-width: 769px)", () => {
-            // Desktop
-            ScrollTrigger.create({
-                trigger: '#capabilities',
-                start: 'top center',
-                end: 'bottom center',
-                snap: {
-                    snapTo: 0.5, // Snap to the exact center of the section (relative progress 0.5)
-                    duration: { min: 0.2, max: 0.6 },
-                    delay: 0.1,
-                    ease: "power1.inOut"
-                }
-            });
-        });
 
-        matchMedia.add("(max-width: 768px)", () => {
-            // Mobile (TikTok style) 100vh Reel
-            const cards = gsap.utils.toArray('.module-card');
-            cards.forEach(card => {
-                ScrollTrigger.create({
-                    trigger: card,
-                    start: 'top center',
-                    end: 'bottom center', // This creates a scrollable distance equal to the card height
-                    snap: {
-                        snapTo: 0.5, // Snap to the center of the trigger distance
-                        duration: { min: 0.2, max: 0.6 },
-                        delay: 0.05, // very fast assist
-                        ease: "power2.inOut"
-                    }
-                });
-            });
-        });
 
     }
 
