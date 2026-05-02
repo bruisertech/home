@@ -133,6 +133,40 @@ body {
     z-index: 1; /* Keep readable above parallaxed massive text */
 }
 
+/* Hero Terminal Button */
+.hero-terminal-btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 30px;
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    border: 2px solid var(--text-white);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 6px 6px 0px var(--bg-red);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.hero-terminal-btn .prompt {
+    color: var(--bg-red);
+}
+
+.hero-terminal-btn:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 3px 3px 0px var(--bg-red);
+    background-color: var(--text-white);
+    color: var(--bg-black);
+}
+
+.hero-terminal-btn:active {
+    transform: translate(6px, 6px);
+    box-shadow: 0px 0px 0px var(--bg-red);
+}
+
+
 .absolute-status {
     position: absolute;
     top: 40px;
@@ -350,28 +384,17 @@ body {
     box-shadow: 0px 0px 0px var(--bg-red);
 }
 
-/* Layout Asimetrico Desktop Proyecto 01 */
+/* Layout de Galeria Desktop Harmonico */
 @media (min-width: 769px) {
-    .gallery-p01 {
-        position: relative;
-        display: block; /* Override flex */
-        min-height: 800px; /* Force height for overlapping imgs */
+    .project-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        align-items: start;
     }
 
-    .gallery-p01 .img-p01-1 {
-        width: 60%;
-        position: relative;
-        z-index: 2;
-    }
-
-    .gallery-p01 .img-p01-2 {
-        width: 50%;
-        position: absolute;
-        right: 0;
-        top: 20%;
-        z-index: 1;
-        transform: translateY(0); /* Handled by GSAP later if needed, but standard position here */
-        border: 2px solid var(--bg-red); /* Brutalist accent */
+    .project-img-stacked {
+        height: 100%;
+        object-fit: cover;
     }
 }
 
