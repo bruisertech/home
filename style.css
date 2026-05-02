@@ -133,20 +133,21 @@ body {
     z-index: 1; /* Keep readable above parallaxed massive text */
 }
 
-/* Hero Terminal Button */
+/* Hero Terminal Button (Brutalist style like .btn-execute) */
 .hero-terminal-btn {
     display: inline-block;
     margin-top: 40px;
-    padding: 15px 30px;
-    background-color: var(--bg-black);
-    color: var(--text-white);
-    border: 2px solid var(--text-white);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5rem;
-    font-weight: bold;
+    padding: 18px 40px;
+    font-family: 'LT Saeada Black', sans-serif;
+    font-size: 1.4rem;
+    color: var(--bg-black);
+    background-color: var(--text-white);
+    border: 3px solid var(--bg-black);
     text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
     box-shadow: 6px 6px 0px var(--bg-red);
-    transition: all 0.3s ease;
+    text-align: center;
+    max-width: max-content;
     z-index: 10;
 }
 
@@ -155,10 +156,15 @@ body {
 }
 
 .hero-terminal-btn:hover {
-    transform: translate(3px, 3px);
-    box-shadow: 3px 3px 0px var(--bg-red);
-    background-color: var(--text-white);
-    color: var(--bg-black);
+    transform: translate(4px, 4px);
+    box-shadow: 2px 2px 0px var(--bg-red);
+    background-color: var(--bg-red);
+    border-color: var(--bg-red);
+    color: var(--text-white);
+}
+
+.hero-terminal-btn:hover .prompt {
+    color: var(--bg-black); /* Better contrast on red background */
 }
 
 .hero-terminal-btn:active {
@@ -324,6 +330,7 @@ body {
 .project-img-stacked {
     width: 100%;
     height: auto;
+    max-height: 85vh;
     object-fit: contain;
     border: 1px solid rgba(251, 249, 238, 0.1);
 }
@@ -394,7 +401,8 @@ body {
 
     .project-img-stacked {
         height: 100%;
-        object-fit: cover;
+        max-height: 85vh;
+        object-fit: contain;
     }
 }
 
