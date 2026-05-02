@@ -157,7 +157,7 @@ $(document).ready(function() {
 
         // Initialize Lenis
         const lenis = new Lenis({
-            duration: 1.2,
+            duration: 0.8, // Faster, fluid scroll
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             direction: 'vertical',
             gestureDirection: 'vertical',
@@ -213,6 +213,51 @@ $(document).ready(function() {
                 scrub: true
             }
         });
+
+
+        // 7. Continuous Bouncing Arrow & Scroll Routing
+        const arrow = document.getElementById('scroll-indicator');
+        if (arrow) {
+            // Show arrow after init
+            gsap.to(arrow, { opacity: 1, visibility: 'visible', duration: 1, delay: 1 });
+
+            // Bouncing animation
+            gsap.to(arrow, {
+                y: 15,
+                duration: 0.8,
+                repeat: -1,
+                yoyo: true,
+                ease: 'power1.inOut'
+            });
+
+            // Hide at bottom (e.g., when reaching footer or the projects section bottom)
+            ScrollTrigger.create({
+                trigger: '#projects',
+                start: "center center", // hide when the last major section takes over
+                onEnter: () => gsap.to(arrow, { opacity: 0, duration: 0.5 }),
+                onLeaveBack: () => gsap.to(arrow, { opacity: 1, duration: 0.5 })
+            });
+
+            // Arrow Click Logic to Major Sections
+            const majorSections = Array.from(document.querySelectorAll('.major-section'));
+            arrow.addEventListener('click', () => {
+                const scrollY = window.scrollY;
+
+                // Find the next section whose top is below the current scroll pos (with small buffer)
+                let targetSection = null;
+                for (let i = 0; i < majorSections.length; i++) {
+                    const sectionTop = majorSections[i].offsetTop;
+                    if (sectionTop > scrollY + 50) {
+                        targetSection = majorSections[i];
+                        break;
+                    }
+                }
+
+                if (targetSection) {
+                    lenis.scrollTo(targetSection, { duration: 1.2, ease: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+                }
+            });
+        }
 
         // 4. Initialize Particle Ecosystem
         initTechParticles();
@@ -343,6 +388,45 @@ $(document).ready(function() {
                     }, 100);
                 },
                 onLeaveBack: () => clearInterval(loopInterval)
+            });
+        });
+
+
+        // 8. Magnetic Scroll Hijacking (Snap)
+        // Desktop: Snap to entire .capabilities-section
+        // Mobile: Snap to individual .module-card
+        let matchMedia = gsap.matchMedia();
+
+        matchMedia.add("(min-width: 769px)", () => {
+            // Desktop
+            ScrollTrigger.create({
+                trigger: '#capabilities',
+                start: 'top center',
+                end: 'bottom center',
+                snap: {
+                    snapTo: 0.5, // Snap to the exact center of the section (relative progress 0.5)
+                    duration: { min: 0.2, max: 0.6 },
+                    delay: 0.1,
+                    ease: "power1.inOut"
+                }
+            });
+        });
+
+        matchMedia.add("(max-width: 768px)", () => {
+            // Mobile (TikTok style)
+            const cards = gsap.utils.toArray('.module-card');
+            cards.forEach(card => {
+                ScrollTrigger.create({
+                    trigger: card,
+                    start: 'top 60%',
+                    end: 'bottom 40%',
+                    snap: {
+                        snapTo: 0.5,
+                        duration: { min: 0.1, max: 0.4 },
+                        delay: 0.1,
+                        ease: "power1.inOut"
+                    }
+                });
             });
         });
 

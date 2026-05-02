@@ -55,8 +55,16 @@
         <div id="dynamic-bg"></div>
         <div id="particle-system"></div>
 
+
+        <!-- Scroll Indicator Arrow -->
+        <div class="scroll-indicator" id="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fbf9ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </div>
+
         <!-- SECTION_00: BRUTAL HERO -->
-        <section class="brutal-hero">
+        <section id="hero" class="brutal-hero major-section">
             <div class="system-status absolute-status">
                 <span class="status-indicator"></span> &gt; SYSTEM_STATUS: ONLINE
             </div>
@@ -68,7 +76,7 @@
         </section>
 
         <!-- SECTION_01: CAPABILITIES_GRID -->
-        <section class="capabilities-section bg-red">
+        <section id="capabilities" class="capabilities-section bg-red major-section">
             <div class="grid-container">
                 <div class="module-card">
                     <svg class="module-border-svg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -173,7 +181,7 @@
         </section>
 
         <!-- SECTION_02: DEPLOYED_SYSTEMS (CONTRASTE OSCURO) -->
-        <section class="projects-section bg-dark">
+        <section id="projects" class="projects-section bg-dark major-section">
             <div class="project-container">
                 <div class="project-parallax">
                     <!-- Added image placeholder directly in html class for CSS to pick up -->
