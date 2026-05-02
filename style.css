@@ -312,7 +312,86 @@ body {
 .project-desc {
     font-size: 1.2rem;
     opacity: 0.8;
+    margin-bottom: 30px;
+    line-height: 1.6;
 }
+
+/* Boton Brutalista: VER_EJECUCION */
+.btn-execute {
+    display: inline-block;
+    padding: 15px 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--text-white);
+    background-color: transparent;
+    border: 2px solid var(--text-white);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-execute::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--text-white);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.btn-execute:hover {
+    color: var(--bg-black);
+}
+
+.btn-execute:hover::before {
+    left: 0;
+}
+
+/* Layout Asimetrico Desktop Proyecto 01 */
+@media (min-width: 769px) {
+    .gallery-p01 {
+        position: relative;
+        display: block; /* Override flex */
+        min-height: 800px; /* Force height for overlapping imgs */
+    }
+
+    .gallery-p01 .img-p01-1 {
+        width: 60%;
+        position: relative;
+        z-index: 2;
+    }
+
+    .gallery-p01 .img-p01-2 {
+        width: 50%;
+        position: absolute;
+        right: 0;
+        top: 20%;
+        z-index: 1;
+        transform: translateY(0); /* Handled by GSAP later if needed, but standard position here */
+        border: 2px solid var(--bg-red); /* Brutalist accent */
+    }
+}
+
+/* Fondo de Codigo Canvas */
+.code-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2; /* Detras del dynamic-bg */
+    opacity: 0.15; /* Sutil */
+    pointer-events: none;
+}
+
 
 /* SECTION_03: FOOTER_TERMINAL */
 .footer-section {
