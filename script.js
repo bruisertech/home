@@ -337,9 +337,14 @@ $(document).ready(function() {
             const bl = card.querySelector('.bottom-left');
             const br = card.querySelector('.bottom-right');
 
-            // Set up SVG Stroke Dash Array/Offset
-            // We use 2000 as a safely large number for 100% width/height rect perimeters
-            gsap.set(rect, { strokeDasharray: 3000, strokeDashoffset: 3000 });
+            // Set up SVG Stroke Dash Array/Offset dynamically
+            let perimeter = 3000;
+            if (rect) {
+                // Approximate perimeter since it's 100% width/height
+                // A safer way is just to use a massively large number that covers any screen
+                perimeter = window.innerWidth * 2 + window.innerHeight * 2 + 1000;
+            }
+            gsap.set(rect, { strokeDasharray: perimeter, strokeDashoffset: perimeter });
 
             // Set up infinite loop for corners
             let loopInterval;
@@ -349,11 +354,7 @@ $(document).ready(function() {
                 start: "top 85%",
                 onEnter: () => {
                     // 1. Draw SVG Border
-                    gsap.to(rect, {
-                        strokeDashoffset: 0,
-                        duration: 1.5,
-                        ease: "power2.inOut"
-                    });
+                    gsap.to(rect, { strokeDashoffset: 0, duration: 1.5, ease: "power2.inOut", overwrite: "auto" });
 
                     // 2. Scramble Title
                     scrambleText(title, originalText, 800);
@@ -413,18 +414,18 @@ $(document).ready(function() {
         });
 
         matchMedia.add("(max-width: 768px)", () => {
-            // Mobile (TikTok style)
+            // Mobile (TikTok style) 100vh Reel
             const cards = gsap.utils.toArray('.module-card');
             cards.forEach(card => {
                 ScrollTrigger.create({
                     trigger: card,
-                    start: 'top 60%',
-                    end: 'bottom 40%',
+                    start: 'top center',
+                    end: 'bottom center', // This creates a scrollable distance equal to the card height
                     snap: {
-                        snapTo: 0.5,
-                        duration: { min: 0.1, max: 0.4 },
-                        delay: 0.1,
-                        ease: "power1.inOut"
+                        snapTo: 0.5, // Snap to the center of the trigger distance
+                        duration: { min: 0.2, max: 0.6 },
+                        delay: 0.05, // very fast assist
+                        ease: "power2.inOut"
                     }
                 });
             });
