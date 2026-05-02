@@ -80,6 +80,90 @@ $(document).ready(function() {
         }, 600); // Wait 600ms to show the flicker
     }
 
+    function initCodeRain() {
+        const canvas = document.getElementById('code-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*'.split('');
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for(let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function draw() {
+            // Fondo semitransparente para efecto estela
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#fbf9ee'; // Color blanco sutil del texto
+            ctx.font = fontSize + 'px Courier New';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 33); // ~30fps
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            // Reset columns on resize
+            const newCols = canvas.width / fontSize;
+            drops.length = 0;
+            for(let x = 0; x < newCols; x++) {
+                drops[x] = 1;
+            }
+        });
+    }
+
+    function initMouseParallax() {
+        // Añade vida al mover el ratón en Desktop
+        document.addEventListener('mousemove', (e) => {
+            if (window.innerWidth < 768) return; // Desactivar en móvil
+
+            const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+
+            gsap.to('.hero-center', {
+                x: mouseX * 20,
+                y: mouseY * 20,
+                duration: 1,
+                ease: 'power2.out',
+                overwrite: 'auto'
+            });
+
+            gsap.to('.code-bg', {
+                x: mouseX * -15,
+                y: mouseY * -15,
+                duration: 2,
+                ease: 'power2.out',
+                overwrite: 'auto'
+            });
+
+            gsap.to('.img-p01-2', {
+                x: mouseX * -30,
+                y: mouseY * -30,
+                duration: 1.5,
+                ease: 'power2.out',
+                overwrite: 'auto'
+            });
+        });
+    }
+
     function initTechParticles() {
         const container = document.getElementById('particle-system');
         // Tech symbols using white color now
@@ -246,8 +330,10 @@ $(document).ready(function() {
             });
         }
 
-        // 4. Initialize Particle Ecosystem
+        // 4. Initialize Particle Ecosystem & Backgrounds
         initTechParticles();
+        initCodeRain();
+        initMouseParallax();
 
 
         // 6. Glassmorphism Module Cards & Utilities
