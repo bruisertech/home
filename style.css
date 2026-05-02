@@ -487,9 +487,9 @@ section.preload svg.fill-colors .p-anim {
     visibility: hidden;
 }
 
-/* Add major section ID class marking for scroll routing if not already handled */
-.section-anchor {
-    /* logical anchor class */
+/* Major sections snap configuration */
+.major-section {
+    scroll-snap-align: start;
 }
 
 
@@ -511,6 +511,11 @@ section.preload svg.fill-colors .p-anim {
 
 /* Mobile-specific fixes for Reels layout */
 @media (max-width: 768px) {
+    /* Disable snap on the parent section so we can snap inside */
+    .capabilities-section {
+        scroll-snap-align: none;
+    }
+
     .grid-container {
         display: block; /* Override grid */
     }
@@ -522,9 +527,15 @@ section.preload svg.fill-colors .p-anim {
         flex-direction: column;
         justify-content: center;
         border-radius: 0; /* Ensures flush fit */
+        scroll-snap-align: start; /* Native CSS Snap Reel */
     }
 
     .module-card::after {
         font-size: 12rem; /* slightly smaller on mobile */
     }
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
 }
