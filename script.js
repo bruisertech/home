@@ -250,22 +250,7 @@ $(document).ready(function() {
         initTechParticles();
 
 
-        // 5. Project Images Parallax (Massive)
-        const projectImgs = document.querySelectorAll('.project-img');
-        projectImgs.forEach(img => {
-            gsap.to(img, {
-                y: '30%',
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: img.parentElement,
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    scrub: true
-                }
-            });
-        });
-
-        // 6. Glassmorphism Module Cards (Drawing border, Text Scramble, Descriptions, Micro-details)
+        // 6. Glassmorphism Module Cards & Utilities
 
         // Random Hex Generator for bottom corners
         function generateRandomHex() {
@@ -310,6 +295,43 @@ $(document).ready(function() {
 
             requestAnimationFrame(update);
         }
+
+        // 5. Project Showcase Features
+
+        // Single execution glitch for project titles
+        const glitchTitles = document.querySelectorAll('.project-title[data-glitch]');
+        glitchTitles.forEach(title => {
+            const originalText = title.getAttribute('data-glitch');
+
+            ScrollTrigger.create({
+                trigger: title,
+                start: "top 85%",
+                once: true, // Only triggers once
+                onEnter: () => {
+                    scrambleText(title, originalText, 600); // reuse the scramble function
+                }
+            });
+        });
+
+        // Subtle stack parallax for images
+        const projectImages = document.querySelectorAll('.project-img-stacked');
+        projectImages.forEach(img => {
+            gsap.fromTo(img,
+                { y: 50, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: img,
+                        start: "top 85%",
+                    }
+                }
+            );
+        });
+
+        // 6.5 Apply logic to Module Cards
 
         const moduleCards = document.querySelectorAll('.module-card');
         moduleCards.forEach((card, index) => {
