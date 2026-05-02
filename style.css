@@ -319,40 +319,35 @@ body {
 /* Boton Brutalista: VER_EJECUCION */
 .btn-execute {
     display: inline-block;
-    padding: 15px 30px;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: var(--text-white);
-    background-color: transparent;
-    border: 2px solid var(--text-white);
+    padding: 18px 40px;
+    font-family: 'LT Saeada Black', sans-serif;
+    font-size: 1.4rem;
+    color: var(--bg-black);
+    background-color: var(--text-white);
+    border: 3px solid var(--text-white);
     text-decoration: none;
     text-transform: uppercase;
-    transition: all 0.3s ease;
-    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    margin-bottom: 30px;
     position: relative;
-    overflow: hidden;
     z-index: 1;
-}
-
-.btn-execute::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background-color: var(--text-white);
-    transition: all 0.4s ease;
-    z-index: -1;
+    box-shadow: 6px 6px 0px var(--bg-red);
+    text-align: center;
+    max-width: max-content;
 }
 
 .btn-execute:hover {
-    color: var(--bg-black);
+    transform: translate(4px, 4px);
+    box-shadow: 2px 2px 0px var(--bg-red);
+    background-color: var(--bg-red);
+    border-color: var(--bg-red);
+    color: var(--text-white);
 }
 
-.btn-execute:hover::before {
-    left: 0;
+.btn-execute:active {
+    transform: translate(6px, 6px);
+    box-shadow: 0px 0px 0px var(--bg-red);
 }
 
 /* Layout Asimetrico Desktop Proyecto 01 */
