@@ -331,6 +331,9 @@ $(document).ready(function() {
         }
 
         // 4. Initialize Particle Ecosystem & Backgrounds
+        if (typeof window.initFerrofluid === 'function') {
+            window.initFerrofluid();
+        }
         initTechParticles();
         initCodeRain();
         initMouseParallax();

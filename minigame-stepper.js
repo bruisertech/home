@@ -34,7 +34,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- DOM ELEMENTS ---
     const giftContainer = document.getElementById('gift-container');
+    const closeGiftBtn = document.getElementById('close-gift-btn');
     const hackTerminalOverlay = document.getElementById('hack-terminal-overlay');
+
+    // Evento para cerrar el gift-container
+    if (closeGiftBtn) {
+        closeGiftBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evitar que el clic se propague al giftContainer
+            giftContainer.style.display = 'none';
+            // Detener el check interval si cerramos manualmente
+            if(window.giftCheckInterval) clearInterval(window.giftCheckInterval);
+        });
+    }
     const mathQuestionSpan = document.getElementById('math-question');
     const terminalInput = document.getElementById('terminal-math-input');
     const btnStartStepper = document.getElementById('btn-start-stepper');
@@ -51,11 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Mostrar el regalo al terminar el preloader (simulado escuchando cuando preloader desaparece o timeout)
     // Bruiser usa gsap para ocultar el preloader. Como no tenemos un evento directo, podemos chequear
-    const checkPreloader = setInterval(() => {
+    window.giftCheckInterval = setInterval(() => {
         const preloader = document.getElementById('preloader');
-        if (preloader && preloader.style.display === 'none') {
+        // Validamos usando getComputedStyle ya que a veces la clase puede aplicarse vía hoja de estilos y no estilo inline
+        if (preloader && (preloader.style.display === 'none' || window.getComputedStyle(preloader).display === 'none' || preloader.style.opacity === '0')) {
             giftContainer.style.display = 'flex'; // Es flex en nuestra hoja de estilos unificada
-            clearInterval(checkPreloader);
+            clearInterval(window.giftCheckInterval);
         }
     }, 1000);
 
@@ -82,6 +94,17 @@ document.addEventListener('DOMContentLoaded', () => {
         prizeOverlay.style.display = 'none';
         giftContainer.style.display = 'flex'; // Vuelve a mostrar el regalo
         clearTimeout(hackTimer); // Cancela el hackeo si el usuario cierra la ventana rápido
+    });
+
+    // Lógica para cerrar el panel de hackeo terminal (abortar)
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.id === 'close-hack-btn') {
+            hackTerminalOverlay.style.display = 'none';
+            giftContainer.style.display = 'flex';
+            terminalInput.value = '';
+            document.getElementById('terminal-input-area').style.display = 'none';
+            btnStartStepper.style.display = 'none';
+        }
     });
 
     function startHackSequence() {
@@ -294,6 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Gift Container & Prize Overlay
         const giftHTML = `
             <div id="gift-container" title="Descifrar paquete">
+                <button id="close-gift-btn" title="Cerrar">X</button>
                 <img src="bgift.png" alt="Regalo" class="gift-icon-img">
             </div>
 
@@ -312,9 +336,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const terminalHTML = `
             <div id="hack-terminal-overlay">
                 <div class="terminal-box">
-                    <div class="terminal-header">
-                        <img src="bruisertech.png" alt="Bruiser Logo" class="terminal-logo">
-                        <span class="terminal-title">SYS_OVERRIDE</span>
+                    <div class="terminal-header" style="display:flex; justify-content:space-between; width:100%;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <img src="bruisertech.png" alt="Bruiser Logo" class="terminal-logo">
+                            <span class="terminal-title">SYS_OVERRIDE</span>
+                        </div>
+                        <button id="close-hack-btn" class="close-prize-btn" style="position:static; margin-left:auto;">X</button>
                     </div>
                     <div id="terminal-text-container"></div>
 

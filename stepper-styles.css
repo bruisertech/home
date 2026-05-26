@@ -8,7 +8,7 @@
 #gift-container {
     display: none; /* Se activa tras el preloader por JS */
     cursor: pointer;
-    z-index: 999;
+    z-index: 9999; /* Z-index extremadamente alto para asegurar que sobresalga por encima de cualquier otro elemento no-modal */
     position: fixed;
     bottom: 20px;
     right: 0; /* Totalmente pegado a la derecha */
@@ -26,6 +26,30 @@
 
 #gift-container:hover {
     transform: translateX(-5px); /* Pequeño desplazamiento hacia la izquierda al pasar el mouse */
+}
+
+#close-gift-btn {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: var(--bg-red);
+    color: var(--text-white);
+    border: 2px solid var(--text-white);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+#close-gift-btn:hover {
+    background: var(--text-white);
+    color: var(--bg-red);
 }
 
 #gift-container .gift-icon-img {
