@@ -81,53 +81,7 @@ $(document).ready(function() {
     }
 
     function initCodeRain() {
-        const canvas = document.getElementById('code-canvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*'.split('');
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = [];
-
-        for(let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
-
-        function draw() {
-            // Fondo semitransparente para efecto estela
-            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#fbf9ee'; // Color blanco sutil del texto
-            ctx.font = fontSize + 'px Courier New';
-
-            for(let i = 0; i < drops.length; i++) {
-                const text = chars[Math.floor(Math.random() * chars.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(draw, 33); // ~30fps
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            // Reset columns on resize
-            const newCols = canvas.width / fontSize;
-            drops.length = 0;
-            for(let x = 0; x < newCols; x++) {
-                drops[x] = 1;
-            }
-        });
+        // Obsolete function removed - replaced by WebGL Ferrofluid
     }
 
     function initMouseParallax() {
@@ -165,69 +119,7 @@ $(document).ready(function() {
     }
 
     function initTechParticles() {
-        const container = document.getElementById('particle-system');
-        // Tech symbols using white color now
-        const techSymbols = ['+', '[ ]', '//', '0x8F', 'init_sys', '>', '< />', '_px', '10110'];
-
-        // 3 Layers for extreme depth (Z-Index -3, -2, -1) with white lens color and low opacity
-        const layers = [
-            { count: 20, zIndex: -3, sizeMin: 0.5, sizeMax: 1.0, opacity: 0.03, speedMin: 20, speedMax: 100, blur: 0 },
-            { count: 15, zIndex: -2, sizeMin: 1.0, sizeMax: 2.0, opacity: 0.05, speedMin: 150, speedMax: 300, blur: 0 },
-            { count: 10, zIndex: -1, sizeMin: 2.5, sizeMax: 4.5, opacity: 0.08, speedMin: 400, speedMax: 900, blur: 1 }
-        ];
-
-        layers.forEach(layer => {
-            for (let i = 0; i < layer.count; i++) {
-                const wrapper = document.createElement('div');
-                wrapper.className = 'particle-wrapper';
-                wrapper.style.zIndex = layer.zIndex;
-
-                const startX = Math.random() * 100;
-                const startY = Math.random() * 150 - 25;
-                wrapper.style.left = `${startX}vw`;
-                wrapper.style.top = `${startY}vh`;
-
-                const particle = document.createElement('div');
-                particle.className = 'tech-particle-white';
-                particle.textContent = techSymbols[Math.floor(Math.random() * techSymbols.length)];
-
-                const size = Math.random() * (layer.sizeMax - layer.sizeMin) + layer.sizeMin;
-                particle.style.fontSize = `${size}rem`;
-                particle.style.opacity = layer.opacity;
-                if (layer.blur > 0) {
-                    particle.style.filter = `blur(${layer.blur}px)`;
-                }
-
-                wrapper.appendChild(particle);
-                container.appendChild(wrapper);
-
-                // Breathing Animation
-                gsap.to(particle, {
-                    x: `random(-40, 40)`,
-                    y: `random(-40, 40)`,
-                    rotation: `random(-25, 25)`,
-                    duration: `random(6, 12)`,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: 'sine.inOut'
-                });
-
-                // Scroll Parallax (Mostly up, some down)
-                const directionMultiplier = Math.random() > 0.8 ? 1 : -1;
-                const speed = (Math.random() * (layer.speedMax - layer.speedMin) + layer.speedMin) * directionMultiplier;
-
-                gsap.to(wrapper, {
-                    y: speed,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: 'body',
-                        start: "top top",
-                        end: "bottom top",
-                        scrub: true
-                    }
-                });
-            }
-        });
+        // Obsolete function removed - replaced by WebGL Ferrofluid
     }
 
     function initMainSite() {
@@ -331,10 +223,13 @@ $(document).ready(function() {
         }
 
         // 4. Initialize Particle Ecosystem & Backgrounds
-        initTechParticles();
-        initCodeRain();
+        // (Removed initTechParticles and initCodeRain, they will be handled by ferrofluid.js)
         initMouseParallax();
 
+        // Inicializar Ferrofluid si la función existe en ferrofluid.js
+        if(typeof initFerrofluid === 'function') {
+            initFerrofluid();
+        }
 
         // 6. Glassmorphism Module Cards & Utilities
 

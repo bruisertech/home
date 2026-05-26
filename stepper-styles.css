@@ -1,0 +1,273 @@
+/* ESTILOS PARA LA FASE 2: MINIJUEGO "ATAQUE TLS" Y FASE 3: CUESTIONARIO STEPPER */
+
+/* ---------------------------------
+   MINIJUEGO (EL REGALO)
+   --------------------------------- */
+
+/* El contenedor del regalo (Desktop: Footer | Mobile: Flotante) */
+#gift-container {
+    display: none; /* Se activa tras el preloader por JS */
+    cursor: pointer;
+    z-index: 999;
+    position: relative;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+#gift-container:hover {
+    transform: scale(1.05);
+}
+
+/* En Desktop (Dentro del footer) */
+@media (min-width: 769px) {
+    #gift-container {
+        display: block;
+        margin: 40px auto 0;
+        padding: 20px;
+        border: 1px dashed var(--text-white);
+        max-width: 300px;
+        background-color: rgba(5, 5, 5, 0.8);
+    }
+}
+
+/* En Mobile (Flotante lateral estilo burbuja) */
+@media (max-width: 768px) {
+    #gift-container {
+        position: fixed;
+        bottom: 20px;
+        right: -20px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: var(--bg-red);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 15px rgba(210, 88, 74, 0.6);
+        border: 2px solid var(--text-white);
+        animation: floatPulse 2s infinite alternate;
+    }
+
+    #gift-container .gift-icon {
+        font-size: 2rem;
+    }
+
+    #gift-container .gift-text {
+        display: none; /* Ocultar texto en mobile para dejar solo el icono */
+    }
+}
+
+@keyframes floatPulse {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-10px) scale(1.05); box-shadow: 0 0 25px rgba(210, 88, 74, 0.9); }
+}
+
+/* Interfaz de Terminal Glitch / Hacker */
+#hack-terminal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: #050505;
+    z-index: 10000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.glitch-anim {
+    animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+
+@keyframes glitch-skew {
+    0% { transform: skew(0deg); }
+    20% { transform: skew(-10deg); }
+    40% { transform: skew(10deg); }
+    60% { transform: skew(-5deg); }
+    80% { transform: skew(5deg); }
+    100% { transform: skew(0deg); }
+}
+
+.terminal-box {
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid var(--bg-red);
+    padding: 20px;
+    font-family: var(--font-mono);
+    color: var(--text-white);
+    background: rgba(10, 10, 10, 0.9);
+    box-shadow: 0 0 20px rgba(210, 88, 74, 0.3);
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--bg-red);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.terminal-logo {
+    height: 30px;
+}
+
+.terminal-title {
+    color: var(--bg-red);
+    font-weight: bold;
+}
+
+.terminal-text {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.terminal-input-group {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.terminal-input-group span {
+    margin-right: 10px;
+    color: var(--bg-red);
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--text-white);
+    color: var(--text-white);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    outline: none;
+    width: 60px;
+    text-align: center;
+}
+
+.terminal-success {
+    color: #4ade80 !important;
+}
+
+.success-flash {
+    animation: flash-green 0.5s ease-out;
+}
+
+@keyframes flash-green {
+    0% { background-color: #4ade80; }
+    100% { background-color: #050505; }
+}
+
+.btn-terminal {
+    background: transparent;
+    border: 1px solid var(--text-white);
+    color: var(--text-white);
+    padding: 10px 20px;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    margin-top: 20px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    display: none;
+}
+
+.btn-terminal:hover {
+    background: var(--text-white);
+    color: #050505;
+}
+
+/* ---------------------------------
+   CUESTIONARIO STEPPER
+   --------------------------------- */
+#stepper-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(5px);
+    z-index: 10001;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: var(--font-mono);
+    color: var(--text-white);
+}
+
+.stepper-container {
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid var(--text-white);
+    padding: 30px;
+    background: #050505;
+}
+
+.stepper-progress {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #333;
+    padding-bottom: 10px;
+}
+
+.question-block {
+    margin-bottom: 25px;
+}
+
+.question-block label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-white);
+}
+
+.question-block input[type="text"],
+.question-block input[type="email"],
+.question-block textarea {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #444;
+    color: var(--text-white);
+    padding: 10px;
+    font-family: var(--font-mono);
+    box-sizing: border-box;
+}
+
+.question-block input:focus,
+.question-block textarea:focus {
+    border-color: var(--bg-red);
+    outline: none;
+}
+
+.stepper-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    border-top: 1px dashed #333;
+    padding-top: 20px;
+}
+
+.file-upload-wrapper {
+    position: relative;
+    border: 1px dashed var(--bg-red);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.file-upload-wrapper input[type="file"] {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.system-msg {
+    margin-top: 20px;
+    color: #4ade80;
+    font-size: 0.9rem;
+    display: none;
+}

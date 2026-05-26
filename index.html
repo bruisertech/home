@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stepper-styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -51,10 +52,8 @@
     <!-- Content to show after preloader ends -->
     <main id="main-content">
 
-        <!-- Background elements -->
-        <div id="dynamic-bg"></div>
-        <canvas id="code-canvas" class="code-bg"></canvas>
-        <div id="particle-system"></div>
+        <!-- Ferrofluid Background -->
+        <canvas id="ferrofluid-canvas"></canvas>
 
 
         <!-- Scroll Indicator Arrow -->
@@ -245,6 +244,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- SplitType -->
     <script src="https://unpkg.com/split-type"></script>
+    <script src="ferrofluid.js"></script>
+    <script src="minigame-stepper.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
