@@ -52,42 +52,60 @@ const fragmentShaderSource = `
     }
 
     void main() {
+        // Coordenadas normalizadas con corrección de aspecto
         vec2 st = gl_FragCoord.xy / uResolution.xy;
-        st.x *= uResolution.x / uResolution.y;
+        float aspect = uResolution.x / uResolution.y;
+        st.x *= aspect;
 
         vec2 mouse = uMouse / uResolution;
-        mouse.x *= uResolution.x / uResolution.y;
+        mouse.x *= aspect;
 
-        // Interaction
-        float dist = distance(st, mouse);
-        float interaction = smoothstep(0.4, 0.0, dist);
+        // Centro matemático ajustado por aspecto
+        vec2 center = vec2(0.5 * aspect, 0.5);
 
-        // Noise base
-        vec2 pos = st * 3.0;
-        float n = snoise(pos + uTime * 0.2);
+        // Interaction (distancia al mouse)
+        float distToMouse = distance(st, mouse);
+        float interaction = smoothstep(0.4, 0.0, distToMouse);
 
-        // Fluid displacement
-        n += snoise(pos - uTime * 0.1 + interaction * 2.0) * 0.5;
-        n += snoise(pos * 2.0 + uTime * 0.3) * 0.25;
-        n += snoise(pos * 4.0 - uTime * 0.4) * 0.125;
+        // Generar campo de fuerza en el centro (forma elíptica para cubrir el logo)
+        // Escalamos en X para crear un óvalo horizontal que proteja el texto
+        vec2 stCenter = st - center;
+        stCenter.x /= (aspect > 1.0 ? 2.5 : 1.5); // Ampliamos la protección en X (logo es ancho)
+        stCenter.y /= 1.2; // Ampliamos un poco en Y para botones y subtitulos
+        float distToCenter = length(stCenter);
 
-        // Thresholding for ferrofluid look
-        float fluid = smoothstep(0.1, 0.3, n);
+        // El factor de exclusión empujará el ruido a un valor bajo en el centro
+        // Hacemos que la zona segura sea más grande (0.3 a 0.5)
+        float exclusionZone = smoothstep(0.25, 0.5, distToCenter);
 
-        // Colors
-        vec3 bgColor = vec3(251.0/255.0, 249.0/255.0, 238.0/255.0); // Technical White #fbf9ee
-        vec3 fluidColor1 = vec3(210.0/255.0, 88.0/255.0, 74.0/255.0); // Deep Red #d2584a
-        vec3 fluidColor2 = vec3(10.0/255.0, 10.0/255.0, 10.0/255.0); // Matte Black #0a0a0a
+        // Base de ruido (más pequeño para crear manchas tipo bacterias grandes, espaciadas y orgánicas)
+        vec2 pos = st * 1.5;
+        float n = snoise(pos + uTime * 0.1);
 
-        // Mix red and black for fluid
-        vec3 mixFluid = mix(fluidColor1, fluidColor2, snoise(pos * 5.0 + uTime) * 0.5 + 0.5);
+        // Desplazamiento del fluido
+        n += snoise(pos - uTime * 0.05 + interaction * 1.5) * 0.5;
+        n += snoise(pos * 1.5 + uTime * 0.15) * 0.25;
 
-        // Mix background and fluid
-        vec3 color = mix(bgColor, mixFluid, fluid);
+        // En el ruido de simplex normalizado, los valores van de ~ -1 a 1.
+        // Para que las manchas blancas no aparezcan en el centro, forzamos un valor muy bajo allí.
+        // Usamos mix para transicionar suavemente hacia el centro.
+        // La exclusionZone es 0.0 cerca del centro y 1.0 en los bordes.
+        // Por tanto, en el centro, el valor de 'n' se volverá muy negativo y nunca superará el smoothstep.
+        n = mix(-1.5, n, exclusionZone);
 
-        // Add some shiny highlights to fluid
-        float highlight = smoothstep(0.4, 0.45, n) * fluid;
-        color += vec3(0.1) * highlight;
+        // Aumentamos los valores para que el blanco tenga más presencia y aparezcan más manchas.
+        // Hacemos el borde casi duro (0.05 de diferencia) para imitar el estilo de ilustración 2D de la imagen de referencia.
+        float fluid = smoothstep(-0.2, -0.1, n);
+
+        // Nuevos Colores solicitados:
+        // Fondo base (donde no hay fluido): Rojo Profundo #d2584a
+        vec3 bgColor = vec3(210.0/255.0, 88.0/255.0, 74.0/255.0);
+        // Fluido (manchas/bacterias, donde n superó el umbral): Blanco Técnico #fbf9ee
+        vec3 fluidColor = vec3(251.0/255.0, 249.0/255.0, 238.0/255.0);
+
+        // Mezclar fondo rojo y manchas blancas (invertido respecto a antes:
+        // ahora las manchas blancas son el "fluido")
+        vec3 color = mix(bgColor, fluidColor, fluid);
 
         gl_FragColor = vec4(color, 1.0);
     }
