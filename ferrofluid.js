@@ -70,13 +70,13 @@ const fragmentShaderSource = `
         // Generar campo de fuerza en el centro (forma elíptica para cubrir el logo)
         // Escalamos en X para crear un óvalo horizontal que proteja el texto
         vec2 stCenter = st - center;
-        stCenter.x /= (aspect > 1.0 ? 2.5 : 1.5); // Ampliamos la protección en X (logo es ancho)
-        stCenter.y /= 1.2; // Ampliamos un poco en Y para botones y subtitulos
+        stCenter.x /= (aspect > 1.0 ? 1.8 : 1.2); // Reducimos la protección en X
+        stCenter.y /= 1.0; // Reducimos la protección en Y
         float distToCenter = length(stCenter);
 
         // El factor de exclusión empujará el ruido a un valor bajo en el centro
-        // Hacemos que la zona segura sea más grande (0.3 a 0.5)
-        float exclusionZone = smoothstep(0.25, 0.5, distToCenter);
+        // Reducimos la zona segura para que las bacterias se acerquen más al centro
+        float exclusionZone = smoothstep(0.15, 0.35, distToCenter);
 
         // Base de ruido: escala reducida para crear manchas grandes (organismos microscópicos) y en menor cantidad
         vec2 pos = st * 4.0;
