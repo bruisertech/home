@@ -25,40 +25,15 @@ body {
     overflow: hidden; /* Prevent scroll while loading */
 }
 
-#dynamic-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--bg-red);
-    z-index: -3; /* Behind everything */
-}
-
-/* Dynamic Particle System */
-#particle-system {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: -2; /* Above bg, behind content */
-}
-
-.particle-wrapper {
+/* Ferrofluid Canvas Layer */
+#ferrofluid-canvas {
     position: absolute;
-    will-change: transform;
-}
-
-.tech-particle-white {
-    color: var(--text-white);
-    font-family: var(--font-mono);
-    font-weight: bold;
-    user-select: none;
-    text-shadow: 0 0 8px rgba(251, 249, 238, 0.4); /* White glow */
-    will-change: transform;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: auto; /* Allow interactions */
 }
 
 
@@ -102,6 +77,7 @@ body {
     position: relative;
     overflow: hidden;
     padding-top: 10vh; /* Give space for absolute elements */
+    z-index: 1; /* Para estar encima del canvas */
 }
 
 .hero-center {
@@ -109,7 +85,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 2vw; /* Space between logo and text */
-    z-index: -1; /* Placed behind main readable content but above bg */
+    z-index: 10; /* Placed behind main readable content but above bg */
     will-change: transform, opacity;
 }
 
@@ -125,12 +101,13 @@ body {
     text-align: center;
     white-space: nowrap;
     text-transform: lowercase; /* Enforcement of lowercase */
+    z-index: 10;
 }
 
 .hero-sub {
     margin-top: 5vh; /* Safe distance below the massive element */
     text-align: center;
-    z-index: 1; /* Keep readable above parallaxed massive text */
+    z-index: 10; /* Keep readable above parallaxed massive text */
 }
 
 /* Hero Terminal Button (Brutalist style like .btn-execute) */
@@ -177,6 +154,7 @@ body {
     position: absolute;
     top: 40px;
     left: 40px;
+    z-index: 10;
 }
 
 .system-status {
@@ -407,18 +385,6 @@ body {
 }
 
 /* Fondo de Codigo Canvas */
-.code-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -2; /* Detras del dynamic-bg */
-    opacity: 0.15; /* Sutil */
-    pointer-events: none;
-}
-
-
 /* SECTION_03: FOOTER_TERMINAL */
 .footer-section {
     padding: 100px 10% 50px;
