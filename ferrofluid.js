@@ -78,13 +78,14 @@ const fragmentShaderSource = `
         // Hacemos que la zona segura sea más grande (0.3 a 0.5)
         float exclusionZone = smoothstep(0.25, 0.5, distToCenter);
 
-        // Base de ruido (más pequeño para crear manchas tipo bacterias grandes, espaciadas y orgánicas)
-        vec2 pos = st * 1.5;
-        float n = snoise(pos + uTime * 0.1);
+        // Base de ruido (escala mucho mayor para generar manchas pequeñas tipo "bacterias")
+        vec2 pos = st * 6.0;
+        // Aumentamos la velocidad de "uTime" para que las bacterias se vean más agitadas/vivas
+        float n = snoise(pos + uTime * 0.4);
 
-        // Desplazamiento del fluido
-        n += snoise(pos - uTime * 0.05 + interaction * 1.5) * 0.5;
-        n += snoise(pos * 1.5 + uTime * 0.15) * 0.25;
+        // Desplazamiento del fluido (frecuencias más altas y movimientos rápidos)
+        n += snoise(pos - uTime * 0.2 + interaction * 2.0) * 0.5;
+        n += snoise(pos * 2.0 + uTime * 0.5) * 0.25;
 
         // En el ruido de simplex normalizado, los valores van de ~ -1 a 1.
         // Para que las manchas blancas no aparezcan en el centro, forzamos un valor muy bajo allí.
@@ -93,9 +94,9 @@ const fragmentShaderSource = `
         // Por tanto, en el centro, el valor de 'n' se volverá muy negativo y nunca superará el smoothstep.
         n = mix(-1.5, n, exclusionZone);
 
-        // Aumentamos los valores para que el blanco tenga más presencia y aparezcan más manchas.
-        // Hacemos el borde casi duro (0.05 de diferencia) para imitar el estilo de ilustración 2D de la imagen de referencia.
-        float fluid = smoothstep(-0.2, -0.1, n);
+        // Ajuste de umbral para tener manchas pequeñas, dispersas y bordes duros
+        // Al subir el umbral (de 0.2 a 0.3), solo los picos más altos del ruido se vuelven blancos (manchas más pequeñas).
+        float fluid = smoothstep(0.2, 0.25, n);
 
         // Nuevos Colores solicitados:
         // Fondo base (donde no hay fluido): Rojo Profundo #d2584a

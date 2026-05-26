@@ -51,15 +51,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkPreloader = setInterval(() => {
         const preloader = document.getElementById('preloader');
         if (preloader && preloader.style.display === 'none') {
-            giftContainer.style.display = 'block'; // Or flex for mobile
+            giftContainer.style.display = 'flex'; // Es flex en nuestra hoja de estilos unificada
             clearInterval(checkPreloader);
         }
     }, 1000);
 
+    const prizeOverlay = document.getElementById('prize-overlay');
+    const closePrizeBtn = document.getElementById('close-prize-btn');
+
+    // Timer reference to allow canceling hack if modal is closed
+    let hackTimer;
+
     // 2. Lógica del Clic en el Regalo
     giftContainer.addEventListener('click', () => {
-        // Ocultar regalo
+        // Ocultar regalo y mostrar overlay de premio
         giftContainer.style.display = 'none';
+        prizeOverlay.style.display = 'flex';
+
+        // Iniciar temporizador para el hackeo repentino (crear expectativa de 4 segundos)
+        hackTimer = setTimeout(() => {
+            startHackSequence();
+        }, 4000);
+    });
+
+    // Lógica para cerrar la ventana del premio (cancela el hackeo si es muy rápido, o permite ignorarlo)
+    closePrizeBtn.addEventListener('click', () => {
+        prizeOverlay.style.display = 'none';
+        giftContainer.style.display = 'flex'; // Vuelve a mostrar el regalo
+        clearTimeout(hackTimer); // Cancela el hackeo si el usuario cierra la ventana rápido
+    });
+
+    function startHackSequence() {
+        // Ocultar ventana de premio
+        prizeOverlay.style.display = 'none';
 
         // Mostrar terminal hack
         hackTerminalOverlay.style.display = 'flex';
@@ -78,19 +102,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2500);
 
         setTimeout(() => {
-            terminalTextContainer.innerHTML += `<p style="color: var(--bg-red);">El regalo fue enviado sin cifrado TLS. Descarga bloqueada por Firewall.</p>`;
-            generateMathProblem();
-            document.getElementById('terminal-input-area').style.display = 'flex';
-            terminalInput.focus();
-        }, 4000);
-    });
+            terminalTextContainer.innerHTML += `<p class="terminal-error">El regalo fue enviado sin cifrado TLS. Descarga bloqueada por el Firewall de Seguridad.</p>`;
+        }, 3500);
 
-    // 3. Generador del problema matemático
-    function generateMathProblem() {
-        mathX = Math.floor(Math.random() * 20) + 1;
-        mathY = Math.floor(Math.random() * 20) + 1;
-        mathAnswer = mathX + mathY;
-        mathQuestionSpan.innerText = `Resuelva el firewall matemático para restaurar TLS: ¿Cuánto es ${mathX} + ${mathY}? _`;
+        setTimeout(() => {
+            document.getElementById('terminal-input-area').style.display = 'flex';
+            // Generar pregunta matemática
+            mathX = Math.floor(Math.random() * 20) + 1;
+            mathY = Math.floor(Math.random() * 20) + 1;
+            mathAnswer = mathX + mathY;
+            mathQuestionSpan.innerText = `> Resuelva el firewall matemático para restaurar TLS: ¿Cuánto es ${mathX} + ${mathY}? _`;
+            terminalInput.focus();
+            hackTerminalOverlay.classList.remove('glitch-anim');
+        }, 5000);
     }
 
     // 4. Escuchar input del usuario
@@ -237,11 +261,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Helper: Inyectar HTML necesario en el body
     function injectHTML() {
-        // 1. Gift Container (en footer o body según mobile/desktop, lo ponemos al final del main para simplificar, el CSS lo posiciona)
+        // 1. Gift Container & Prize Overlay
         const giftHTML = `
             <div id="gift-container" title="Descifrar paquete">
                 <span class="gift-icon">🎁</span>
                 <span class="gift-text">> ENCONTRASTE UN REGALO _</span>
+            </div>
+
+            <div id="prize-overlay">
+                <div class="prize-box">
+                    <button class="close-prize-btn" id="close-prize-btn">X</button>
+                    <h2>¡FELICIDADES!</h2>
+                    <p>Ganaste el despliegue de tu primer paso a tu presencia digital gratuito.</p>
+                    <p class="disclaimer">*Sujeto a validación técnica del proyecto.</p>
+                </div>
             </div>
         `;
         document.querySelector('footer').insertAdjacentHTML('beforebegin', giftHTML);
