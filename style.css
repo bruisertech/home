@@ -25,6 +25,16 @@ body {
     overflow: hidden; /* Prevent scroll while loading */
 }
 
+#dynamic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-red);
+    z-index: -3; /* Behind everything */
+}
+
 /* Ferrofluid Canvas Layer */
 #ferrofluid-canvas {
     position: absolute;
@@ -34,6 +44,32 @@ body {
     height: 100%;
     z-index: -1;
     pointer-events: auto; /* Allow interactions */
+}
+
+/* Dynamic Particle System */
+#particle-system {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -2; /* Above bg, behind content */
+}
+
+.particle-wrapper {
+    position: absolute;
+    will-change: transform;
+}
+
+.tech-particle-white {
+    color: var(--text-white);
+    font-family: var(--font-mono);
+    font-weight: bold;
+    user-select: none;
+    text-shadow: 0 0 8px rgba(251, 249, 238, 0.4); /* White glow */
+    will-change: transform;
 }
 
 
@@ -385,6 +421,18 @@ body {
 }
 
 /* Fondo de Codigo Canvas */
+.code-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2; /* Detras del dynamic-bg */
+    opacity: 0.15; /* Sutil */
+    pointer-events: none;
+}
+
+
 /* SECTION_03: FOOTER_TERMINAL */
 .footer-section {
     padding: 100px 10% 50px;

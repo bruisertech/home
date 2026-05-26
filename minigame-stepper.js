@@ -84,6 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(hackTimer); // Cancela el hackeo si el usuario cierra la ventana rápido
     });
 
+    // Lógica para cerrar el panel de hackeo terminal (abortar)
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.id === 'close-hack-btn') {
+            hackTerminalOverlay.style.display = 'none';
+            giftContainer.style.display = 'flex';
+            terminalInput.value = '';
+            document.getElementById('terminal-input-area').style.display = 'none';
+            btnStartStepper.style.display = 'none';
+        }
+    });
+
     function startHackSequence() {
         // Ocultar ventana de premio
         prizeOverlay.style.display = 'none';
@@ -312,9 +323,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const terminalHTML = `
             <div id="hack-terminal-overlay">
                 <div class="terminal-box">
-                    <div class="terminal-header">
-                        <img src="bruisertech.png" alt="Bruiser Logo" class="terminal-logo">
-                        <span class="terminal-title">SYS_OVERRIDE</span>
+                    <div class="terminal-header" style="display:flex; justify-content:space-between; width:100%;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <img src="bruisertech.png" alt="Bruiser Logo" class="terminal-logo">
+                            <span class="terminal-title">SYS_OVERRIDE</span>
+                        </div>
+                        <button id="close-hack-btn" class="close-prize-btn" style="position:static; margin-left:auto;">X</button>
                     </div>
                     <div id="terminal-text-container"></div>
 
