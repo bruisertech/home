@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'LT Saeada Black';
+    /* Using Impact as fallback for the brutalist aesthetic since we don't have the font file locally */
+    src: local('Impact');
+}
+
+:root {
+    --bg-black: #050505;
+    --bg-red: #d2584a; /* Main Bruiser Red */
+    --text-white: #fbf9ee; /* Lens white */
+    --font-brutal: 'LT Saeada Black', Impact, sans-serif;
+    --font-mono: 'Space Mono', monospace;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,9 +19,312 @@
 }
 
 body {
-    background-color: #d2584a;
-    font-family: sans-serif;
+    background-color: var(--bg-red); /* Body is red to seamlessly transition from preloader */
+    font-family: var(--font-mono);
+    color: var(--text-white);
     overflow: hidden; /* Prevent scroll while loading */
+}
+
+#dynamic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-red);
+    z-index: -3; /* Behind everything */
+}
+
+/* Dynamic Particle System */
+#particle-system {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1; /* Above bg, behind content */
+}
+
+.particle-wrapper {
+    position: absolute;
+    will-change: transform;
+}
+
+.tech-particle-white {
+    color: var(--text-white);
+    font-family: var(--font-mono);
+    font-weight: bold;
+    user-select: none;
+    text-shadow: 0 0 8px rgba(251, 249, 238, 0.4); /* White glow */
+    will-change: transform;
+}
+
+
+/* Main Content Structure */
+#main-content {
+    opacity: 0; /* Hidden initially, revealed after preloader */
+    visibility: hidden;
+    z-index: 1; /* Content above background layers */
+    position: relative;
+}
+
+/* Block background classes for contrast (now transparent to let dynamic-bg show) */
+.bg-red, .bg-dark {
+    background-color: transparent;
+}
+
+.bg-dark {
+    color: var(--text-white);
+}
+
+.brutal-title {
+    font-family: var(--font-brutal);
+    text-transform: uppercase;
+    line-height: 0.9;
+}
+
+.mono-desc {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* SECTION_00: BRUTAL HERO */
+.brutal-hero {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 10vh; /* Give space for absolute elements */
+}
+
+.hero-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw; /* Space between logo and text */
+    z-index: -1; /* Placed behind main readable content but above bg */
+    will-change: transform, opacity;
+}
+
+.hero-logo {
+    width: 15vw; /* Scale proportionally to text */
+    height: auto;
+}
+
+.massive-text {
+    font-size: 15vw; /* Slightly smaller to fit logo and kerning */
+    letter-spacing: 0.05em;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+    text-transform: lowercase; /* Enforcement of lowercase */
+}
+
+.hero-sub {
+    margin-top: 5vh; /* Safe distance below the massive element */
+    text-align: center;
+    z-index: 1; /* Keep readable above parallaxed massive text */
+}
+
+.absolute-status {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.system-status {
+    color: var(--text-white);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: var(--text-white);
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.2; }
+    100% { opacity: 1; }
+}
+
+/* SECTION_01: CAPABILITIES_GRID */
+.capabilities-section {
+    padding: 100px 10%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.module-card {
+    border: 1px solid var(--text-white);
+    padding: 40px 30px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.module-card:hover {
+    background-color: var(--text-white);
+    color: var(--bg-red);
+}
+
+.module-title {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.module-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* MARQUEE INTERMEDIO */
+.marquee-section {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    padding: 30px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgba(251, 249, 238, 0.2);
+    border-bottom: 1px solid rgba(251, 249, 238, 0.2);
+}
+
+.marquee-content {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    animation: marquee-anim 15s linear infinite;
+    will-change: transform;
+}
+
+.marquee-content span {
+    padding-right: 50px;
+}
+
+@keyframes marquee-anim {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.3333%); /* Based on 3 identical spans */ }
+}
+
+
+/* SECTION_02: DEPLOYED_SYSTEMS */
+.projects-section {
+    padding: 150px 0;
+}
+
+.project-container {
+    padding: 0 10%;
+    margin-bottom: 200px;
+}
+
+.project-parallax {
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.project-img {
+    width: 100%;
+    height: 130%; /* Extra height for parallax */
+    background-size: cover;
+    background-position: center;
+    top: -15%;
+    position: absolute;
+    /* Placeholder colors since we don't have images */
+    background-color: #222;
+}
+
+.bg-project-1 { background-color: #1a1a1a; }
+.bg-project-2 { background-color: #2a2a2a; }
+.bg-project-3 { background-color: #151515; }
+
+.project-title {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: var(--text-white);
+}
+
+.project-title span {
+    color: var(--bg-red); /* Adding slight accent dynamically via css if wanted, though we will just rely on GSAP or keep it white/red as instructed. We'll use text-white in HTML and style it directly */
+}
+
+.project-desc {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* SECTION_03: FOOTER_TERMINAL */
+.footer-section {
+    padding: 100px 10% 50px;
+    border-top: 1px solid rgba(251, 249, 238, 0.1);
+}
+
+.cta-container {
+    text-align: center;
+    margin-bottom: 150px;
+}
+
+.cta-link {
+    font-size: 8vw;
+    color: var(--text-white);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: inline-block;
+}
+
+.cta-link:hover {
+    color: var(--bg-red);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    opacity: 0.5;
+}
+
+.social-links a {
+    color: var(--text-white);
+    text-decoration: none;
+    margin-right: 20px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--bg-red);
+}
+
+/* SplitType utility classes */
+.word {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.char {
+    transform: translateY(115%);
+    transition: transform .5s;
 }
 
 section.preload {
@@ -42,25 +359,18 @@ section.preload svg {
 /* SVG Path Drawing Animation Setup */
 section.preload svg .p-anim {
     fill: transparent;
-    /* Stroke color will be inherited from the class now, not globally white */
-    stroke-width: 8; /* Slightly thicker for a natural brush stroke feel */
-    stroke-dasharray: 25000; /* Approximate large number for detailed SVG */
+    stroke: #fbf9ee; /* Exact white from lens */
+    stroke-width: 5;
+    stroke-dasharray: 25000;
     stroke-dashoffset: 25000;
     animation-name: draw;
-    animation-duration: 1.5s; /* Fast brush stroke! */
+    animation-duration: 1.5s; /* Synced with fast terminal typing (~1.5s) */
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
 }
 
-/* Individual stroke colors matching their final fill */
-section.preload svg .cls-1 { stroke: #d2584a; }
-section.preload svg .cls-2 { stroke: #4c5159; }
-section.preload svg .cls-3 { stroke: #fbf9ee; }
-section.preload svg .cls-4 { stroke: #4e535b; }
-section.preload svg .cls-5 { stroke: #d25a4c; }
-
-/* Specific fill colors mapped from the SVG classes, forced with !important to override transparent fill after animation */
+/* Specific fill colors mapped from the SVG classes */
 .finished-loading .cls-1 { fill: #d2584a !important; stroke: transparent !important; }
 .finished-loading .cls-2 { fill: #4c5159 !important; stroke: transparent !important; }
 .finished-loading .cls-3 { fill: #fbf9ee !important; stroke: transparent !important; }
@@ -68,83 +378,61 @@ section.preload svg .cls-5 { stroke: #d25a4c; }
 .finished-loading .cls-5 { fill: #d25a4c !important; stroke: transparent !important; }
 
 @keyframes draw {
-    0% { stroke-dashoffset: 25000; fill: transparent; }
-    80% { stroke-dashoffset: 0; fill: transparent; }
-    100% { stroke-dashoffset: 0; fill: transparent; }
+    0% { stroke-dashoffset: 25000; fill: transparent; stroke: #fbf9ee;}
+    80% { stroke-dashoffset: 0; fill: transparent; stroke: #fbf9ee;}
+    100% { stroke-dashoffset: 0; fill: transparent; stroke: transparent;}
 }
 
-/* Add custom animation for filling color at 100% to sync with JS state */
+/* Transition for filling color at 100% */
 section.preload svg.fill-colors .p-anim {
-    /* When the fill-colors class is added by JS, this transitions smoothly */
-    transition: fill 0.8s ease, stroke 0.8s ease;
+    transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
-
-/* Preloader UI Setup */
-.preloader-ui {
-    opacity: 1;
-    transition: opacity 0.5s ease;
-}
-
-.preloader-ui.hide {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.loading-bar {
-    max-width: 1170px;
-    margin: 0 auto;
-    text-align: center;
-    margin-top: 30px;
-}
-
-.loading-bar .inner {
-    max-width: 300px;
-    position: relative;
-    background: rgba(255, 255, 255, 0.3); /* Lighter background for the track */
-    height: 5px;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-.loading-bar .inner .bar {
-    background: #ffffff;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0%; /* Start at 0% */
-    transition: width 0.3s ease;
-}
-
-.loading-bar .text {
-    text-transform: uppercase;
-    font-size: 14px;
+/* Terminal UI Setup */
+#terminal-container {
+    font-family: 'Courier New', Courier, monospace; /* Monospace technical font */
+    color: #fbf9ee; /* Exact white from lens */
+    font-size: 16px;
     font-weight: bold;
-    letter-spacing: 1.3px;
-    position: relative;
-    width: 300px;
-    margin: 0 auto;
-    text-align: center;
-    overflow: hidden;
-    height: 15px;
-    color: #ffffff; /* White text on red background */
-}
-
-.loading-bar .text span {
+    text-align: left;
     position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(10px);
+    bottom: 40px;
+    left: 40px;
+    max-width: 80%;
+    line-height: 1.5;
+    z-index: 10;
 }
 
-.loading-bar .text span.active {
-    opacity: 1;
-    transform: translateY(0);
+/* Blinking cursor */
+.terminal-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 18px;
+    background-color: #fbf9ee;
+    vertical-align: text-bottom;
+    animation: blink 0.7s step-end infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Flicker effect for final terminal text */
+.flicker {
+    animation: flicker-anim 0.2s infinite;
+}
+
+@keyframes flicker-anim {
+    0% { opacity: 1; }
+    25% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+    75% { opacity: 0.1; }
+    100% { opacity: 1; }
+}
+
+/* Hidden state for terminal after flicker */
+#terminal-container.hide {
+    display: none;
 }

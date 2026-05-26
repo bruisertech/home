@@ -1,44 +1,238 @@
 $(document).ready(function() {
     $('.preload').css({'display': 'table'});
 
-    var percent = 0;
-    var int = null;
+    const terminalContainer = document.getElementById('terminal-container');
+    const commands = [
+        "> ROOT_ACCESS_GRANTED",
+        "> rendering_bruiser_vectors()",
+        "> COMPILING_DIGITAL_ARCHITECTURE..."
+    ];
 
-    // Simulate loading progress (faster now to match the new animation time)
-    int = setInterval(function () {
-        percent += 20; // Increase by 20% every 300ms -> total 1.5 seconds
+    // Config: typing speed for letters (ms)
+    const typingSpeed = 15;
+    // Config: pause between lines (ms)
+    const linePause = 50;
 
-        // Update progress bar
-        $('.loading-bar .bar').css({width: percent + "%"});
+    // The cursor element
+    const cursorHTML = '<span class="terminal-cursor"></span>';
 
-        // Cycle through text spans
-        var $activeSpan = $('span.active');
-        $activeSpan.removeClass('active');
+    // Helper to simulate sleep
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-        var $nextSpan = $activeSpan.next('span');
-        if($nextSpan.length > 0) {
-            $nextSpan.addClass('active');
-        } else {
-            // Fallback if we run out of spans (shouldn't happen with exact timing)
-            $('span:last-child').addClass('active');
+    async function typeLine(text) {
+        // Create a new line element
+        const lineEl = document.createElement('div');
+        terminalContainer.appendChild(lineEl);
+
+        // Type letter by letter
+        for (let i = 0; i < text.length; i++) {
+            lineEl.innerHTML = text.substring(0, i + 1) + cursorHTML;
+            await sleep(typingSpeed);
+        }
+        // Remove cursor from this line after finishing it
+        lineEl.innerHTML = text;
+    }
+
+    async function runTerminalSequence() {
+        // 1. Type the first sequence of commands
+        for (let i = 0; i < commands.length; i++) {
+            await typeLine(commands[i]);
+            await sleep(linePause);
         }
 
-        // Finish loading
-        if (percent >= 100) {
-            clearInterval(int);
+        // At this point, the drawing animation is nearly finishing (~1.5s).
+        // Let's add a small pause to wait for the 1.5s total animation time to completely finish
+        // if the typing was slightly faster.
+        await sleep(400);
 
-            // Wait a brief moment before hiding the UI and filling the colors
-            setTimeout(function() {
-                // Hide loading bar and text
-                $('.preloader-ui').addClass('hide');
+        // 2. Add final colors to logo
+        $('svg').addClass('fill-colors finished-loading');
 
-                // Add class to SVG to trigger color fill transition
-                $('svg').addClass('fill-colors finished-loading');
-
-                // Optional: allow scrolling on body after loading
-                $('body').css('overflow', 'auto');
-
-            }, 300); // Small delay to let the user see 100%
+        // 3. Print > SYSTEM_READY
+        const readyLine = document.createElement('div');
+        terminalContainer.appendChild(readyLine);
+        const readyText = "> SYSTEM_READY";
+        for (let i = 0; i < readyText.length; i++) {
+            readyLine.innerHTML = readyText.substring(0, i + 1) + cursorHTML;
+            await sleep(typingSpeed);
         }
-    }, 300);
+        readyLine.innerHTML = readyText;
+
+        // 4. Flicker effect on the terminal text
+        terminalContainer.classList.add('flicker');
+
+        // 5. Transition to Main Site after short flicker
+        setTimeout(() => {
+            terminalContainer.classList.add('hide');
+            terminalContainer.classList.remove('flicker');
+
+            // Slide up the preloader using GSAP
+            gsap.to('.preload', {
+                y: '-100%',
+                ease: 'power4.inOut',
+                duration: 1.5,
+                onComplete: () => {
+                    $('.preload').hide();
+                    initMainSite();
+                }
+            });
+
+        }, 600); // Wait 600ms to show the flicker
+    }
+
+    function initTechParticles() {
+        const container = document.getElementById('particle-system');
+        // Tech symbols using white color now
+        const techSymbols = ['+', '[ ]', '//', '0x8F', 'init_sys', '>', '< />', '_px', '10110'];
+
+        // 3 Layers for extreme depth (Z-Index -3, -2, -1) with white lens color and low opacity
+        const layers = [
+            { count: 20, zIndex: -3, sizeMin: 0.5, sizeMax: 1.0, opacity: 0.03, speedMin: 20, speedMax: 100, blur: 0 },
+            { count: 15, zIndex: -2, sizeMin: 1.0, sizeMax: 2.0, opacity: 0.05, speedMin: 150, speedMax: 300, blur: 0 },
+            { count: 10, zIndex: -1, sizeMin: 2.5, sizeMax: 4.5, opacity: 0.08, speedMin: 400, speedMax: 900, blur: 1 }
+        ];
+
+        layers.forEach(layer => {
+            for (let i = 0; i < layer.count; i++) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'particle-wrapper';
+                wrapper.style.zIndex = layer.zIndex;
+
+                const startX = Math.random() * 100;
+                const startY = Math.random() * 150 - 25;
+                wrapper.style.left = `${startX}vw`;
+                wrapper.style.top = `${startY}vh`;
+
+                const particle = document.createElement('div');
+                particle.className = 'tech-particle-white';
+                particle.textContent = techSymbols[Math.floor(Math.random() * techSymbols.length)];
+
+                const size = Math.random() * (layer.sizeMax - layer.sizeMin) + layer.sizeMin;
+                particle.style.fontSize = `${size}rem`;
+                particle.style.opacity = layer.opacity;
+                if (layer.blur > 0) {
+                    particle.style.filter = `blur(${layer.blur}px)`;
+                }
+
+                wrapper.appendChild(particle);
+                container.appendChild(wrapper);
+
+                // Breathing Animation
+                gsap.to(particle, {
+                    x: `random(-40, 40)`,
+                    y: `random(-40, 40)`,
+                    rotation: `random(-25, 25)`,
+                    duration: `random(6, 12)`,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+
+                // Scroll Parallax (Mostly up, some down)
+                const directionMultiplier = Math.random() > 0.8 ? 1 : -1;
+                const speed = (Math.random() * (layer.speedMax - layer.speedMin) + layer.speedMin) * directionMultiplier;
+
+                gsap.to(wrapper, {
+                    y: speed,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: 'body',
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            }
+        });
+    }
+
+    function initMainSite() {
+        // Show main content
+        const mainContent = document.getElementById('main-content');
+        mainContent.style.visibility = 'visible';
+        gsap.to(mainContent, { opacity: 1, duration: 0.5 });
+
+        // Enable scrolling
+        $('body').css('overflow', 'auto');
+
+        // Initialize Lenis
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+        });
+
+        // Integrate Lenis with ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+
+        // 1. Text Reveal Animation (SplitType + GSAP)
+        const revealTexts = document.querySelectorAll('.reveal-text');
+        revealTexts.forEach(text => {
+            const split = new SplitType(text, { types: 'words, chars' });
+            gsap.to(split.chars, {
+                y: 0,
+                ease: "power4.out",
+                duration: 1.2,
+                stagger: 0.02,
+                scrollTrigger: {
+                    trigger: text,
+                    start: "top 85%",
+                }
+            });
+        });
+
+        // 2. Background Color Transition
+        gsap.to('#dynamic-bg', {
+            backgroundColor: '#050505', // Transition to black
+            scrollTrigger: {
+                trigger: '.projects-section',
+                start: "top center",
+                end: "bottom center",
+                scrub: true,
+            }
+        });
+
+        // 3. Brutal Hero Animation (Applies to both logo and text via .hero-center)
+        gsap.to('.hero-center', {
+            scale: 1.5,
+            opacity: 0,
+            y: 100, // Slight parallax
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.brutal-hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+
+        // 4. Initialize Particle Ecosystem
+        initTechParticles();
+
+        // 5. Project Images Parallax (Massive)
+        const projectImgs = document.querySelectorAll('.project-img');
+        projectImgs.forEach(img => {
+            gsap.to(img, {
+                y: '30%',
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: img.parentElement,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+        });
+    }
+
+    // Start everything
+    runTerminalSequence();
 });
