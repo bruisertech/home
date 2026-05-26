@@ -78,25 +78,27 @@ const fragmentShaderSource = `
         // Hacemos que la zona segura sea más grande (0.3 a 0.5)
         float exclusionZone = smoothstep(0.25, 0.5, distToCenter);
 
-        // Base de ruido (escala enorme para bacterias muy pequeñas)
-        vec2 pos = st * 20.0;
-        // Aumentamos la velocidad de "uTime" para que las bacterias se vean agitadas/vivas
-        float n = snoise(pos + uTime * 0.6);
+        // Base de ruido: escala reducida para crear manchas grandes (organismos microscópicos) y en menor cantidad
+        vec2 pos = st * 4.0;
 
-        // Desplazamiento del fluido (frecuencias más altas y movimientos rápidos)
-        n += snoise(pos - uTime * 0.3 + interaction * 3.0) * 0.5;
-        n += snoise(pos * 3.0 + uTime * 0.8) * 0.25;
+        // Movimiento errático individual:
+        // Calculamos un factor de velocidad local que pasa mucho tiempo lento y tiene picos rápidos repentinos.
+        float localSpeed = snoise(pos * 0.5 + uTime * 0.15);
+        float jump = pow(abs(localSpeed), 3.0) * sign(localSpeed) * 3.0;
+
+        // Calculamos el ruido principal con este tiempo modificado
+        float n = snoise(pos + vec2(uTime * 0.05 + jump, uTime * 0.08 - jump));
+
+        // Detalle secundario para que las formas sean más orgánicas y se deformen
+        n += snoise(pos * 2.0 - uTime * 0.1 + interaction * 2.0) * 0.4;
 
         // En el ruido de simplex normalizado, los valores van de ~ -1 a 1.
-        // Para que las manchas blancas no aparezcan en el centro, forzamos un valor muy bajo allí.
-        // Usamos mix para transicionar suavemente hacia el centro.
-        // La exclusionZone es 0.0 cerca del centro y 1.0 en los bordes.
-        // Por tanto, en el centro, el valor de 'n' se volverá muy negativo y nunca superará el smoothstep.
+        // Forzamos un valor muy bajo en el centro para proteger el logo.
         n = mix(-1.5, n, exclusionZone);
 
-        // Ajuste de umbral extremo: borde duro (diferencia mínima entre min y max de smoothstep)
-        // y umbral alto (0.5) para que sólo queden puntos minúsculos y muy definidos.
-        float fluid = smoothstep(0.49, 0.5, n);
+        // Umbral ajustado: un borde duro, pero un valor más bajo (0.2 en lugar de 0.5)
+        // para que las formas (picos del ruido) sean mucho más anchas, redondas y grandes.
+        float fluid = smoothstep(0.24, 0.25, n);
 
         // Nuevos Colores solicitados:
         // Fondo base (donde no hay fluido): Rojo Profundo #d2584a

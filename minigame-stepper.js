@@ -34,18 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- DOM ELEMENTS ---
     const giftContainer = document.getElementById('gift-container');
-    const closeGiftBtn = document.getElementById('close-gift-btn');
     const hackTerminalOverlay = document.getElementById('hack-terminal-overlay');
-
-    // Evento para cerrar el gift-container
-    if (closeGiftBtn) {
-        closeGiftBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Evitar que el clic se propague al giftContainer
-            giftContainer.style.display = 'none';
-            // Detener el check interval si cerramos manualmente
-            if(window.giftCheckInterval) clearInterval(window.giftCheckInterval);
-        });
-    }
     const mathQuestionSpan = document.getElementById('math-question');
     const terminalInput = document.getElementById('terminal-math-input');
     const btnStartStepper = document.getElementById('btn-start-stepper');
@@ -317,7 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Gift Container & Prize Overlay
         const giftHTML = `
             <div id="gift-container" title="Descifrar paquete">
-                <button id="close-gift-btn" title="Cerrar">X</button>
                 <img src="bgift.png" alt="Regalo" class="gift-icon-img">
             </div>
 
