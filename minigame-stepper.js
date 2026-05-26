@@ -15,7 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'q10', text: '10_ Comentarios adicionales', type: 'textarea' }
     ];
 
-    const formEndpoint = 'https://formspree.io/f/xbjnqerq'; // Endpoint temporal (el user creará el suyo)
+    const formEndpoint = 'https://formspree.io/f/TU_ENDPOINT_AQUI'; // El usuario debe reemplazar esto con su endpoint real
+
+    // Almacenamiento de respuestas para evitar pérdida al renderizar pasos
+    const formResponses = {};
 
     let currentStep = 0;
     const questionsPerStep = 5;
@@ -162,11 +165,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const div = document.createElement('div');
             div.className = 'question-block';
 
+            // Recuperar valor si ya fue respondido
+            const savedValue = formResponses[q.id] || '';
+
             let inputHTML = '';
             if (q.type === 'textarea') {
-                inputHTML = `<textarea id="${q.id}" name="${q.id}" rows="3" required></textarea>`;
+                inputHTML = `<textarea id="${q.id}" name="${q.id}" rows="3" required>${savedValue}</textarea>`;
             } else {
-                inputHTML = `<input type="${q.type}" id="${q.id}" name="${q.id}" required>`;
+                inputHTML = `<input type="${q.type}" id="${q.id}" name="${q.id}" value="${savedValue}" required>`;
             }
 
             div.innerHTML = `
@@ -209,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnNextStep.addEventListener('click', () => {
         // Validación básica HTML5
         if (stepperForm.checkValidity()) {
+            saveCurrentStepData();
             currentStep++;
             renderStep();
         } else {
@@ -217,23 +224,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     btnPrevStep.addEventListener('click', () => {
+        saveCurrentStepData();
         currentStep--;
         renderStep();
     });
 
+    function saveCurrentStepData() {
+        const formData = new FormData(stepperForm);
+        for (let [key, value] of formData.entries()) {
+            // Guardamos el archivo por separado o ignoramos aquí y tomamos el form entero en submit
+            if(key !== 'logo-upload') {
+                formResponses[key] = value;
+            }
+        }
+    }
+
     // 7. Envío del Formulario
     stepperForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        saveCurrentStepData(); // Guardar el último paso
 
         btnSubmitForm.innerText = 'TRANSMITIENDO...';
         btnSubmitForm.disabled = true;
 
-        const formData = new FormData(stepperForm);
+        const finalFormData = new FormData();
+
+        // Agregar las respuestas almacenadas
+        for (let key in formResponses) {
+            finalFormData.append(key, formResponses[key]);
+        }
+
+        // Agregar archivo de logo si existe
+        const logoInput = document.getElementById('logo-upload');
+        if (logoInput && logoInput.files.length > 0) {
+            finalFormData.append('logo-upload', logoInput.files[0]);
+        }
 
         try {
             const response = await fetch(formEndpoint, {
                 method: 'POST',
-                body: formData,
+                body: finalFormData,
                 headers: {
                     'Accept': 'application/json'
                 }
@@ -264,8 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Gift Container & Prize Overlay
         const giftHTML = `
             <div id="gift-container" title="Descifrar paquete">
-                <span class="gift-icon">🎁</span>
-                <span class="gift-text">> ENCONTRASTE UN REGALO _</span>
+                <img src="bgift.png" alt="Regalo" class="gift-icon-img">
             </div>
 
             <div id="prize-overlay">
