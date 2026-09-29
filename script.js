@@ -1,501 +1,296 @@
-$(document).ready(function() {
-    $('.preload').css({'display': 'table'});
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Bilingual Dictionary & Multilingual Engine
+    const translations = {
+        es: {
+            nav_home: "inicio",
+            nav_about: "sobre nosotros",
+            nav_services: "servicios",
+            nav_projects: "proyectos",
+            nav_contact: "contacto",
 
-    const terminalContainer = document.getElementById('terminal-container');
-    const commands = [
-        "> ROOT_ACCESS_GRANTED",
-        "> rendering_bruiser_vectors()",
-        "> COMPILING_DIGITAL_ARCHITECTURE..."
-    ];
+            hero_badge: "Consultoría & Desarrollo B2B",
+            hero_title: '¿Te abruma la infraestructura web?<br><span class="highlight">déjalo en nuestras manos ;)</span>',
+            hero_subtitle: "Optimizamos tu operación, blindamos tus sistemas y construimos plataformas digitales a la medida para que te concentres en hacer crecer tu negocio.",
+            hero_cta_primary: "impulsemos tu proyecto",
+            hero_cta_secondary: "mira nuestro trabajo",
 
-    // Config: typing speed for letters (ms)
-    const typingSpeed = 15;
-    // Config: pause between lines (ms)
-    const linePause = 50;
+            pillars_badge: "Propuesta de Valor",
+            pillars_title: "¿Por qué Bruiser Tech? La tecnología no debería frenar tu crecimiento, debería acelerarlo.",
 
-    // The cursor element
-    const cursorHTML = '<span class="terminal-cursor"></span>';
+            pillar1_title: "Mejorar eficiencia",
+            pillar1_subtitle: "Procesos más ágiles",
+            pillar1_desc: "Optimizamos flujos de trabajo para operar con mayor velocidad y menor fricción operativa en tus plataformas.",
 
-    // Helper to simulate sleep
-    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+            pillar2_title: "Reducir fallos",
+            pillar2_subtitle: "Operaciones precisas",
+            pillar2_desc: "Automatizamos y estructuramos infraestructuras para minimizar caídas, errores críticos y retrabajo técnico.",
 
-    async function typeLine(text) {
-        // Create a new line element
-        const lineEl = document.createElement('div');
-        terminalContainer.appendChild(lineEl);
+            pillar3_title: "Escalar tu negocio",
+            pillar3_subtitle: "Tecnología que crece contigo",
+            pillar3_desc: "Arquitecturas preparadas para soportar alto tráfico, transacciones masivas e incremento sostenido de demanda.",
 
-        // Type letter by letter
-        for (let i = 0; i < text.length; i++) {
-            lineEl.innerHTML = text.substring(0, i + 1) + cursorHTML;
-            await sleep(typingSpeed);
+            pillar4_title: "Desbloquear oportunidades",
+            pillar4_subtitle: "Innovación a medida",
+            pillar4_desc: "Desarrollo de software y soluciones a medida para liderar en tu sector y expandir tu presencia digital.",
+
+            services_badge: "Especialidades",
+            services_title: "Servicios de Ingeniería & Arquitectura Digital",
+            services_desc: "Soluciones integrales de alto nivel para potenciar la infraestructura y el ecosistema tecnológico de tu empresa.",
+
+            srv1_badge: "INFRAESTRUCTURA & CLOUD",
+            srv1_title: "Infraestructura, Nube y Servidores",
+            srv1_desc: "Gestión integral de servidores Nginx y Apache, migraciones seguras (AWS, VPS, hosting dedicado), optimización de rendimiento, balanceo de carga y monitoreo 24/7.",
+
+            srv2_badge: "BACKEND & API",
+            srv2_title: "Desarrollo Backend & Integraciones",
+            srv2_desc: "Ingeniería de software en Python y PHP 8.3, diseño de APIs REST escalables, microservicios y acoplamiento fluido entre sistemas empresariales existentes.",
+
+            srv3_badge: "WEB & E-COMMERCE",
+            srv3_title: "Arquitectura Web & E-Commerce",
+            srv3_desc: "Creación de plataformas web de alto impacto, tiendas e-commerce a medida y desarrollos avanzados en WordPress y WooCommerce optimizados para velocidad y conversión.",
+
+            srv4_badge: "SEGURIDAD & AUTOMATIZACIÓN",
+            srv4_title: "Seguridad & Automatización de Procesos",
+            srv4_desc: "Blindaje de endpoints, protección de la integridad de datos empresariales, auditorías de seguridad y automatización de flujos operativos repetitivos para reducir costos.",
+
+            projects_badge: "Casos de Éxito",
+            projects_title: "Lo Que Hemos Construido",
+            projects_desc: "Proyectos reales diseñados con arquitectura limpia, velocidad extrema y foco en resultados B2B.",
+
+            p1_tag: "IA & Analytics",
+            p1_desc: "Algoritmos de inferencia y analítica predictiva. Arquitectura de procesamiento de datos en tiempo real diseñada para análisis y toma de decisiones autónomas.",
+
+            p2_tag: "E-Commerce Desacoplado",
+            p2_desc: "Plataforma e-commerce desacoplada con frontend personalizado a medida y plugin propietario para consumo e integración automática de APIs.",
+
+            p3_tag: "Branding & Web Architecture",
+            p3_desc: "Arquitectura de marca, catálogo digital e interfaces de usuario para una presencia digital coherente y moderna.",
+
+            p4_tag: "Motion Design & Interactive",
+            p4_desc: "Plataforma interactiva con animación web de alto rendimiento, optimizada para bajo impacto en el hilo principal del navegador.",
+
+            view_project: "Ver sitio web →",
+            view_brand: "Ver manual de marca →",
+
+            testimonials_badge: "Testimonios",
+            testimonials_title: "Lo Que Dicen Nuestros Clientes",
+
+            test1_quote: '"Trabajar con Bruiser Tech fue un giro total para nuestro negocio. Migraron toda la tienda sin dejar caer el sitio ni un solo minuto y la velocidad mejoró muchísimo. ¡Recomendadísimos!"',
+            test1_role: "Director de Operaciones, LH Parfum",
+
+            test2_quote: '"Nos solucionaron varios problemas de backend e integraciones que otros proveedores nos decían que eran imposibles. La respuesta es rápida y el trabajo es súper limpio."',
+            test2_role: "Líder de Marca, SUY Ropa Interior",
+
+            test3_quote: '"Entendieron desde el primer día lo que necesitábamos. Construyeron una plataforma ágil, estable y lista para escalar a medida que crece nuestra comunidad."',
+            test3_role: "Fundador, AhoraForYou",
+
+            contact_badge: "Contacto Directo",
+            contact_title: "Hablemos de tu proyecto o problema técnico",
+            contact_subtitle: "Estamos listos para analizar tus requerimientos de infraestructura, desarrollo o software a medida.",
+            contact_whatsapp_label: "WhatsApp Directo",
+            contact_email_label: "Correo Electrónico",
+            contact_location_label: "Ubicación",
+
+            form_name_label: "Nombre completo",
+            form_email_label: "Correo electrónico",
+            form_company_label: "Empresa",
+            form_phone_label: "Teléfono / WhatsApp",
+            form_message_label: "Descripción del proyecto",
+            form_submit: "Enviar mensaje",
+
+            footer_tagline: "Consultoría de Software, Infraestructura Web y Arquitectura Digital."
+        },
+        en: {
+            nav_home: "home",
+            nav_about: "about us",
+            nav_services: "services",
+            nav_projects: "projects",
+            nav_contact: "contact",
+
+            hero_badge: "B2B Consulting & Development",
+            hero_title: 'Overwhelmed by web infrastructure?<br><span class="highlight">leave it in our hands ;)</span>',
+            hero_subtitle: "We optimize your operations, shield your systems, and build custom digital platforms so you can focus on growing your business.",
+            hero_cta_primary: "let's drive your project",
+            hero_cta_secondary: "view our work",
+
+            pillars_badge: "Value Proposition",
+            pillars_title: "Why Bruiser Tech? Technology shouldn't hold your growth back, it should accelerate it.",
+
+            pillar1_title: "Improve Efficiency",
+            pillar1_subtitle: "Agile processes",
+            pillar1_desc: "We streamline workflows to operate with maximum speed and minimal operational friction across your platforms.",
+
+            pillar2_title: "Reduce Failures",
+            pillar2_subtitle: "Precise operations",
+            pillar2_desc: "We automate and structure infrastructures to minimize downtime, critical errors, and technical rework.",
+
+            pillar3_title: "Scale Your Business",
+            pillar3_subtitle: "Tech that grows with you",
+            pillar3_desc: "Architectures engineered to handle high traffic, massive transaction volumes, and sustained growth.",
+
+            pillar4_title: "Unlock Opportunities",
+            pillar4_subtitle: "Tailored innovation",
+            pillar4_desc: "Custom software development and bespoke solutions to lead your sector and expand your digital presence.",
+
+            services_badge: "Specialties",
+            services_title: "Engineering & Digital Architecture Services",
+            services_desc: "High-level end-to-end solutions to power up your company's infrastructure and tech ecosystem.",
+
+            srv1_badge: "INFRASTRUCTURE & CLOUD",
+            srv1_title: "Infrastructure, Cloud & Servers",
+            srv1_desc: "Full management of Nginx & Apache servers, secure migrations (AWS, VPS, dedicated hosting), performance tuning, load balancing, and 24/7 monitoring.",
+
+            srv2_badge: "BACKEND & API",
+            srv2_title: "Backend Development & Integrations",
+            srv2_desc: "Software engineering in Python and PHP 8.3, scalable REST API design, microservices, and smooth coupling with legacy enterprise systems.",
+
+            srv3_badge: "WEB & E-COMMERCE",
+            srv3_title: "Web Architecture & E-Commerce",
+            srv3_desc: "High-impact web platforms, bespoke e-commerce stores, and advanced WordPress/WooCommerce builds optimized for speed and conversion.",
+
+            srv4_badge: "SECURITY & AUTOMATION",
+            srv4_title: "Security & Process Automation",
+            srv4_desc: "Endpoint hardening, enterprise data integrity protection, security audits, and automation of repetitive operational workflows to cut costs.",
+
+            projects_badge: "Case Studies",
+            projects_title: "What We Have Built",
+            projects_desc: "Real projects designed with clean architecture, extreme speed, and a strong focus on B2B results.",
+
+            p1_tag: "AI & Analytics",
+            p1_desc: "Inference algorithms and predictive analytics. Real-time data processing architecture designed for autonomous analysis and decision making.",
+
+            p2_tag: "Decoupled E-Commerce",
+            p2_desc: "Decoupled e-commerce platform featuring custom frontend and proprietary plugin for automated API consumption.",
+
+            p3_tag: "Branding & Web Architecture",
+            p3_desc: "Brand architecture, digital catalog, and UI interfaces engineered for a modern, consistent digital presence.",
+
+            p4_tag: "Motion Design & Interactive",
+            p4_desc: "Interactive platform with high-performance web animations, optimized for minimal impact on the browser main thread.",
+
+            view_project: "Visit website →",
+            view_brand: "View brand manual →",
+
+            testimonials_badge: "Testimonials",
+            testimonials_title: "What Our Clients Say",
+
+            test1_quote: '"Working with Bruiser Tech was a complete game changer. They migrated our entire store without a single second of downtime and site speed skyrocketed. Highly recommended!"',
+            test1_role: "Operations Director, LH Parfum",
+
+            test2_quote: '"They solved several complex backend and API integration issues that other providers deemed impossible. Response time is fast and the work is rock solid."',
+            test2_role: "Brand Lead, SUY Ropa Interior",
+
+            test3_quote: '"From day one they understood exactly what we needed. They built an agile, stable platform ready to scale smoothly as our user base grows."',
+            test3_role: "Founder, AhoraForYou",
+
+            contact_badge: "Direct Contact",
+            contact_title: "Let's discuss your project or technical challenge",
+            contact_subtitle: "We are ready to review your infrastructure, custom development, or engineering requirements.",
+            contact_whatsapp_label: "Direct WhatsApp",
+            contact_email_label: "Email Address",
+            contact_location_label: "Location",
+
+            form_name_label: "Full Name",
+            form_email_label: "Email Address",
+            form_company_label: "Company",
+            form_phone_label: "Phone / WhatsApp",
+            form_message_label: "Project Description",
+            form_submit: "Send Message",
+
+            footer_tagline: "Software Consulting, Web Infrastructure & Digital Architecture."
         }
-        // Remove cursor from this line after finishing it
-        lineEl.innerHTML = text;
-    }
+    };
 
-    async function runTerminalSequence() {
-        // 1. Type the first sequence of commands
-        for (let i = 0; i < commands.length; i++) {
-            await typeLine(commands[i]);
-            await sleep(linePause);
-        }
+    let currentLang = 'es';
 
-        // At this point, the drawing animation is nearly finishing (~1.5s).
-        // Let's add a small pause to wait for the 1.5s total animation time to completely finish
-        // if the typing was slightly faster.
-        await sleep(400);
+    function setLanguage(lang) {
+        if (!translations[lang]) return;
+        currentLang = lang;
 
-        // 2. Add final colors to logo
-        $('svg').addClass('fill-colors finished-loading');
-
-        // 3. Print > SYSTEM_READY
-        const readyLine = document.createElement('div');
-        terminalContainer.appendChild(readyLine);
-        const readyText = "> SYSTEM_READY";
-        for (let i = 0; i < readyText.length; i++) {
-            readyLine.innerHTML = readyText.substring(0, i + 1) + cursorHTML;
-            await sleep(typingSpeed);
-        }
-        readyLine.innerHTML = readyText;
-
-        // 4. Flicker effect on the terminal text
-        terminalContainer.classList.add('flicker');
-
-        // 5. Transition to Main Site after short flicker
-        setTimeout(() => {
-            terminalContainer.classList.add('hide');
-            terminalContainer.classList.remove('flicker');
-
-            // Slide up the preloader using GSAP
-            gsap.to('.preload', {
-                y: '-100%',
-                ease: 'power4.inOut',
-                duration: 1.5,
-                onComplete: () => {
-                    $('.preload').hide();
-                    initMainSite();
-                }
-            });
-
-        }, 600); // Wait 600ms to show the flicker
-    }
-
-    function initCodeRain() {
-        const canvas = document.getElementById('code-canvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*'.split('');
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = [];
-
-        for(let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
-
-        function draw() {
-            // Fondo semitransparente para efecto estela
-            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#fbf9ee'; // Color blanco sutil del texto
-            ctx.font = fontSize + 'px Courier New';
-
-            for(let i = 0; i < drops.length; i++) {
-                const text = chars[Math.floor(Math.random() * chars.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(draw, 33); // ~30fps
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            // Reset columns on resize
-            const newCols = canvas.width / fontSize;
-            drops.length = 0;
-            for(let x = 0; x < newCols; x++) {
-                drops[x] = 1;
-            }
-        });
-    }
-
-    function initMouseParallax() {
-        // Añade vida al mover el ratón en Desktop
-        document.addEventListener('mousemove', (e) => {
-            if (window.innerWidth < 768) return; // Desactivar en móvil
-
-            const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-            const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-
-            gsap.to('.hero-center', {
-                x: mouseX * 20,
-                y: mouseY * 20,
-                duration: 1,
-                ease: 'power2.out',
-                overwrite: 'auto'
-            });
-
-            gsap.to('.code-bg', {
-                x: mouseX * -15,
-                y: mouseY * -15,
-                duration: 2,
-                ease: 'power2.out',
-                overwrite: 'auto'
-            });
-
-            gsap.to('.img-p01-2', {
-                x: mouseX * -30,
-                y: mouseY * -30,
-                duration: 1.5,
-                ease: 'power2.out',
-                overwrite: 'auto'
-            });
-        });
-    }
-
-    function initTechParticles() {
-        const container = document.getElementById('particle-system');
-        // Tech symbols using white color now
-        const techSymbols = ['+', '[ ]', '//', '0x8F', 'init_sys', '>', '< />', '_px', '10110'];
-
-        // 3 Layers for extreme depth (Z-Index -3, -2, -1) with white lens color and low opacity
-        const layers = [
-            { count: 20, zIndex: -3, sizeMin: 0.5, sizeMax: 1.0, opacity: 0.03, speedMin: 20, speedMax: 100, blur: 0 },
-            { count: 15, zIndex: -2, sizeMin: 1.0, sizeMax: 2.0, opacity: 0.05, speedMin: 150, speedMax: 300, blur: 0 },
-            { count: 10, zIndex: -1, sizeMin: 2.5, sizeMax: 4.5, opacity: 0.08, speedMin: 400, speedMax: 900, blur: 1 }
-        ];
-
-        layers.forEach(layer => {
-            for (let i = 0; i < layer.count; i++) {
-                const wrapper = document.createElement('div');
-                wrapper.className = 'particle-wrapper';
-                wrapper.style.zIndex = layer.zIndex;
-
-                const startX = Math.random() * 100;
-                const startY = Math.random() * 150 - 25;
-                wrapper.style.left = `${startX}vw`;
-                wrapper.style.top = `${startY}vh`;
-
-                const particle = document.createElement('div');
-                particle.className = 'tech-particle-white';
-                particle.textContent = techSymbols[Math.floor(Math.random() * techSymbols.length)];
-
-                const size = Math.random() * (layer.sizeMax - layer.sizeMin) + layer.sizeMin;
-                particle.style.fontSize = `${size}rem`;
-                particle.style.opacity = layer.opacity;
-                if (layer.blur > 0) {
-                    particle.style.filter = `blur(${layer.blur}px)`;
-                }
-
-                wrapper.appendChild(particle);
-                container.appendChild(wrapper);
-
-                // Breathing Animation
-                gsap.to(particle, {
-                    x: `random(-40, 40)`,
-                    y: `random(-40, 40)`,
-                    rotation: `random(-25, 25)`,
-                    duration: `random(6, 12)`,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: 'sine.inOut'
-                });
-
-                // Scroll Parallax (Mostly up, some down)
-                const directionMultiplier = Math.random() > 0.8 ? 1 : -1;
-                const speed = (Math.random() * (layer.speedMax - layer.speedMin) + layer.speedMin) * directionMultiplier;
-
-                gsap.to(wrapper, {
-                    y: speed,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: 'body',
-                        start: "top top",
-                        end: "bottom top",
-                        scrub: true
-                    }
-                });
-            }
-        });
-    }
-
-    function initMainSite() {
-        // Show main content
-        const mainContent = document.getElementById('main-content');
-        mainContent.style.visibility = 'visible';
-        gsap.to(mainContent, { opacity: 1, duration: 0.5 });
-
-        // Enable scrolling
-        $('body').css('overflow', 'auto');
-
-
-
-        // 1. Text Reveal Animation (SplitType + GSAP)
-        const revealTexts = document.querySelectorAll('.reveal-text');
-        revealTexts.forEach(text => {
-            const split = new SplitType(text, { types: 'words, chars' });
-            gsap.to(split.chars, {
-                y: 0,
-                ease: "power4.out",
-                duration: 1.2,
-                stagger: 0.02,
-                scrollTrigger: {
-                    trigger: text,
-                    start: "top 85%",
-                }
-            });
+        // Toggle active button style
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
         });
 
-        // 2. Background Color Transition
-        gsap.to('#dynamic-bg', {
-            backgroundColor: '#050505', // Transition to black
-            scrollTrigger: {
-                trigger: '.projects-section',
-                start: "top center",
-                end: "bottom center",
-                scrub: true,
-            }
-        });
-
-        // 3. Brutal Hero Animation (Applies to both logo and text via .hero-center)
-        gsap.to('.hero-center', {
-            scale: 1.5,
-            opacity: 0,
-            y: 100, // Slight parallax
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.brutal-hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true
-            }
-        });
-
-
-        // 7. Continuous Bouncing Arrow & Scroll Routing
-        const arrow = document.getElementById('scroll-indicator');
-        if (arrow) {
-            // Show arrow after init
-            gsap.to(arrow, { opacity: 1, visibility: 'visible', duration: 1, delay: 1 });
-
-            // Bouncing animation
-            gsap.to(arrow, {
-                y: 15,
-                duration: 0.8,
-                repeat: -1,
-                yoyo: true,
-                ease: 'power1.inOut'
-            });
-
-            // Hide at bottom (e.g., when reaching footer or the projects section bottom)
-            ScrollTrigger.create({
-                trigger: '#projects',
-                start: "center center", // hide when the last major section takes over
-                onEnter: () => gsap.to(arrow, { opacity: 0, duration: 0.5 }),
-                onLeaveBack: () => gsap.to(arrow, { opacity: 1, duration: 0.5 })
-            });
-
-            // Arrow Click Logic to Major Sections
-            const majorSections = Array.from(document.querySelectorAll('.major-section'));
-            arrow.addEventListener('click', () => {
-                const scrollY = window.scrollY;
-
-                // Find the next section whose top is below the current scroll pos (with small buffer)
-                let targetSection = null;
-                for (let i = 0; i < majorSections.length; i++) {
-                    const sectionTop = majorSections[i].offsetTop;
-                    if (sectionTop > scrollY + 50) {
-                        targetSection = majorSections[i];
-                        break;
-                    }
-                }
-
-                if (targetSection) {
-                    window.scrollTo({
-                        top: targetSection.offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        }
-
-        // 4. Initialize Particle Ecosystem & Backgrounds
-        if (typeof window.initFerrofluid === 'function') {
-            window.initFerrofluid();
-        }
-        initTechParticles();
-        initCodeRain();
-        initMouseParallax();
-
-
-        // 6. Glassmorphism Module Cards & Utilities
-
-        // Random Hex Generator for bottom corners
-        function generateRandomHex() {
-            return '0x' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0').toUpperCase();
-        }
-
-        // Random System Version for top corners
-        function generateRandomVersion() {
-            const major = Math.floor(Math.random() * 10);
-            const minor = Math.floor(Math.random() * 20);
-            return `v${major}.${minor}.x`;
-        }
-
-        // Scramble logic
-        const chars = '!<>-_\\/[]{}—=+*^?#________';
-        function scrambleText(element, finalString, duration = 800) {
-            let startTime = null;
-
-            function update(time) {
-                if (!startTime) startTime = time;
-                const elapsed = time - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-
-                // Calculate how many characters of the final string should be revealed
-                const revealCount = Math.floor(progress * finalString.length);
-
-                let currentStr = finalString.substring(0, revealCount);
-
-                // Add scrambled characters for the rest
-                for(let i = revealCount; i < finalString.length; i++) {
-                    currentStr += chars[Math.floor(Math.random() * chars.length)];
-                }
-
-                element.innerText = currentStr;
-
-                if (progress < 1) {
-                    requestAnimationFrame(update);
+        // Translate elements with data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = translations[lang][key];
                 } else {
-                    element.innerText = finalString;
+                    el.innerHTML = translations[lang][key];
                 }
             }
-
-            requestAnimationFrame(update);
-        }
-
-        // 5. Project Showcase Features
-
-        // Single execution glitch for project titles
-        const glitchTitles = document.querySelectorAll('.project-title[data-glitch]');
-        glitchTitles.forEach(title => {
-            const originalText = title.getAttribute('data-glitch');
-
-            ScrollTrigger.create({
-                trigger: title,
-                start: "top 85%",
-                once: true, // Only triggers once
-                onEnter: () => {
-                    scrambleText(title, originalText, 600); // reuse the scramble function
-                }
-            });
         });
-
-        // Subtle stack parallax for images
-        const projectImages = document.querySelectorAll('.project-img-stacked');
-        projectImages.forEach(img => {
-            gsap.fromTo(img,
-                { y: 50, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: img,
-                        start: "top 85%",
-                    }
-                }
-            );
-        });
-
-        // 6.5 Apply logic to Module Cards
-
-        const moduleCards = document.querySelectorAll('.module-card');
-        moduleCards.forEach((card, index) => {
-            const rect = card.querySelector('.module-border-svg rect');
-            const title = card.querySelector('.module-title');
-            const desc = card.querySelector('.module-desc');
-            const originalText = title.getAttribute('data-original-text');
-
-            // Corner elements
-            const tl = card.querySelector('.top-left');
-            const tr = card.querySelector('.top-right');
-            const bl = card.querySelector('.bottom-left');
-            const br = card.querySelector('.bottom-right');
-
-            // Set up SVG Stroke Dash Array/Offset dynamically
-            let perimeter = 3000;
-            if (rect) {
-                // Approximate perimeter since it's 100% width/height
-                // A safer way is just to use a massively large number that covers any screen
-                perimeter = window.innerWidth * 2 + window.innerHeight * 2 + 1000;
-            }
-            gsap.set(rect, { strokeDasharray: perimeter, strokeDashoffset: perimeter });
-
-            // Set up infinite loop for corners
-            let loopInterval;
-
-            ScrollTrigger.create({
-                trigger: card,
-                start: "top 85%",
-                onEnter: () => {
-                    // 1. Draw SVG Border
-                    gsap.to(rect, { strokeDashoffset: 0, duration: 1.5, ease: "power2.inOut", overwrite: "auto" });
-
-                    // 2. Scramble Title
-                    scrambleText(title, originalText, 800);
-
-                    // 3. Fade up description right after scramble (around 0.8s later)
-                    gsap.to(desc, {
-                        opacity: 0.8,
-                        y: 0,
-                        duration: 0.8,
-                        delay: 0.8,
-                        ease: "power2.out"
-                    });
-
-                    // 4. Start corner data loop
-                    clearInterval(loopInterval);
-                    loopInterval = setInterval(() => {
-                        if (tl) tl.innerText = `SYS.${generateRandomVersion()}`;
-                        if (tr) tr.innerText = `COORD.${(Math.random()*100).toFixed(2)}`;
-                        if (bl) bl.innerText = generateRandomHex();
-                        if (br) br.innerText = generateRandomHex();
-                    }, 100);
-                },
-                onLeave: () => clearInterval(loopInterval),
-                onEnterBack: () => {
-                    // Restart loop if they scroll back up
-                    clearInterval(loopInterval);
-                    loopInterval = setInterval(() => {
-                        if (tl) tl.innerText = `SYS.${generateRandomVersion()}`;
-                        if (tr) tr.innerText = `COORD.${(Math.random()*100).toFixed(2)}`;
-                        if (bl) bl.innerText = generateRandomHex();
-                        if (br) br.innerText = generateRandomHex();
-                    }, 100);
-                },
-                onLeaveBack: () => clearInterval(loopInterval)
-            });
-        });
-
-
-
-
-
     }
 
-    // Start everything
-    runTerminalSequence();
+    // Attach language switcher listeners
+    document.getElementById('lang-es')?.addEventListener('click', () => setLanguage('es'));
+    document.getElementById('lang-en')?.addEventListener('click', () => setLanguage('en'));
+
+    // 2. Mobile Hamburger Navigation
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('mobile-open');
+        });
+
+        // Close menu when clicking link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('mobile-open');
+            });
+        });
+    }
+
+    // 3. Navigation Active Link Highlights on Scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+        let currentSection = '';
+        const scrollPosition = window.scrollY + 120;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // 4. Contact Form WhatsApp Redirection
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name')?.value || '';
+            const email = document.getElementById('email')?.value || '';
+            const company = document.getElementById('company')?.value || 'N/A';
+            const phone = document.getElementById('phone')?.value || 'N/A';
+            const message = document.getElementById('message')?.value || '';
+
+            const waText = `*Nuevo Mensaje desde Bruiser Tech Website*%0A%0A` +
+                `*Nombre:* ${encodeURIComponent(name)}%0A` +
+                `*Correo:* ${encodeURIComponent(email)}%0A` +
+                `*Empresa:* ${encodeURIComponent(company)}%0A` +
+                `*Teléfono:* ${encodeURIComponent(phone)}%0A%0A` +
+                `*Proyecto:* ${encodeURIComponent(message)}`;
+
+            const waUrl = `https://wa.me/573053862774?text=${waText}`;
+            window.open(waUrl, '_blank');
+        });
+    }
 });
