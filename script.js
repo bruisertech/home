@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_about: "sobre nosotros",
             nav_services: "servicios",
             nav_projects: "proyectos",
+            nav_pentesting: "pentesting",
             nav_contact: "contacto",
 
             hero_badge: "Consultoría & Desarrollo B2B",
@@ -75,14 +76,17 @@ document.addEventListener('DOMContentLoaded', () => {
             testimonials_badge: "Testimonios",
             testimonials_title: "Lo Que Dicen Nuestros Clientes",
 
-            test1_quote: '"Trabajar con Bruiser Tech fue un giro total para nuestro negocio. Migraron toda la tienda sin dejar caer el sitio ni un solo minuto y la velocidad mejoró muchísimo. ¡Recomendadísimos!"',
-            test1_role: "Director de Operaciones, LH Parfum",
+            test1_quote: '"Trabajar con Bruiser Tech fue un giro total para nuestra infraestructura. Migraron la plataforma desacoplada sin tiempo de inactividad y la velocidad de carga aumentó exponencialmente."',
+            test1_title: "Dirección de Operaciones",
+            test1_role: "Sector E-Commerce & Perfumería High-End",
 
-            test2_quote: '"Nos solucionaron varios problemas de backend e integraciones que otros proveedores nos decían que eran imposibles. La respuesta es rápida y el trabajo es súper limpio."',
-            test2_role: "Líder de Marca, SUY Ropa Interior",
+            test2_quote: '"Resolvieron cuellos de botella críticos de arquitectura y consumo de APIs que otros proveedores consideraban inviables. La disponibilidad operativa de nuestros sistemas es ahora del 99.9%."',
+            test2_title: "Liderazgo de Tecnología",
+            test2_role: "Infraestructura & Plataformas Web",
 
-            test3_quote: '"Entendieron desde el primer día lo que necesitábamos. Construyeron una plataforma ágil, estable y lista para escalar a medida que crece nuestra comunidad."',
-            test3_role: "Fundador, AhoraForYou",
+            test3_quote: '"Entendieron la complejidad técnica desde el primer día. Desarrollaron una suite interactiva de alto rendimiento lista para soportar alto tráfico simultáneo."',
+            test3_title: "CTO & Founder",
+            test3_role: "Plataforma Interactiva & Digital Products",
 
             contact_badge: "Contacto Directo",
             contact_title: "Hablemos de tu proyecto o problema técnico",
@@ -98,6 +102,35 @@ document.addEventListener('DOMContentLoaded', () => {
             form_message_label: "Descripción del proyecto",
             form_submit: "Enviar mensaje",
 
+            // About page
+            about_badge: "Nuestra Filosofía & Metodología",
+            about_hero_title: "Ingeniería de software pragmática para empresas con visión de escala",
+            about_hero_subtitle: "En Bruiser Tech eliminamos la fricción técnica. Diseñamos, optimizamos y blindamos la infraestructura digital de negocios en crecimiento con precisión y velocidad.",
+            methodology_badge: "Principios B2B",
+            methodology_title: "Cómo Trabajamos",
+            methodology_subtitle: "Nuestra arquitectura se basa en estabilidad, rendimiento extremo y mantenimiento libre de sorpresas.",
+
+            // Services page
+            services_page_badge: "Servicios de Ingeniería",
+            services_page_title: "Soluciones tecnológicas diseñadas para alto rendimiento operativo",
+            services_page_subtitle: "Abarcamos todo el ciclo de vida de tu plataforma: desde la arquitectura de servidores hasta el desarrollo backend y la protección de datos.",
+
+            // Projects page
+            projects_page_badge: "Casos de Estudio & Portafolio",
+            projects_page_title: "Ingeniería probada en producción",
+            projects_page_subtitle: "Descubre cómo transformamos desafíos técnicos complejos en sistemas eficientes, plataformas e-commerce ultrarrápidas y algoritmos de alta precisión.",
+
+            // Pentesting page
+            pentest_badge: "Seguridad & Ciberdefensa",
+            pentest_title: "Simulador de Pentesting & Auditoría Web",
+            pentest_subtitle: "Ingresa el dominio de tu empresa para ejecutar un diagnóstico rápido de cabeceras de seguridad, puertos de servicio y configuración de certificados SSL.",
+            scanner_heading: "Escáner de Vulnerabilidades Web (Demo)",
+            scanner_sub: "Ingresa la URL pública de tu plataforma para simular la auditoría inicial de seguridad.",
+            scan_btn: "Escanear Sitio Web",
+            wip_title: "WORK IN PROGRESS — Módulo Automatizado en Desarrollo",
+            wip_desc: "Nuestro motor de prueba de penetración automatizado en tiempo real se encuentra actualmente en fase Beta activa. Para una auditoría técnica profunda ejecutada manualmente por nuestro equipo de infraestructura, solicita una revisión con un ingeniero senior.",
+            wip_cta: "Solicitar Pentesting Manual",
+
             footer_tagline: "Consultoría de Software, Infraestructura Web y Arquitectura Digital."
         },
         en: {
@@ -105,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_about: "about us",
             nav_services: "services",
             nav_projects: "projects",
+            nav_pentesting: "pentesting",
             nav_contact: "contact",
 
             hero_badge: "B2B Consulting & Development",
@@ -174,14 +208,17 @@ document.addEventListener('DOMContentLoaded', () => {
             testimonials_badge: "Testimonials",
             testimonials_title: "What Our Clients Say",
 
-            test1_quote: '"Working with Bruiser Tech was a complete game changer. They migrated our entire store without a single second of downtime and site speed skyrocketed. Highly recommended!"',
-            test1_role: "Operations Director, LH Parfum",
+            test1_quote: '"Working with Bruiser Tech was a total game changer for our infrastructure. They migrated our decoupled platform zero-downtime and page load speed increased exponentially."',
+            test1_title: "Director of Operations",
+            test1_role: "E-Commerce & High-End Perfumery Sector",
 
-            test2_quote: '"They solved several complex backend and API integration issues that other providers deemed impossible. Response time is fast and the work is rock solid."',
-            test2_role: "Brand Lead, SUY Ropa Interior",
+            test2_quote: '"They solved critical architecture and API consumption bottlenecks that other vendors deemed impossible. Our system uptime is now at 99.9%."',
+            test2_title: "Technology Leadership",
+            test2_role: "Web Platforms & Infrastructure",
 
-            test3_quote: '"From day one they understood exactly what we needed. They built an agile, stable platform ready to scale smoothly as our user base grows."',
-            test3_role: "Founder, AhoraForYou",
+            test3_quote: '"They understood our technical complexity from day one. They developed an interactive, high-performance suite ready to support high concurrent traffic."',
+            test3_title: "CTO & Founder",
+            test3_role: "Interactive Platforms & Digital Products",
 
             contact_badge: "Direct Contact",
             contact_title: "Let's discuss your project or technical challenge",
@@ -196,6 +233,35 @@ document.addEventListener('DOMContentLoaded', () => {
             form_phone_label: "Phone / WhatsApp",
             form_message_label: "Project Description",
             form_submit: "Send Message",
+
+            // About page
+            about_badge: "Our Philosophy & Methodology",
+            about_hero_title: "Pragmatic software engineering for ambitious companies",
+            about_hero_subtitle: "At Bruiser Tech we eliminate technical friction. We design, optimize, and shield digital infrastructure for growing businesses with precision and speed.",
+            methodology_badge: "B2B Principles",
+            methodology_title: "How We Work",
+            methodology_subtitle: "Our architecture is built on stability, extreme performance, and surprise-free maintenance.",
+
+            // Services page
+            services_page_badge: "Engineering Services",
+            services_page_title: "Technology solutions engineered for operational performance",
+            services_page_subtitle: "We cover your platform's full lifecycle: from server architecture to backend engineering and data protection.",
+
+            // Projects page
+            projects_page_badge: "Case Studies & Portfolio",
+            projects_page_title: "Production-proven engineering",
+            projects_page_subtitle: "Discover how we turn complex technical challenges into efficient systems, lightning-fast e-commerce platforms, and high-precision algorithms.",
+
+            // Pentesting page
+            pentest_badge: "Security & Cyberdefense",
+            pentest_title: "Pentesting Simulator & Web Audit",
+            pentest_subtitle: "Enter your company domain to run a rapid assessment of security headers, service ports, and SSL certificate setup.",
+            scanner_heading: "Web Vulnerability Scanner (Demo)",
+            scanner_sub: "Enter your platform public URL to simulate an initial security audit.",
+            scan_btn: "Scan Website",
+            wip_title: "WORK IN PROGRESS — Automated Module Under Active Development",
+            wip_desc: "Our real-time automated penetration test engine is currently in active Beta. For a deep manual technical audit conducted by senior infrastructure engineers, request a review with our team.",
+            wip_cta: "Request Manual Pentest",
 
             footer_tagline: "Software Consulting, Web Infrastructure & Digital Architecture."
         }
@@ -246,31 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Navigation Active Link Highlights on Scroll
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    window.addEventListener('scroll', () => {
-        let currentSection = '';
-        const scrollPosition = window.scrollY + 120;
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                currentSection = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSection}`) {
-                link.classList.add('active');
-            }
-        });
-    });
-
-    // 4. Contact Form WhatsApp Redirection
+    // 3. Contact Form WhatsApp Redirection
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
@@ -291,6 +333,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const waUrl = `https://wa.me/573053862774?text=${waText}`;
             window.open(waUrl, '_blank');
+        });
+    }
+
+    // 4. Pentesting Interactive Terminal Simulation
+    const pentestForm = document.getElementById('pentest-scanner-form');
+    const terminalOutput = document.getElementById('terminal-output');
+
+    if (pentestForm && terminalOutput) {
+        pentestForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const targetUrl = document.getElementById('target-url')?.value || 'https://tuempresa.com';
+
+            terminalOutput.innerHTML = '';
+
+            const logs = [
+                `[+] Iniciando BruiserSec Audit Engine en ${targetUrl}...`,
+                `[+] Resolviendo DNS A/AAAA registros... OK`,
+                `[+] Conectando a target host vía TLS 1.3... SSL Handshake Exitoso`,
+                `[*] Inspeccionando cabeceras HTTP:`,
+                `    - Content-Security-Policy (CSP): [PRESENTE]`,
+                `    - Strict-Transport-Security (HSTS): [DETECTADO - 31536000s]`,
+                `    - X-Frame-Options: [SAMEORIGIN]`,
+                `[*] Realizando banner grabbing en puertos de servicio (80, 443, 8080, 8443)...`,
+                `[!] ALERTA: Módulo de escaneo profundo automatizado en desarrollo (Work in Progress).`,
+                `[+] Para obtener una auditoría manual exhaustiva y prueba de penetración en tiempo real, contacta directamente a nuestro equipo técnico.`
+            ];
+
+            let index = 0;
+            const scanBtn = document.getElementById('scan-btn');
+            if (scanBtn) scanBtn.disabled = true;
+
+            const interval = setInterval(() => {
+                if (index < logs.length) {
+                    const line = document.createElement('div');
+                    line.style.marginBottom = '4px';
+                    if (logs[index].startsWith('[!]')) {
+                        line.style.color = '#f59e0b';
+                        line.style.fontWeight = 'bold';
+                    } else if (logs[index].startsWith('[+]')) {
+                        line.style.color = '#10b981';
+                    } else {
+                        line.style.color = '#9ca3af';
+                    }
+                    line.innerText = logs[index];
+                    terminalOutput.appendChild(line);
+                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                    index++;
+                } else {
+                    clearInterval(interval);
+                    if (scanBtn) scanBtn.disabled = false;
+                }
+            }, 350);
         });
     }
 });

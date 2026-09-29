@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto Directo | Bruiser Tech - Consultoría Digital B2B</title>
+    <link rel="icon" type="image/png" href="bruisertech.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-text">bruiser</span>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <div class="pill-nav">
+                    <a href="index.html" class="nav-link" data-i18n="nav_home">inicio</a>
+                    <a href="nosotros.html" class="nav-link" data-i18n="nav_about">sobre nosotros</a>
+                    <a href="servicios.html" class="nav-link" data-i18n="nav_services">servicios</a>
+                    <a href="proyectos.html" class="nav-link" data-i18n="nav_projects">proyectos</a>
+                    <a href="pentesting.html" class="nav-link" data-i18n="nav_pentesting">pentesting</a>
+                </div>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="lang-toggle">
+                    <button class="lang-btn active" id="lang-es" data-lang="es">es</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" id="lang-en" data-lang="en">en</button>
+                </div>
+                <a href="contacto.html" class="btn btn-primary nav-cta active" data-i18n="nav_contact">contacto</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main style="padding-top: 140px;">
+        <!-- Contact Section -->
+        <section id="contacto" class="section-padding bg-secondary">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <!-- Left Column -->
+                    <div class="contact-info">
+                        <div class="badge">
+                            <span class="badge-dot"></span>
+                            <span data-i18n="contact_badge">Contacto Directo</span>
+                        </div>
+                        <h2 data-i18n="contact_title">Hablemos de tu proyecto o problema técnico</h2>
+                        <p data-i18n="contact_subtitle">Estamos listos para analizar tus requerimientos de infraestructura, desarrollo o software a medida.</p>
+
+                        <div class="contact-details">
+                            <a href="https://wa.me/573053862774?text=Hola%20Bruiser%20Tech%2C%20quisiera%20cotizar%20un%20proyecto" target="_blank" rel="noopener noreferrer" class="contact-item">
+                                <div class="icon-box">💬</div>
+                                <div>
+                                    <span class="label" data-i18n="contact_whatsapp_label">WhatsApp Directo</span>
+                                    <span class="value">+57 305 386 2774</span>
+                                </div>
+                            </a>
+
+                            <a href="mailto:contacto@bruiser.tech" class="contact-item">
+                                <div class="icon-box">✉️</div>
+                                <div>
+                                    <span class="label" data-i18n="contact_email_label">Correo Electrónico</span>
+                                    <span class="value">contacto@bruiser.tech</span>
+                                </div>
+                            </a>
+
+                            <div class="contact-item">
+                                <div class="icon-box">📍</div>
+                                <div>
+                                    <span class="label" data-i18n="contact_location_label">Ubicación</span>
+                                    <span class="value">Cali, Colombia</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Form -->
+                    <div class="contact-form-card">
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name" data-i18n="form_name_label">Nombre completo</label>
+                                <input type="text" id="name" name="name" required placeholder="Ej. Juan Pérez">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" data-i18n="form_email_label">Correo electrónico</label>
+                                <input type="email" id="email" name="email" required placeholder="tu@empresa.com">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="company" data-i18n="form_company_label">Empresa</label>
+                                    <input type="text" id="company" name="company" placeholder="Nombre de tu empresa">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" data-i18n="form_phone_label">Teléfono / WhatsApp</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="+57 ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" data-i18n="form_message_label">Descripción del proyecto</label>
+                                <textarea id="message" name="message" rows="4" required placeholder="Cuéntanos sobre tus requerimientos o problemas técnicos..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full" data-i18n="form_submit">Enviar mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">bruiser</a>
+                <p data-i18n="footer_tagline">Consultoría de Software, Infraestructura Web y Arquitectura Digital.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="https://github.com/bruisertech" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.instagram.com/bruiser.tech" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+
+            <div class="footer-copy">
+                <p>Bruiser Tech &copy; 2026. Compiled in Cali, CO.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios | Bruiser Tech - Consultoría Digital B2B</title>
+    <link rel="icon" type="image/png" href="bruisertech.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-text">bruiser</span>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <div class="pill-nav">
+                    <a href="index.html" class="nav-link" data-i18n="nav_home">inicio</a>
+                    <a href="nosotros.html" class="nav-link" data-i18n="nav_about">sobre nosotros</a>
+                    <a href="servicios.html" class="nav-link active" data-i18n="nav_services">servicios</a>
+                    <a href="proyectos.html" class="nav-link" data-i18n="nav_projects">proyectos</a>
+                    <a href="pentesting.html" class="nav-link" data-i18n="nav_pentesting">pentesting</a>
+                </div>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="lang-toggle">
+                    <button class="lang-btn active" id="lang-es" data-lang="es">es</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" id="lang-en" data-lang="en">en</button>
+                </div>
+                <a href="contacto.html" class="btn btn-primary nav-cta" data-i18n="nav_contact">contacto</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="hero-section section-padding">
+            <div class="container hero-content">
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    <span data-i18n="services_page_badge">Servicios de Ingeniería</span>
+                </div>
+                <h1 class="hero-title" data-i18n="services_page_title">
+                    Soluciones tecnológicas diseñadas para alto rendimiento operativo
+                </h1>
+                <p class="hero-subtitle" data-i18n="services_page_subtitle">
+                    Abarcamos todo el ciclo de vida de tu plataforma: desde la arquitectura de servidores hasta el desarrollo backend y la protección de datos.
+                </p>
+            </div>
+        </section>
+
+        <!-- Detailed Services Grid -->
+        <section class="section-padding bg-secondary">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="service-card card-hover">
+                        <div class="service-badge" data-i18n="srv1_badge">INFRAESTRUCTURA & CLOUD</div>
+                        <h3 data-i18n="srv1_title">Infraestructura, Nube y Servidores</h3>
+                        <p data-i18n="srv1_desc">Gestión integral de servidores Nginx y Apache, migraciones seguras (AWS, VPS, hosting dedicado), optimización de rendimiento, balanceo de carga y monitoreo 24/7.</p>
+                        <ul style="margin-top: 20px; padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+                            <li>Migración Zero-Downtime a servidores VPS/Cloud (AWS, DigitalOcean, Hetzner).</li>
+                            <li>Tuning y optimización de Nginx/Apache + PHP-FPM / Python WSGI.</li>
+                            <li>Configuración de CDN, SSL/TLS avanzado y reglas Cloudflare WAF.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <div class="service-badge" data-i18n="srv2_badge">BACKEND & API</div>
+                        <h3 data-i18n="srv2_title">Desarrollo Backend & Integraciones</h3>
+                        <p data-i18n="srv2_desc">Ingeniería de software en Python y PHP 8.3, diseño de APIs REST escalables, microservicios y acoplamiento fluido entre sistemas empresariales existentes.</p>
+                        <ul style="margin-top: 20px; padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+                            <li>Construcción de APIs REST/GraphQL ultra rápidas en Python y PHP 8.3.</li>
+                            <li>Sincronización automatizada de ERPs, CRMs y pasarelas de pago.</li>
+                            <li>Optimización de consultas SQL/NoSQL y modelos de datos masivos.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <div class="service-badge" data-i18n="srv3_badge">WEB & E-COMMERCE</div>
+                        <h3 data-i18n="srv3_title">Arquitectura Web & E-Commerce</h3>
+                        <p data-i18n="srv3_desc">Creación de plataformas web de alto impacto, tiendas e-commerce a medida y desarrollos avanzados en WordPress y WooCommerce optimizados para velocidad y conversión.</p>
+                        <ul style="margin-top: 20px; padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+                            <li>E-commerce desacoplado (Headless) para experiencia ultrarrápida.</li>
+                            <li>Desarrollo de plugins a medida para WooCommerce / WordPress.</li>
+                            <li>Optimización extrema de métricas Core Web Vitals y PageSpeed 90+.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <div class="service-badge" data-i18n="srv4_badge">SEGURIDAD & AUTOMATIZACIÓN</div>
+                        <h3 data-i18n="srv4_title">Seguridad & Automatización de Procesos</h3>
+                        <p data-i18n="srv4_desc">Blindaje de endpoints, protección de la integridad de datos empresariales, auditorías de seguridad y automatización de flujos operativos repetitivos para reducir costos.</p>
+                        <ul style="margin-top: 20px; padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+                            <li>Hardening de servidores Linux y desinfección de sitios vulnerados.</li>
+                            <li>Automatización de tareas recurrentes con scripts en Python y Bash.</li>
+                            <li>Monitoreo preventivo de vulnerabilidades y alertas en tiempo real.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section-padding">
+            <div class="container text-center" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;" data-i18n="services_cta_title">¿Tienes una necesidad técnica específica?</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 30px;" data-i18n="services_cta_desc">Cuéntanos tu arquitectura actual y te propondremos un plan de acción detallado.</p>
+                <a href="contacto.html" class="btn btn-primary" data-i18n="nav_contact">Solicitar diagnóstico</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">bruiser</a>
+                <p data-i18n="footer_tagline">Consultoría de Software, Infraestructura Web y Arquitectura Digital.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="https://github.com/bruisertech" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.instagram.com/bruiser.tech" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+
+            <div class="footer-copy">
+                <p>Bruiser Tech &copy; 2026. Compiled in Cali, CO.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
