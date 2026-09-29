@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros | Bruiser Tech - Consultoría Digital B2B</title>
+    <link rel="icon" type="image/png" href="bruisertech.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-text">bruiser</span>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <div class="pill-nav">
+                    <a href="index.html" class="nav-link" data-i18n="nav_home">inicio</a>
+                    <a href="nosotros.html" class="nav-link active" data-i18n="nav_about">sobre nosotros</a>
+                    <a href="servicios.html" class="nav-link" data-i18n="nav_services">servicios</a>
+                    <a href="proyectos.html" class="nav-link" data-i18n="nav_projects">proyectos</a>
+                    <a href="pentesting.html" class="nav-link" data-i18n="nav_pentesting">pentesting</a>
+                </div>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="lang-toggle">
+                    <button class="lang-btn active" id="lang-es" data-lang="es">es</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" id="lang-en" data-lang="en">en</button>
+                </div>
+                <a href="contacto.html" class="btn btn-primary nav-cta" data-i18n="nav_contact">contacto</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="hero-section section-padding">
+            <div class="container hero-content">
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    <span data-i18n="about_badge">Nuestra Filosofía & Metodología</span>
+                </div>
+                <h1 class="hero-title" data-i18n="about_hero_title">
+                    Ingeniería de software pragmática para empresas con visión de escala
+                </h1>
+                <p class="hero-subtitle" data-i18n="about_hero_subtitle">
+                    En Bruiser Tech eliminamos la fricción técnica. Diseñamos, optimizamos y blindamos la infraestructura digital de negocios en crecimiento con precisión y velocidad.
+                </p>
+            </div>
+        </section>
+
+        <!-- Detailed Methodology & Culture -->
+        <section class="section-padding bg-secondary">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge">
+                        <span class="badge-dot"></span>
+                        <span data-i18n="methodology_badge">Principios B2B</span>
+                    </div>
+                    <h2 data-i18n="methodology_title">Cómo Trabajamos</h2>
+                    <p data-i18n="methodology_subtitle">Nuestra arquitectura se basa en estabilidad, rendimiento extremo y mantenimiento libre de sorpresas.</p>
+                </div>
+
+                <div class="pillars-grid">
+                    <div class="pillar-card card-hover">
+                        <div class="pillar-icon">01</div>
+                        <h3 data-i18n="princ1_title">Diagnóstico Brutalmente Honesto</h3>
+                        <p class="pillar-subtitle" data-i18n="princ1_subtitle">Cero humo técnico</p>
+                        <p data-i18n="princ1_desc">Auditamos la infraestructura actual identificando cuellos de botella reales antes de escribir una sola línea de código.</p>
+                    </div>
+
+                    <div class="pillar-card card-hover">
+                        <div class="pillar-icon">02</div>
+                        <h3 data-i18n="princ2_title">Desarrollo Desacoplado</h3>
+                        <p class="pillar-subtitle" data-i18n="princ2_subtitle">Flexibilidad futura</p>
+                        <p data-i18n="princ2_desc">Estructuramos sistemas con APIs REST y microservicios para garantizar la libertad de escalar partes independientes sin romper el todo.</p>
+                    </div>
+
+                    <div class="pillar-card card-hover">
+                        <div class="pillar-icon">03</div>
+                        <h3 data-i18n="princ3_title">Seguridad como Estándar</h3>
+                        <p class="pillar-subtitle" data-i18n="princ3_subtitle">Zero Trust</p>
+                        <p data-i18n="princ3_desc">Configuramos entornos de producción con parches de seguridad, firewalls de aplicación web y copias de seguridad automáticas de serie.</p>
+                    </div>
+
+                    <div class="pillar-card card-hover">
+                        <div class="pillar-icon">04</div>
+                        <h3 data-i18n="princ4_title">Soporte Operativo Directo</h3>
+                        <p class="pillar-subtitle" data-i18n="princ4_subtitle">Comunicación fluida</p>
+                        <p data-i18n="princ4_desc">Acceso directo a ingenieros senior sin capas intermedias ni gestores de tickets ineficientes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <section class="section-padding">
+            <div class="container text-center" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;" data-i18n="about_cta_title">¿Listo para elevar la velocidad y estabilidad de tu negocio?</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 30px;" data-i18n="about_cta_desc">Agenda una llamada de exploración con nuestro equipo técnico en Cali, Colombia.</p>
+                <a href="contacto.html" class="btn btn-primary" data-i18n="nav_contact">Hablemos hoy</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">bruiser</a>
+                <p data-i18n="footer_tagline">Consultoría de Software, Infraestructura Web y Arquitectura Digital.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="https://github.com/bruisertech" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.instagram.com/bruiser.tech" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+
+            <div class="footer-copy">
+                <p>Bruiser Tech &copy; 2026. Compiled in Cali, CO.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
