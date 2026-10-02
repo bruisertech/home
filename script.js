@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         es: {
             nav_home: "inicio",
             nav_about: "sobre nosotros",
-            nav_bruisercare: "bruiser care",
+            nav_bruisercare: "bruiserCare",
             nav_services: "servicios",
             nav_projects: "proyectos",
             nav_pentesting: "pentesting",
@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
             hero_badge: "Consultoría & Desarrollo B2B",
             hero_line1: "¿Te abruma la infraestructura web?",
             hero_line2: "déjalo en nuestras manos ;)",
-            hero_line3_prefix: "CONOCE",
-            hero_line3_highlight: "BRUISER CARE",
-            hero_subtitle: "Tu web profesional en línea desde $45.900 COP / mes. Sin enredos técnicos ni costos ocultos.",
-            hero_cta_primary: "Descubrir Bruiser Care",
+            hero_line3_prefix: "conoce",
+            hero_line3_highlight: "bruiserCare",
+            hero_subtitle: "Tu web profesional en línea desde $45.900 COP / mes*. Sin enredos técnicos ni costos ocultos.",
+            hero_cta_primary: "Descubrir bruiserCare",
             hero_cta_secondary: "Ver Desarrollo Tradicional",
 
             // Two Paths Block
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Bruiser Care Dedicated Page
             care_badge: "• MODELO WAAS // WEBSITE AS A SERVICE",
-            care_title: "Bruiser Care: Tu equipo técnico de confianza mes a mes",
+            care_title: "bruiserCare: Tu equipo técnico de confianza mes a mes",
             care_subtitle: "Olvídate de servidores, caídas y parches de seguridad. Nos encargamos de toda tu infraestructura mientras tú te enfocas en vender.",
             care_speed_highlight: "Tu web en línea en menos de 20 días tras la confirmación del pago.",
             care_price_anchor: 'Planes desde <span style="color: var(--brand-coral);">$45.900 COP / mes*</span>',
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             infra_feat3_desc: "Copias de seguridad diarias automatizadas almacenadas fuera de sitio (off-site) con recuperación inmediata de desastres.",
 
             scope_badge: "Alcance Operativo",
-            scope_title: "¿Qué Incluye tu Suscripción Bruiser Care?",
+            scope_title: "¿Qué Incluye tu Suscripción bruiserCare?",
             scope_subtitle: "Transparencia total sobre lo incluido en tu mensualidad y cómo gestionamos los requerimientos adicionales.",
             scope_basic_title: "Soporte Básico Ilimitado",
             scope_basic_tag: "INCLUIDO EN LA MENSUALIDAD",
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         en: {
             nav_home: "home",
             nav_about: "about us",
-            nav_bruisercare: "bruiser care",
+            nav_bruisercare: "bruiserCare",
             nav_services: "services",
             nav_projects: "projects",
             nav_pentesting: "pentesting",
@@ -209,10 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
             hero_badge: "B2B Consulting & Development",
             hero_line1: "Overwhelmed by web infrastructure?",
             hero_line2: "leave it in our hands ;)",
-            hero_line3_prefix: "DISCOVER",
-            hero_line3_highlight: "BRUISER CARE",
-            hero_subtitle: "Your professional website online from $45,900 COP / month. No technical complexity, no hidden fees.",
-            hero_cta_primary: "Discover Bruiser Care",
+            hero_line3_prefix: "discover",
+            hero_line3_highlight: "bruiserCare",
+            hero_subtitle: "Your professional website online from $45,900 COP / month*. No technical complexity, no hidden fees.",
+            hero_cta_primary: "Discover bruiserCare",
             hero_cta_secondary: "View Traditional Development",
 
             // Two Paths Block
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Bruiser Care Dedicated Page
             care_badge: "• WAAS MODEL // WEBSITE AS A SERVICE",
-            care_title: "Bruiser Care: Your trusted tech team month after month",
+            care_title: "bruiserCare: Your trusted tech team month after month",
             care_subtitle: "Forget about server crashes, security patches, and downtime. We handle your entire web infrastructure so you can focus on sales.",
             care_speed_highlight: "Your website online in less than 20 days upon payment confirmation.",
             care_price_anchor: 'Plans starting at <span style="color: var(--brand-coral);">$45,900 COP / month*</span>',
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             infra_feat3_desc: "Automated off-site daily backups with immediate disaster recovery capabilities.",
 
             scope_badge: "Operational Scope",
-            scope_title: "What is included in your Bruiser Care subscription?",
+            scope_title: "What is included in your bruiserCare subscription?",
             scope_subtitle: "Full transparency on what is included in your monthly plan and how additional requirements are managed.",
             scope_basic_title: "Unlimited Basic Support",
             scope_basic_tag: "INCLUDED IN MONTHLY PLAN",
