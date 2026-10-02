@@ -367,9 +367,10 @@ a {
     font-size: 4.25rem;
     font-weight: 900;
     letter-spacing: -0.05em;
-    display: block;
+    display: inline-block;
+    padding-right: 0.15em;
     margin-top: 10px;
-    line-height: 1.05;
+    line-height: 1.1;
     background: linear-gradient(120deg, #161B22 0%, var(--brand-coral) 25%, #FAFAFA 50%, var(--brand-coral) 75%, #161B22 100%);
     background-size: 200% auto;
     color: transparent;
