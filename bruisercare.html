@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bruiser Care | Website as a Service (WaaS) & Infraestructura Administrada</title>
+    <link rel="icon" type="image/png" href="bruisertech.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-text">bruiser</span>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <div class="pill-nav">
+                    <a href="index.html" class="nav-link" data-i18n="nav_home">inicio</a>
+                    <a href="nosotros.html" class="nav-link" data-i18n="nav_about">sobre nosotros</a>
+                    <a href="bruisercare.html" class="nav-link active" data-i18n="nav_bruisercare">bruiser care</a>
+                    <a href="servicios.html" class="nav-link" data-i18n="nav_services">servicios</a>
+                    <a href="proyectos.html" class="nav-link" data-i18n="nav_projects">proyectos</a>
+                    <a href="pentesting.html" class="nav-link" data-i18n="nav_pentesting">pentesting</a>
+                </div>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="lang-toggle">
+                    <button class="lang-btn active" id="lang-es" data-lang="es">es</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" id="lang-en" data-lang="en">en</button>
+                </div>
+                <a href="contacto.html" class="btn btn-primary nav-cta" data-i18n="nav_contact">contacto</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section: Bruiser Care -->
+        <section class="hero-section section-padding">
+            <div class="container hero-content">
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    <span data-i18n="care_badge">• MODELO WAAS // WEBSITE AS A SERVICE</span>
+                </div>
+                <h1 class="hero-title" style="margin-top: 20px; font-size: 3.5rem;" data-i18n="care_title">
+                    Bruiser Care: Tu equipo técnico de confianza mes a mes
+                </h1>
+                <p class="hero-subtitle" style="max-width: 800px; margin-bottom: 28px;" data-i18n="care_subtitle">
+                    Olvídate de servidores, caídas y parches de seguridad. Nos encargamos de toda tu infraestructura mientras tú te enfocas en vender.
+                </p>
+
+                <!-- Highlight Banner -->
+                <div style="background-color: var(--brand-coral-light); border: 1px solid rgba(210, 88, 74, 0.3); border-radius: 16px; padding: 16px 28px; margin-bottom: 24px; font-weight: 700; color: var(--brand-coral); font-size: 1.05rem;" data-i18n="care_speed_highlight">
+                    ⚡ Tu web en línea en menos de 20 días tras la confirmación del pago.
+                </div>
+
+                <!-- Price Anchor -->
+                <p style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary); margin-bottom: 32px;" data-i18n="care_price_anchor">
+                    Planes desde <span style="color: var(--brand-coral);">$45.900 COP / mes</span> (sujeto a valoración técnica inicial).
+                </p>
+
+                <!-- CTA Button -->
+                <div class="hero-ctas">
+                    <a href="https://wa.me/573053862774?text=Hola%20Bruiser%20Tech%2C%20quisiera%20solicitar%20una%20valoraci%C3%B3n%20t%C3%A9cnica%20de%20mi%20proyecto%20para%20Bruiser%20Care" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="care_hero_cta">
+                        Solicitar valoración de mi proyecto
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Technical Block: High-Performance Infrastructure -->
+        <section class="section-padding bg-secondary">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge">
+                        <span class="badge-dot"></span>
+                        <span data-i18n="infra_badge">Infraestructura Robusta</span>
+                    </div>
+                    <h2 data-i18n="infra_title">Arquitectura y Hosting Privado de Alto Rendimiento</h2>
+                </div>
+
+                <div style="max-width: 900px; margin: 0 auto; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 24px; padding: 48px; box-shadow: var(--shadow-card);" class="card-hover">
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-primary); font-weight: 500; margin-bottom: 32px; font-style: italic; border-left: 4px solid var(--brand-coral); padding-left: 20px;" data-i18n="infra_quote">
+                        "Estamos aliados estratégicamente con proveedores de infraestructura privada en la nube, blindados con seguridad perimetral, almacenamiento NVMe de ultra baja latencia y enlaces redundantes de alta velocidad."
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;" class="infra-grid">
+                        <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px;">
+                            <div style="font-size: 1.75rem; margin-bottom: 10px;">🚀</div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 8px;" data-i18n="infra_feat1_title">Alto Tráfico & Picos</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);" data-i18n="infra_feat1_desc">Capacidad para alojar arquitecturas de alto tráfico, catálogo masivo y picos de demanda concurrentes sin degradación de velocidad.</p>
+                        </div>
+
+                        <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px;">
+                            <div style="font-size: 1.75rem; margin-bottom: 10px;">🔒</div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 8px;" data-i18n="infra_feat2_title">SSL & Cifrado Dedicado</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);" data-i18n="infra_feat2_desc">Certificados SSL/TLS dedicados instalados y gestionados automáticamente para garantizar la confidencialidad de tus usuarios.</p>
+                        </div>
+
+                        <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px;">
+                            <div style="font-size: 1.75rem; margin-bottom: 10px;">💾</div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 8px;" data-i18n="infra_feat3_title">Backups Diarios Automatic</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);" data-i18n="infra_feat3_desc">Copias de seguridad diarias automatizadas almacenadas fuera de sitio (off-site) con recuperación inmediata de desastres.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Service Scope: Basic Support vs. Major Changes -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge">
+                        <span class="badge-dot"></span>
+                        <span data-i18n="scope_badge">Alcance Operativo</span>
+                    </div>
+                    <h2 data-i18n="scope_title">¿Qué Incluye tu Suscripción Bruiser Care?</h2>
+                    <p data-i18n="scope_subtitle">Transparencia total sobre lo incluido en tu mensualidad y cómo gestionamos los requerimientos adicionales.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;" class="two-paths-grid">
+                    <!-- Column 1: Soporte Básico Ilimitado -->
+                    <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 24px; padding: 40px; box-shadow: var(--shadow-card);" class="card-hover">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                            <span style="font-size: 1.5rem;">✅</span>
+                            <h3 style="font-size: 1.5rem; color: var(--text-primary);" data-i18n="scope_basic_title">Soporte Básico Ilimitado</h3>
+                        </div>
+                        <p style="font-size: 0.85rem; font-weight: 700; color: var(--brand-coral); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 20px;" data-i18n="scope_basic_tag">INCLUIDO EN LA MENSUALIDAD</p>
+
+                        <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 0.98rem; line-height: 1.9; display: flex; flex-direction: column; gap: 12px;">
+                            <li data-i18n="scope_basic_1"><strong>Monitoreo continuo 24/7:</strong> Supervisión constante de uptime y resolución inmediata ante caídas o anomalías del servidor.</li>
+                            <li data-i18n="scope_basic_2"><strong>Mantenimiento preventivo:</strong> Actualizaciones periódicas de CMS, plugins, licencias, certificados SSL y parches críticos de seguridad.</li>
+                            <li data-i18n="scope_basic_3"><strong>Ajustes menores de contenidos:</strong> Cambios de textos, reemplazo de imágenes proporcionadas por ti, actualización de horarios, números o datos de contacto.</li>
+                            <li data-i18n="scope_basic_4"><strong>Optimización continua:</strong> Ajustes constantes de velocidad y rendimiento de carga (Core Web Vitals).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: Cambios Mayores & Nuevos Módulos -->
+                    <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 24px; padding: 40px; box-shadow: var(--shadow-card);" class="card-hover">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                            <span style="font-size: 1.5rem;">⚡</span>
+                            <h3 style="font-size: 1.5rem; color: var(--text-primary);" data-i18n="scope_major_title">Cambios Mayores & Módulos</h3>
+                        </div>
+                        <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 20px;" data-i18n="scope_major_tag">COSTO ADICIONAL PREFERENCIAL</p>
+
+                        <p style="color: var(--text-secondary); font-size: 0.98rem; line-height: 1.6; margin-bottom: 20px;" data-i18n="scope_major_def">
+                            <strong>Definición:</strong> Creación de nuevas secciones estructurales, integración de pasarelas de pago no contempladas inicialmente, integraciones complejas con APIs de terceros o software a medida.
+                        </p>
+
+                        <div style="background-color: var(--brand-coral-light); border-left: 4px solid var(--brand-coral); border-radius: 12px; padding: 20px; margin-top: 20px;">
+                            <h4 style="font-size: 1rem; color: var(--brand-coral); margin-bottom: 8px;" data-i18n="scope_guarantee_title">Garantía Comercial Preferencial</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-primary); font-weight: 600; line-height: 1.6;" data-i18n="scope_guarantee_desc">
+                                "Cualquier requerimiento mayor será evaluado directamente con nuestro equipo técnico, ofreciéndote soluciones a la medida con tarifas preferenciales sustancialmente más favorables que los costos abiertos del mercado."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Terms & Continuity -->
+        <section class="section-padding bg-secondary">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge">
+                        <span class="badge-dot"></span>
+                        <span data-i18n="terms_badge">Condiciones Claras</span>
+                    </div>
+                    <h2 data-i18n="terms_title">Términos de Continuidad y Renovación</h2>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;" class="two-paths-grid">
+                    <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 36px; box-shadow: var(--shadow-card);" class="card-hover">
+                        <div style="font-size: 2rem; margin-bottom: 12px;">📄</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 12px;" data-i18n="terms_contract_title">Contrato Anual Protegido</h3>
+                        <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.7;" data-i18n="terms_contract_desc">
+                            Acuerdo de suscripción de 12 meses con cobro recurrente mensual. Renovación anual con un incremento tope garantizado de máximo el <strong>8%</strong>, protegiendo tu presupuesto de la inflación.
+                        </p>
+                    </div>
+
+                    <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 36px; box-shadow: var(--shadow-card);" class="card-hover">
+                        <div style="font-size: 2rem; margin-bottom: 12px;">⚙️</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 12px;" data-i18n="terms_rule_title">Regla de Operación</h3>
+                        <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.7;" data-i18n="terms_rule_desc">
+                            La web permanece activa y alojada en nuestros servidores optimizados mientras la suscripción mensual esté vigente, asegurando rendimiento, parches y estabilidad continua.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Final CTA / Contact Block -->
+        <section class="section-padding">
+            <div class="container text-center" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <div class="badge" style="margin: 0 auto 20px;">
+                    <span class="badge-dot"></span>
+                    <span data-i18n="care_cta_badge">Comienza Hoy</span>
+                </div>
+                <h2 style="font-size: 2.75rem; margin-bottom: 20px;" data-i18n="care_cta_title">¿Listo para dejar tu web en nuestras manos?</h2>
+                <p style="color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 36px;" data-i18n="care_cta_desc">
+                    Solicita la valoración técnica de tu proyecto y pon tu web en línea en menos de 20 días.
+                </p>
+
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://wa.me/573053862774?text=Hola%20Bruiser%20Tech%2C%20quisiera%20solicitar%20una%20valoraci%C3%B3n%20t%C3%A9cnica%20para%20Bruiser%20Care" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="care_cta_wa">
+                        💬 Valoración técnica por WhatsApp
+                    </a>
+                    <a href="contacto.html" class="btn btn-secondary" data-i18n="care_cta_form">
+                        ✉️ Formulario de contacto
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">bruiser</a>
+                <p data-i18n="footer_tagline">Consultoría de Software, Infraestructura Web y Arquitectura Digital.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="https://github.com/bruisertech" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.instagram.com/bruiser.tech" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+
+            <div class="footer-copy">
+                <p>Bruiser Tech &copy; 2026. Compiled in Cali, CO.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
