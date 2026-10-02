@@ -358,6 +358,8 @@ a {
     margin-top: 8px;
     margin-bottom: 16px;
     font-family: var(--font-body);
+    letter-spacing: normal;
+    word-spacing: normal;
 }
 
 .text-metallic-chrome {
