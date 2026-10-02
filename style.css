@@ -349,6 +349,39 @@ a {
     color: var(--brand-coral);
 }
 
+.hero-subtitle-script {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--brand-coral);
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    font-family: var(--font-body);
+}
+
+.text-metallic-chrome {
+    font-family: var(--font-heading);
+    font-size: 4.25rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    display: block;
+    margin-top: 10px;
+    line-height: 1.05;
+    background: linear-gradient(120deg, #161B22 0%, var(--brand-coral) 25%, #FAFAFA 50%, var(--brand-coral) 75%, #161B22 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: metallicShimmer 5s linear infinite;
+}
+
+@keyframes metallicShimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
 .hero-subtitle {
     font-size: 1.25rem;
     color: var(--text-secondary);
@@ -800,7 +833,7 @@ a {
         font-size: 2.5rem;
     }
 
-    .services-grid, .portfolio-grid, .testimonials-grid, .contact-wrapper {
+    .services-grid, .portfolio-grid, .testimonials-grid, .contact-wrapper, .two-paths-grid, .infra-grid {
         grid-template-columns: 1fr;
     }
 
