@@ -450,7 +450,14 @@ a {
     color: var(--text-secondary);
 }
 
-/* SERVICES GRID */
+/* TWO PATHS GRID & SERVICES GRID */
+.two-paths-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    width: 100%;
+}
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
