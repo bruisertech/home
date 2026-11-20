@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bruiser Tech - Consultoría Digital & Arquitectura B2B</title>
+    <meta name="description" content="Bruiser Tech - Consultoría de Software, Infraestructura Cloud B2B y Website as a Service en Cali, Colombia.">
     <link rel="icon" type="image/png" href="bruisertech.png">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,8 +13,9 @@
     <!-- Header Navigation -->
     <header class="navbar" id="navbar">
         <div class="nav-container container">
-            <a href="#inicio" class="nav-logo">
+            <a href="index.html" class="nav-logo">
                 <span class="logo-text">bruiser</span>
+                <span class="logo-dot"></span>
             </a>
 
             <nav class="nav-menu" id="nav-menu">
@@ -38,11 +40,13 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
                     </span>
                     <span class="theme-icon theme-icon-moon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 0 1 1-9-9Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                     </span>
                     <span class="theme-toggle-thumb"></span>
                 </button>
-                <a href="contacto.html" class="btn btn-primary nav-cta" data-i18n="nav_contact">contacto</a>
+                <a href="contacto.html" class="btn btn-primary nav-cta">
+                    <span data-i18n="nav_contact">contacto</span>
+                </a>
                 <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
                     <span></span>
                     <span></span>
@@ -54,26 +58,51 @@
 
     <main>
         <!-- Hero Section -->
-        <section id="inicio" class="hero-section section-padding">
+        <section id="inicio" class="hero-section">
             <div class="container hero-content">
                 <div class="badge">
                     <span class="badge-dot"></span>
                     <span data-i18n="hero_badge">Consultoría & Desarrollo B2B</span>
                 </div>
-                <h1 class="hero-title" style="margin-bottom: 12px;">
-                    <span style="color: var(--text-primary); font-weight: 800; font-size: 2.25rem; display: block;" data-i18n="hero_line1">¿Te abruma la infraestructura web?</span>
+                <h1 class="hero-title">
+                    <span class="hero-line1" data-i18n="hero_line1">¿Te abruma la infraestructura web?</span>
                     <span class="hero-subtitle-script" data-i18n="hero_line2">déjalo en nuestras manos ;)</span>
-                    <span style="display: block; margin-top: 10px;">
-                        <span style="color: var(--text-primary); font-family: var(--font-heading); font-size: 3.5rem; font-weight: 900; letter-spacing: -0.05em; display: inline-block; margin-right: 12px;" data-i18n="hero_line3_prefix">conoce</span>
-                        <span class="text-metallic-chrome" style="display: inline-block; margin-top: 0;" data-i18n="hero_line3_highlight">bruiserCare</span>
+                    <span class="hero-line3">
+                        <span class="hero-line3-prefix" data-i18n="hero_line3_prefix">conoce</span>
+                        <span class="text-metallic-chrome" data-i18n="hero_line3_highlight">bruiserCare</span>
                     </span>
                 </h1>
-                <p class="hero-subtitle" style="margin-top: 16px;" data-i18n="hero_subtitle">
+                <p class="hero-subtitle" data-i18n="hero_subtitle">
                     Tu web profesional en línea desde $45.900 COP / mes*. Sin enredos técnicos ni costos ocultos.
                 </p>
                 <div class="hero-ctas">
-                    <a href="bruisercare.html" class="btn btn-primary" data-i18n="hero_cta_primary">Descubrir bruiserCare</a>
-                    <a href="#servicios" class="btn btn-secondary" data-i18n="hero_cta_secondary">Ver Desarrollo Tradicional</a>
+                    <a href="bruisercare.html" class="btn btn-primary">
+                        <span data-i18n="hero_cta_primary">Descubrir bruiserCare</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                    <a href="#servicios" class="btn btn-secondary">
+                        <span data-i18n="hero_cta_secondary">Ver Desarrollo Tradicional</span>
+                    </a>
+                </div>
+
+                <!-- Trust / Metrics Bar -->
+                <div class="hero-trust-bar">
+                    <div class="trust-item">
+                        <span class="trust-number">99.9%</span>
+                        <span class="trust-label" data-i18n="trust_uptime">Uptime Garantizado</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-number">&lt;20 Días</span>
+                        <span class="trust-label" data-i18n="trust_delivery">Entrega a Producción</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-number">24/7</span>
+                        <span class="trust-label" data-i18n="trust_support">Monitoreo Proactivo</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-number">NVMe</span>
+                        <span class="trust-label" data-i18n="trust_hosting">Hosting Privado Cloud</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -91,28 +120,48 @@
 
                 <div class="pillars-grid">
                     <div class="pillar-card card-hover">
-                        <div class="pillar-icon">01</div>
+                        <div class="pillar-header">
+                            <div class="pillar-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            </div>
+                            <span class="pillar-number">01</span>
+                        </div>
                         <h3 data-i18n="pillar1_title">Mejorar eficiencia</h3>
                         <p class="pillar-subtitle" data-i18n="pillar1_subtitle">Procesos más ágiles</p>
                         <p data-i18n="pillar1_desc">Optimizamos flujos de trabajo para operar con mayor velocidad y menor fricción operativa en tus plataformas.</p>
                     </div>
 
                     <div class="pillar-card card-hover">
-                        <div class="pillar-icon">02</div>
+                        <div class="pillar-header">
+                            <div class="pillar-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                            </div>
+                            <span class="pillar-number">02</span>
+                        </div>
                         <h3 data-i18n="pillar2_title">Reducir fallos</h3>
                         <p class="pillar-subtitle" data-i18n="pillar2_subtitle">Operaciones precisas</p>
                         <p data-i18n="pillar2_desc">Automatizamos y estructuramos infraestructuras para minimizar caídas, errores críticos y retrabajo técnico.</p>
                     </div>
 
                     <div class="pillar-card card-hover">
-                        <div class="pillar-icon">03</div>
+                        <div class="pillar-header">
+                            <div class="pillar-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                            </div>
+                            <span class="pillar-number">03</span>
+                        </div>
                         <h3 data-i18n="pillar3_title">Escalar tu negocio</h3>
                         <p class="pillar-subtitle" data-i18n="pillar3_subtitle">Tecnología que crece contigo</p>
                         <p data-i18n="pillar3_desc">Arquitecturas preparadas para soportar alto tráfico, transacciones masivas e incremento sostenido de demanda.</p>
                     </div>
 
                     <div class="pillar-card card-hover">
-                        <div class="pillar-icon">04</div>
+                        <div class="pillar-header">
+                            <div class="pillar-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                            </div>
+                            <span class="pillar-number">04</span>
+                        </div>
                         <h3 data-i18n="pillar4_title">Desbloquear oportunidades</h3>
                         <p class="pillar-subtitle" data-i18n="pillar4_subtitle">Innovación a medida</p>
                         <p data-i18n="pillar4_desc">Desarrollo de software y soluciones a medida para liderar en tu sector y expandir tu presencia digital.</p>
@@ -125,58 +174,101 @@
         <section id="servicios" class="section-padding">
             <div class="container">
                 <!-- Two Paths Introductory Block -->
-                <div class="two-paths-block" style="margin-bottom: 80px;">
-                    <div class="section-header" style="margin-bottom: 40px;">
+                <div class="two-paths-block" style="margin-bottom: 96px;">
+                    <div class="section-header" style="margin-bottom: 48px;">
                         <div class="badge">
                             <span class="badge-dot"></span>
                             <span data-i18n="two_paths_badge">• RUTAS DE DESARROLLO</span>
                         </div>
-                        <h2 data-i18n="two_paths_title" style="font-size: 2.5rem;">Dos caminos para llevar tu proyecto a la realidad</h2>
+                        <h2 data-i18n="two_paths_title">Dos caminos para llevar tu proyecto a la realidad</h2>
                     </div>
 
                     <div class="two-paths-grid">
-                        <!-- Column 1: bruiserCare -->
-                        <div class="card-hover" style="background-color: var(--bg-card); border: 2px solid var(--brand-coral); border-radius: 24px; padding: 40px; box-shadow: var(--shadow-card); display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
-                            <div style="position: absolute; top: 16px; right: 16px; background-color: var(--brand-coral); color: #fff; font-size: 0.75rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; text-transform: uppercase;" data-i18n="path_care_tag">Suscripción WaaS</div>
+                        <!-- Column 1: bruiserCare (Featured) -->
+                        <div class="pricing-card featured card-hover">
+                            <div class="pricing-tag" data-i18n="path_care_tag">Suscripción WaaS</div>
                             <div>
-                                <h3 style="font-size: 2rem; color: var(--text-primary); margin-bottom: 6px;">bruiserCare</h3>
-                                <p style="font-size: 1.05rem; font-weight: 600; color: var(--brand-coral); margin-bottom: 20px; font-style: italic;" data-i18n="path_care_sub">
+                                <h3>bruiserCare</h3>
+                                <p class="pricing-subtitle" data-i18n="path_care_sub">
                                     Infraestructura + tu equipo técnico de confianza mes a mes.
                                 </p>
-                                <div style="font-size: 1.75rem; font-weight: 900; color: var(--text-primary); margin-bottom: 16px;" data-i18n="path_care_price">
-                                    Desde $45.900 COP* <span style="font-size: 1rem; font-weight: 600; color: var(--text-secondary);">/ mes</span>
+                                <div class="pricing-price" data-i18n="path_care_price">
+                                    Desde $45.900 COP* <span class="period">/ mes</span>
                                 </div>
-                                <p style="color: var(--text-secondary); font-size: 0.98rem; line-height: 1.6; margin-bottom: 16px;" data-i18n="path_care_desc">
+                                <p class="pricing-desc" data-i18n="path_care_desc">
                                     Web en línea en &lt;20 días, soporte básico ilimitado y servidores administrados.
                                 </p>
-                                <p style="font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-bottom: 24px;" data-i18n="price_disclaimer">
+
+                                <ul class="pricing-features">
+                                    <li class="pricing-feature-item">
+                                        <svg class="pricing-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                        <span>Tu web en línea en menos de 20 días tras confirmación</span>
+                                    </li>
+                                    <li class="pricing-feature-item">
+                                        <svg class="pricing-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                        <span>Hosting privado en la nube de alto rendimiento NVMe</span>
+                                    </li>
+                                    <li class="pricing-feature-item">
+                                        <svg class="pricing-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                        <span>Soporte básico ilimitado y monitoreo 24/7 de caídas</span>
+                                    </li>
+                                    <li class="pricing-feature-item">
+                                        <svg class="pricing-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                        <span>Parches de seguridad, SSL dedicado y backups automáticos</span>
+                                    </li>
+                                </ul>
+
+                                <p class="pricing-disclaimer" data-i18n="price_disclaimer">
                                     * Sujeto a valoración técnica inicial del proyecto.
                                 </p>
                             </div>
-                            <a href="bruisercare.html" class="btn btn-primary" style="width: 100%; text-align: center;" data-i18n="path_care_cta">
-                                Explorar plan detallado &rarr;
+                            <a href="bruisercare.html" class="btn btn-primary btn-full">
+                                <span data-i18n="path_care_cta">Explorar plan detallado</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                             </a>
                         </div>
 
                         <!-- Column 2: Desarrollo Tradicional -->
-                        <div class="card-hover" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 24px; padding: 40px; box-shadow: var(--shadow-card); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div class="pricing-card card-hover">
                             <div>
-                                <h3 style="font-size: 2rem; color: var(--text-primary); margin-bottom: 6px;">Desarrollo Tradicional</h3>
-                                <p style="font-size: 1.05rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 20px; font-style: italic;" data-i18n="path_trad_sub">
+                                <span class="service-badge" data-i18n="path_trad_tag">Proyecto Llave en Mano</span>
+                                <h3 style="margin-top: 6px;">Desarrollo Tradicional</h3>
+                                <p class="pricing-subtitle" style="color: var(--text-secondary);" data-i18n="path_trad_sub">
                                     Desarrollo y entrega llave en mano para gestión propia.
                                 </p>
-                                <div style="font-size: 1.75rem; font-weight: 900; color: var(--text-primary); margin-bottom: 16px;" data-i18n="path_trad_price">
-                                    Desde $455.990 COP* <span style="font-size: 1rem; font-weight: 600; color: var(--text-secondary);">pago único</span>
+                                <div class="pricing-price" data-i18n="path_trad_price">
+                                    Desde $455.990 COP* <span class="period">pago único</span>
                                 </div>
-                                <p style="color: var(--text-secondary); font-size: 0.98rem; line-height: 1.6; margin-bottom: 16px;" data-i18n="path_trad_desc">
+                                <p class="pricing-desc" data-i18n="path_trad_desc">
                                     Código propio, entrega completa y gestión autónoma.
                                 </p>
-                                <p style="font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-bottom: 24px;" data-i18n="price_disclaimer">
+
+                                <ul class="pricing-features">
+                                    <li class="pricing-feature-item">
+                                        <svg class="pricing-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                        <span>Propiedad total del 100% del código fuente entregado</span>
+                                    </li>
+                                    <li class="pricing-feature-item">
+                                        <svg class="pricing-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                        <span>Despliegue y configuración inicial en tu propio servidor</span>
+                                    </li>
+                                    <li class="pricing-feature-item">
+                                        <svg class="pricing-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                        <span>Sin cobros recurrentes mensuales obligatorios</span>
+                                    </li>
+                                    <li class="pricing-feature-item">
+                                        <svg class="pricing-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                        <span>Arquitectura a la medida exacta de tus requerimientos</span>
+                                    </li>
+                                </ul>
+
+                                <p class="pricing-disclaimer" data-i18n="price_disclaimer">
                                     * Sujeto a valoración técnica inicial del proyecto.
                                 </p>
                             </div>
-                            <a href="#contacto" class="btn btn-secondary" style="width: 100%; text-align: center;" data-i18n="path_trad_cta">
-                                Cotizar desarrollo único &rarr;
+                            <a href="#contacto" class="btn btn-secondary btn-full">
+                                <span data-i18n="path_trad_cta">Cotizar desarrollo único</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                             </a>
                         </div>
                     </div>
@@ -193,27 +285,73 @@
 
                 <div class="services-grid">
                     <div class="service-card card-hover">
-                        <div class="service-badge" data-i18n="srv1_badge">INFRAESTRUCTURA & CLOUD</div>
+                        <div class="service-card-top">
+                            <span class="service-badge" data-i18n="srv1_badge">INFRAESTRUCTURA & CLOUD</span>
+                            <div class="service-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                            </div>
+                        </div>
                         <h3 data-i18n="srv1_title">Infraestructura, Nube y Servidores</h3>
                         <p data-i18n="srv1_desc">Gestión integral de servidores Nginx y Apache, migraciones seguras (AWS, VPS, hosting dedicado), optimización de rendimiento, balanceo de carga y monitoreo 24/7.</p>
+                        <div class="tech-pills">
+                            <span class="tech-pill">Nginx</span>
+                            <span class="tech-pill">AWS Cloud</span>
+                            <span class="tech-pill">Hetzner VPS</span>
+                            <span class="tech-pill">Zero Downtime</span>
+                            <span class="tech-pill">Cloudflare WAF</span>
+                        </div>
                     </div>
 
                     <div class="service-card card-hover">
-                        <div class="service-badge" data-i18n="srv2_badge">BACKEND & API</div>
+                        <div class="service-card-top">
+                            <span class="service-badge" data-i18n="srv2_badge">BACKEND & API</span>
+                            <div class="service-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            </div>
+                        </div>
                         <h3 data-i18n="srv2_title">Desarrollo Backend & Integraciones</h3>
                         <p data-i18n="srv2_desc">Ingeniería de software en Python y PHP 8.3, diseño de APIs REST escalables, microservicios y acoplamiento fluido entre sistemas empresariales existentes.</p>
+                        <div class="tech-pills">
+                            <span class="tech-pill">Python 3.11</span>
+                            <span class="tech-pill">PHP 8.3</span>
+                            <span class="tech-pill">REST / GraphQL</span>
+                            <span class="tech-pill">PostgreSQL</span>
+                            <span class="tech-pill">Docker</span>
+                        </div>
                     </div>
 
                     <div class="service-card card-hover">
-                        <div class="service-badge" data-i18n="srv3_badge">WEB & E-COMMERCE</div>
+                        <div class="service-card-top">
+                            <span class="service-badge" data-i18n="srv3_badge">WEB & E-COMMERCE</span>
+                            <div class="service-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                            </div>
+                        </div>
                         <h3 data-i18n="srv3_title">Arquitectura Web & E-Commerce</h3>
                         <p data-i18n="srv3_desc">Creación de plataformas web de alto impacto, tiendas e-commerce a medida y desarrollos avanzados en WordPress y WooCommerce optimizados para velocidad y conversión.</p>
+                        <div class="tech-pills">
+                            <span class="tech-pill">WooCommerce</span>
+                            <span class="tech-pill">Headless E-Com</span>
+                            <span class="tech-pill">Custom Plugins</span>
+                            <span class="tech-pill">Core Web Vitals</span>
+                        </div>
                     </div>
 
                     <div class="service-card card-hover">
-                        <div class="service-badge" data-i18n="srv4_badge">SEGURIDAD & AUTOMATIZACIÓN</div>
+                        <div class="service-card-top">
+                            <span class="service-badge" data-i18n="srv4_badge">SEGURIDAD & AUTOMATIZACIÓN</span>
+                            <div class="service-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            </div>
+                        </div>
                         <h3 data-i18n="srv4_title">Seguridad & Automatización de Procesos</h3>
                         <p data-i18n="srv4_desc">Blindaje de endpoints, protección de la integridad de datos empresariales, auditorías de seguridad y automatización de flujos operativos repetitivos para reducir costos.</p>
+                        <div class="tech-pills">
+                            <span class="tech-pill">Pentesting</span>
+                            <span class="tech-pill">Zero Trust</span>
+                            <span class="tech-pill">SSL / TLS 1.3</span>
+                            <span class="tech-pill">Bash Automation</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -241,6 +379,11 @@
                             <span class="portfolio-tag" data-i18n="p1_tag">IA & Analytics</span>
                             <h3>Bruiser Crypto Engine</h3>
                             <p data-i18n="p1_desc">Algoritmos de inferencia y analítica predictiva. Arquitectura de procesamiento de datos en tiempo real diseñada para análisis y toma de decisiones autónomas.</p>
+                            <div class="tech-pills" style="margin-bottom: 20px;">
+                                <span class="tech-pill">Python 3.11</span>
+                                <span class="tech-pill">Time-Series</span>
+                                <span class="tech-pill">Docker</span>
+                            </div>
                         </div>
                     </div>
 
@@ -253,7 +396,15 @@
                             <span class="portfolio-tag" data-i18n="p2_tag">E-Commerce Desacoplado</span>
                             <h3>LH Parfum</h3>
                             <p data-i18n="p2_desc">Plataforma e-commerce desacoplada con frontend personalizado a medida y plugin propietario para consumo e integración automática de APIs.</p>
-                            <a href="https://lhparfum.com" target="_blank" rel="noopener noreferrer" class="portfolio-link" data-i18n="view_project">Ver sitio web &rarr;</a>
+                            <div class="tech-pills" style="margin-bottom: 20px;">
+                                <span class="tech-pill">PHP 8.3</span>
+                                <span class="tech-pill">Custom Plugin</span>
+                                <span class="tech-pill">REST API</span>
+                            </div>
+                            <a href="https://lhparfum.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+                                <span data-i18n="view_project">Ver sitio web</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </a>
                         </div>
                     </div>
 
@@ -266,7 +417,15 @@
                             <span class="portfolio-tag" data-i18n="p3_tag">Branding & Web Architecture</span>
                             <h3>SUY Ropa Interior</h3>
                             <p data-i18n="p3_desc">Arquitectura de marca, catálogo digital e interfaces de usuario para una presencia digital coherente y moderna.</p>
-                            <a href="https://bruisertech.github.io/suymanualdemarca/" target="_blank" rel="noopener noreferrer" class="portfolio-link" data-i18n="view_brand">Ver manual de marca &rarr;</a>
+                            <div class="tech-pills" style="margin-bottom: 20px;">
+                                <span class="tech-pill">Design System</span>
+                                <span class="tech-pill">Digital Catalog</span>
+                                <span class="tech-pill">Mobile UI</span>
+                            </div>
+                            <a href="https://bruisertech.github.io/suymanualdemarca/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+                                <span data-i18n="view_brand">Ver manual de marca</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </a>
                         </div>
                     </div>
 
@@ -279,7 +438,15 @@
                             <span class="portfolio-tag" data-i18n="p4_tag">Motion Design & Interactive</span>
                             <h3>AhoraForYou</h3>
                             <p data-i18n="p4_desc">Plataforma interactiva con animación web de alto rendimiento, optimizada para bajo impacto en el hilo principal del navegador.</p>
-                            <a href="https://ahoraforyou.com" target="_blank" rel="noopener noreferrer" class="portfolio-link" data-i18n="view_project">Ver sitio web &rarr;</a>
+                            <div class="tech-pills" style="margin-bottom: 20px;">
+                                <span class="tech-pill">Vanilla JS</span>
+                                <span class="tech-pill">GPU Acceleration</span>
+                                <span class="tech-pill">Core Web Vitals</span>
+                            </div>
+                            <a href="https://ahoraforyou.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+                                <span data-i18n="view_project">Ver sitio web</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -299,6 +466,7 @@
 
                 <div class="testimonials-grid">
                     <div class="testimonial-card card-hover">
+                        <div class="testimonial-stars">★★★★★</div>
                         <p class="quote" data-i18n="test1_quote">"Trabajar con Bruiser Tech fue un giro total para nuestra infraestructura. Migraron la plataforma desacoplada sin tiempo de inactividad y la velocidad de carga aumentó exponencialmente."</p>
                         <div class="client-info">
                             <div class="client-avatar">EC</div>
@@ -310,6 +478,7 @@
                     </div>
 
                     <div class="testimonial-card card-hover">
+                        <div class="testimonial-stars">★★★★★</div>
                         <p class="quote" data-i18n="test2_quote">"Resolvieron cuellos de botella críticos de arquitectura y consumo de APIs que otros proveedores consideraban inviables. La disponibilidad operativa de nuestros sistemas es ahora del 99.9%."</p>
                         <div class="client-info">
                             <div class="client-avatar">IT</div>
@@ -321,6 +490,7 @@
                     </div>
 
                     <div class="testimonial-card card-hover">
+                        <div class="testimonial-stars">★★★★★</div>
                         <p class="quote" data-i18n="test3_quote">"Entendieron la complejidad técnica desde el primer día. Desarrollaron una suite interactiva de alto rendimiento lista para soportar alto tráfico simultáneo."</p>
                         <div class="client-info">
                             <div class="client-avatar">CT</div>
@@ -349,7 +519,9 @@
 
                         <div class="contact-details">
                             <a href="https://wa.me/573053862774?text=Hola%20Bruiser%20Tech%2C%20quisiera%20cotizar%20un%20proyecto" target="_blank" rel="noopener noreferrer" class="contact-item">
-                                <div class="icon-box" style="font-size: 0.8rem; font-weight: 800; color: var(--brand-coral);">WA</div>
+                                <div class="icon-box" style="color: #25D366; background-color: rgba(37, 211, 102, 0.1);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                                </div>
                                 <div>
                                     <span class="label" data-i18n="contact_whatsapp_label">WhatsApp Directo</span>
                                     <span class="value">+57 305 386 2774</span>
@@ -357,7 +529,9 @@
                             </a>
 
                             <a href="mailto:contacto@bruiser.tech" class="contact-item">
-                                <div class="icon-box" style="font-size: 0.8rem; font-weight: 800; color: var(--brand-coral);">MAIL</div>
+                                <div class="icon-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                </div>
                                 <div>
                                     <span class="label" data-i18n="contact_email_label">Correo Electrónico</span>
                                     <span class="value">contacto@bruiser.tech</span>
@@ -365,7 +539,9 @@
                             </a>
 
                             <div class="contact-item">
-                                <div class="icon-box" style="font-size: 0.8rem; font-weight: 800; color: var(--brand-coral);">HQ</div>
+                                <div class="icon-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                </div>
                                 <div>
                                     <span class="label" data-i18n="contact_location_label">Ubicación</span>
                                     <span class="value">Cali, Colombia</span>
@@ -403,7 +579,10 @@
                                 <textarea id="message" name="message" rows="4" required placeholder="Cuéntanos sobre tus requerimientos o problemas técnicos..."></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-full" data-i18n="form_submit">Enviar mensaje</button>
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <span data-i18n="form_submit">Enviar mensaje</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -415,20 +594,40 @@
     <footer class="footer">
         <div class="container footer-container">
             <div class="footer-brand">
-                <a href="#inicio" class="footer-logo">bruiser</a>
+                <a href="index.html" class="footer-logo">
+                    <span>bruiser</span>
+                    <span class="logo-dot"></span>
+                </a>
                 <p data-i18n="footer_tagline">Consultoría de Software, Infraestructura Web y Arquitectura Digital.</p>
             </div>
 
+            <div class="footer-status-pill">
+                <span class="status-dot-green"></span>
+                <span data-i18n="footer_status">Sistemas y Red Operativos 100%</span>
+            </div>
+
             <div class="footer-links">
-                <a href="https://github.com/bruisertech" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.instagram.com/bruiser.tech" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://github.com/bruisertech" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    GitHub
+                </a>
+                <a href="https://www.instagram.com/bruiser.tech" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    Instagram
+                </a>
             </div>
 
             <div class="footer-copy">
-                <p>Bruiser Tech &copy; 2026. Compiled in Cali, CO.</p>
+                <p>Bruiser Tech &copy; 2026. Compiled in Cali, Colombia.</p>
+                <p>All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
 
     <script src="script.js"></script>
 </body>

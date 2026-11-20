@@ -41,18 +41,25 @@ document.addEventListener('DOMContentLoaded', () => {
             hero_cta_primary: "Descubrir bruiserCare",
             hero_cta_secondary: "Ver Desarrollo Tradicional",
 
+            // Trust Bar
+            trust_uptime: "Uptime Garantizado",
+            trust_delivery: "Entrega a Producción",
+            trust_support: "Monitoreo Proactivo",
+            trust_hosting: "Hosting Privado NVMe",
+
             // Two Paths Block
             two_paths_badge: "• RUTAS DE DESARROLLO",
             two_paths_title: "Dos caminos para llevar tu proyecto a la realidad",
             path_care_tag: "Suscripción WaaS",
             path_care_sub: "Infraestructura + tu equipo técnico de confianza mes a mes.",
-            path_care_price: 'Desde $45.900 COP* <span style="font-size: 1rem; font-weight: 600; color: var(--text-secondary);">/ mes</span>',
+            path_care_price: 'Desde $45.900 COP* <span class="period">/ mes</span>',
             path_care_desc: "Web en línea en &lt;20 días, soporte básico ilimitado y servidores administrados.",
-            path_care_cta: "Explorar plan detallado →",
+            path_care_cta: "Explorar plan detallado",
+            path_trad_tag: "Proyecto Llave en Mano",
             path_trad_sub: "Desarrollo y entrega llave en mano para gestión propia.",
-            path_trad_price: 'Desde $455.990 COP* <span style="font-size: 1rem; font-weight: 600; color: var(--text-secondary);">pago único</span>',
+            path_trad_price: 'Desde $455.990 COP* <span class="period">pago único</span>',
             path_trad_desc: "Código propio, entrega completa y gestión autónoma.",
-            path_trad_cta: "Cotizar desarrollo único →",
+            path_trad_cta: "Cotizar desarrollo único",
             price_disclaimer: "* Sujeto a valoración técnica inicial del proyecto.",
 
             // Bruiser Care Dedicated Page
@@ -156,8 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
             p4_tag: "Motion Design & Interactive",
             p4_desc: "Plataforma interactiva con animación web de alto rendimiento, optimizada para bajo impacto en el hilo principal del navegador.",
 
-            view_project: "Ver sitio web →",
-            view_brand: "Ver manual de marca →",
+            view_project: "Ver sitio web",
+            view_brand: "Ver manual de marca",
 
             testimonials_badge: "Testimonios",
             testimonials_title: "Lo Que Dicen Nuestros Clientes",
@@ -207,17 +214,28 @@ document.addEventListener('DOMContentLoaded', () => {
             projects_page_subtitle: "Descubre cómo transformamos desafíos técnicos complejos en sistemas eficientes, plataformas e-commerce ultrarrápidas y algoritmos de alta precisión.",
 
             // Pentesting page
-            pentest_badge: "Seguridad & Ciberdefensa",
-            pentest_title: "Simulador de Pentesting & Auditoría Web",
-            pentest_subtitle: "Ingresa el dominio de tu empresa para ejecutar un diagnóstico rápido de cabeceras de seguridad, puertos de servicio y configuración de certificados SSL.",
-            scanner_heading: "Escáner de Vulnerabilidades Web (Demo)",
-            scanner_sub: "Ingresa la URL pública de tu plataforma para simular la auditoría inicial de seguridad.",
-            scan_btn: "Escanear Sitio Web",
-            wip_title: "WORK IN PROGRESS — Módulo Automatizado en Desarrollo",
-            wip_desc: "Nuestro motor de prueba de penetración automatizado en tiempo real se encuentra actualmente en fase Beta activa. Para una auditoría técnica profunda ejecutada manualmente por nuestro equipo de infraestructura, solicita una revisión con un ingeniero senior.",
-            wip_cta: "Solicitar Pentesting Manual",
+            pentest_badge: "Ingeniería en Ciberdefensa & Pentesting Ético",
+            pentest_title: "Diagnóstico Preventivo & Auditoría de Intrusión Ética",
+            pentest_subtitle: "Pensamos como el atacante para blindar tus bases de datos, APIs y servidores antes de que ocurra una brecha. Audita tu postura perimetral en tiempo real y descubre cómo mitigar vectores de capa profunda.",
+            scanner_heading: "Auditor de Postura Digital y Ciberseguridad",
+            scanner_sub: "Ingresa el dominio público de tu empresa (ej. miempresa.com) para auditar en vivo la autenticación de identidad, certificados SSL y resistencia perimetral.",
+            scan_btn: "Ejecutar Diagnóstico",
+            packages_badge: "Servicios Profesionales de Ciberdefensa",
+            packages_title: "Paquetes de Blindaje Técnico y Pentesting Ético",
+            packages_subtitle: "Diseñados por ingenieros de ciberseguridad para proteger empresas, e-commerce y aplicaciones SaaS contra pérdidas de datos, extorsiones de ransomware y multas legales.",
+            audit_scope_badge: "Metodología Ética",
+            audit_scope_title: "Cómo Ejecutamos la Intrusión y el Blindaje",
+            check1_title: "Aislamiento de Bases de Datos & Inyección SQL",
+            check1_desc: "Detección de inyecciones SQL ciegas, desbordamiento de búfer, falta de sentencias preparadas (PDO) y aislamiento estricto de puertos de base de datos dentro de una red privada VPC.",
+            check2_title: "Seguridad en APIs REST/GraphQL & Tokens JWT",
+            check2_desc: "Evaluación de debilidades BOLA (Broken Object Level Authorization), algoritmos débiles de firma JWT (None-algorithm attack), control de sesiones y rate limiting anti-fuerza bruta.",
+            check3_title: "Hardening de Servidor Linux & Cierre de Puertos",
+            check3_desc: "Eliminación de servicios innecesarios, desactivación de login root por contraseña, configuración de llaves Ed25519, parches de kernel y reglas de firewall a nivel de red.",
+            check4_title: "Lógica de Negocio & Web Application Firewall",
+            check4_desc: "Simulación de manipulación de precios en compras, bypass de pasarelas de pago, inyecciones de código malicioso XSS y despliegue de reglas WAF de protección activa.",
 
-            footer_tagline: "Consultoría de Software, Infraestructura Web y Arquitectura Digital."
+            footer_tagline: "Consultoría de Software, Infraestructura Web y Arquitectura Digital.",
+            footer_status: "Sistemas y Red Operativos 100%"
         },
         en: {
             nav_home: "home",
@@ -237,18 +255,25 @@ document.addEventListener('DOMContentLoaded', () => {
             hero_cta_primary: "Discover bruiserCare",
             hero_cta_secondary: "View Traditional Development",
 
+            // Trust Bar
+            trust_uptime: "Guaranteed Uptime",
+            trust_delivery: "Production Delivery",
+            trust_support: "Proactive Monitoring",
+            trust_hosting: "Private NVMe Cloud",
+
             // Two Paths Block
             two_paths_badge: "• DEVELOPMENT PATHS",
             two_paths_title: "Two paths to bring your project to life",
             path_care_tag: "WaaS Subscription",
             path_care_sub: "Infrastructure + your trusted tech team month after month.",
-            path_care_price: 'From $45,900 COP* <span style="font-size: 1rem; font-weight: 600; color: var(--text-secondary);">/ month</span>',
+            path_care_price: 'From $45,900 COP* <span class="period">/ month</span>',
             path_care_desc: "Website live in &lt;20 days, unlimited basic support, and fully managed servers.",
-            path_care_cta: "Explore detailed plan →",
+            path_care_cta: "Explore detailed plan",
+            path_trad_tag: "Turnkey Project",
             path_trad_sub: "Turnkey development and delivery for self-management.",
-            path_trad_price: 'From $455,990 COP* <span style="font-size: 1rem; font-weight: 600; color: var(--text-secondary);">one-time payment</span>',
+            path_trad_price: 'From $455,990 COP* <span class="period">one-time payment</span>',
             path_trad_desc: "Own code, complete handover, and autonomous control.",
-            path_trad_cta: "Quote custom build →",
+            path_trad_cta: "Quote custom build",
             price_disclaimer: "* Subject to initial technical project assessment.",
 
             // Bruiser Care Dedicated Page
@@ -352,8 +377,8 @@ document.addEventListener('DOMContentLoaded', () => {
             p4_tag: "Motion Design & Interactive",
             p4_desc: "Interactive platform with high-performance web animations, optimized for minimal impact on the browser main thread.",
 
-            view_project: "Visit website →",
-            view_brand: "View brand manual →",
+            view_project: "Visit website",
+            view_brand: "View brand manual",
 
             testimonials_badge: "Testimonials",
             testimonials_title: "What Our Clients Say",
@@ -403,17 +428,28 @@ document.addEventListener('DOMContentLoaded', () => {
             projects_page_subtitle: "Discover how we turn complex technical challenges into efficient systems, lightning-fast e-commerce platforms, and high-precision algorithms.",
 
             // Pentesting page
-            pentest_badge: "Security & Cyberdefense",
-            pentest_title: "Pentesting Simulator & Web Audit",
-            pentest_subtitle: "Enter your company domain to run a rapid assessment of security headers, service ports, and SSL certificate setup.",
-            scanner_heading: "Web Vulnerability Scanner (Demo)",
-            scanner_sub: "Enter your platform public URL to simulate an initial security audit.",
-            scan_btn: "Scan Website",
-            wip_title: "WORK IN PROGRESS — Automated Module Under Active Development",
-            wip_desc: "Our real-time automated penetration test engine is currently in active Beta. For a deep manual technical audit conducted by senior infrastructure engineers, request a review with our team.",
-            wip_cta: "Request Manual Pentest",
+            pentest_badge: "Cyberdefense Engineering & Ethical Pentesting",
+            pentest_title: "Preventive Diagnostic & Ethical Intrusion Audit",
+            pentest_subtitle: "We think like the adversary to shield your databases, APIs, and servers before a breach occurs. Audit your perimeter posture in real time and discover how to eliminate deep-layer attack vectors.",
+            scanner_heading: "Digital Security & Posture Auditor",
+            scanner_sub: "Enter your company's public domain (e.g. yourcompany.com) to audit its identity authentication, SSL certificates, and perimeter resilience.",
+            scan_btn: "Run Diagnostic",
+            packages_badge: "Professional Cyberdefense Services",
+            packages_title: "Technical Hardening & Ethical Pentesting Packs",
+            packages_subtitle: "Engineered by cybersecurity specialists to shield companies, e-commerce, and SaaS platforms against data breaches, ransomware extortion, and regulatory fines.",
+            audit_scope_badge: "Ethical Methodology",
+            audit_scope_title: "How We Execute Intrusion & Hardening",
+            check1_title: "Database Isolation & SQL Injection Defense",
+            check1_desc: "Detection of blind SQLi, buffer overruns, missing PDO prepared statements, and strict isolation of database ports within an isolated VPC network.",
+            check2_title: "REST/GraphQL API Security & JWT Tokens",
+            check2_desc: "Evaluation of BOLA (Broken Object Level Authorization) flaws, weak JWT signing algorithms, session controls, and anti-brute force rate limiting.",
+            check3_title: "Linux Server Hardening & Port Exposure Control",
+            check3_desc: "Elimination of redundant services, disabling root password login, configuring Ed25519 keys, kernel patching, and network-level firewall filtering.",
+            check4_title: "Business Logic Flaws & Web Application Firewall",
+            check4_desc: "Simulation of cart price tampering, payment gateway bypasses, stored XSS payload injections, and active WAF ruleset deployment.",
 
-            footer_tagline: "Software Consulting, Web Infrastructure & Digital Architecture."
+            footer_tagline: "Software Consulting, Web Infrastructure & Digital Architecture.",
+            footer_status: "All Systems Operational 100%"
         }
     };
 
@@ -431,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Translate elements with data-i18n
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (translations[lang][key]) {
+            if (translations[lang] && translations[lang][key]) {
                 if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                     el.placeholder = translations[lang][key];
                 } else {
@@ -452,17 +488,47 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileToggle && navMenu) {
         mobileToggle.addEventListener('click', () => {
             navMenu.classList.toggle('mobile-open');
+            mobileToggle.classList.toggle('active');
         });
 
         // Close menu when clicking link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('mobile-open');
+                mobileToggle.classList.remove('active');
             });
         });
     }
 
-    // 3. Contact Form WhatsApp Redirection
+    // 3. Navbar scroll effect & Back to Top
+    const navbar = document.getElementById('navbar');
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        const scrollPos = window.scrollY;
+        if (navbar) {
+            if (scrollPos > 30) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+        if (backToTopBtn) {
+            if (scrollPos > 400) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }
+    });
+
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // 4. Contact Form WhatsApp Redirection
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
@@ -486,55 +552,564 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Pentesting Interactive Terminal Simulation
+    // 5. Pentesting Real Diagnostic Engine & Lead Conversion Funnel
     const pentestForm = document.getElementById('pentest-scanner-form');
     const terminalOutput = document.getElementById('terminal-output');
+    const scanBtn = document.getElementById('scan-btn');
+    const resultsCard = document.getElementById('audit-results-card');
 
     if (pentestForm && terminalOutput) {
-        pentestForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const targetUrl = document.getElementById('target-url')?.value || 'https://tuempresa.com';
+        function appendTerminalLine(text, color = '#94a3b8', isBold = false) {
+            const line = document.createElement('div');
+            line.style.marginBottom = '4px';
+            line.style.color = color;
+            if (isBold) line.style.fontWeight = 'bold';
+            line.textContent = text;
+            terminalOutput.appendChild(line);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
 
+        function sanitizeDomain(input) {
+            if (!input) return '';
+            let d = input.trim().toLowerCase();
+            d = d.replace(/^[a-zA-Z]+:\/\//, ''); // strip https:// or http://
+            d = d.split('/')[0].split('?')[0].split('#')[0]; // strip path, query, hash
+            d = d.split(':')[0]; // strip port
+            d = d.replace(/\.+$/, ''); // strip trailing dots
+            return d;
+        }
+
+        async function fetchDns(name, type) {
+            try {
+                const res = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(name)}&type=${encodeURIComponent(type)}`);
+                if (!res.ok) return null;
+                return await res.json();
+            } catch (err) {
+                return null;
+            }
+        }
+
+        async function fetchSslCert(domainName) {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 6500);
+            try {
+                const res = await fetch(`https://networkcalc.com/api/security/certificate/${encodeURIComponent(domainName)}`, {
+                    signal: controller.signal
+                });
+                clearTimeout(timeoutId);
+                if (!res.ok) return null;
+                return await res.json();
+            } catch (err) {
+                clearTimeout(timeoutId);
+                return null;
+            }
+        }
+
+        pentestForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const rawInput = document.getElementById('target-url')?.value || '';
+            const domain = sanitizeDomain(rawInput);
+
+            // Validation
+            const domainRegex = /^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$/;
             terminalOutput.innerHTML = '';
 
-            const logs = [
-                `[+] Iniciando BruiserSec Audit Engine en ${targetUrl}...`,
-                `[+] Resolviendo DNS A/AAAA registros... OK`,
-                `[+] Conectando a target host vía TLS 1.3... SSL Handshake Exitoso`,
-                `[*] Inspeccionando cabeceras HTTP:`,
-                `    - Content-Security-Policy (CSP): [PRESENTE]`,
-                `    - Strict-Transport-Security (HSTS): [DETECTADO - 31536000s]`,
-                `    - X-Frame-Options: [SAMEORIGIN]`,
-                `[*] Realizando banner grabbing en puertos de servicio (80, 443, 8080, 8443)...`,
-                `[!] ALERTA: Módulo de escaneo profundo automatizado en desarrollo (Work in Progress).`,
-                `[+] Para obtener una auditoría manual exhaustiva y prueba de penetración en tiempo real, contacta directamente a nuestro equipo técnico.`
-            ];
+            const headerBar = document.createElement('div');
+            headerBar.className = 'terminal-header';
+            headerBar.innerHTML = `
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+                <span class="terminal-title">bruiser-sec-engine v3.3.0 -- offensive & defensive audit</span>
+            `;
+            terminalOutput.appendChild(headerBar);
 
-            let index = 0;
-            const scanBtn = document.getElementById('scan-btn');
-            if (scanBtn) scanBtn.disabled = true;
+            if (!domain || !domainRegex.test(domain)) {
+                appendTerminalLine(`[!] Error: El dominio '${rawInput}' no tiene un formato válido.`, '#ef4444', true);
+                appendTerminalLine(`[!] Por favor ingresa un dominio público como: tuempresa.com o subdominio.empresa.com`, '#f59e0b');
+                return;
+            }
 
-            const interval = setInterval(() => {
-                if (index < logs.length) {
-                    const line = document.createElement('div');
-                    line.style.marginBottom = '4px';
-                    if (logs[index].startsWith('[!]')) {
-                        line.style.color = '#f59e0b';
-                        line.style.fontWeight = 'bold';
-                    } else if (logs[index].startsWith('[+]')) {
-                        line.style.color = '#10b981';
-                    } else {
-                        line.style.color = '#9ca3af';
+            // Disable button during execution
+            if (scanBtn) {
+                scanBtn.disabled = true;
+                scanBtn.innerHTML = `
+                    <span>Auditando Perímetro & Vectores...</span>
+                    <svg class="spin-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                `;
+            }
+
+            appendTerminalLine(`[+] ========================================================`, '#3b82f6');
+            appendTerminalLine(`[+] BRUISER-SEC OFFENSIVE AUDIT ENGINE [LIVE MODE]`, '#3b82f6', true);
+            appendTerminalLine(`[+] Objetivo fijado: ${domain}`, '#ffffff', true);
+            appendTerminalLine(`[+] Fecha/Hora: ${new Date().toISOString()}`, '#94a3b8');
+            appendTerminalLine(`[+] Iniciando análisis perimetral y modelado de vectores de ataque...`, '#94a3b8');
+            appendTerminalLine(`[+] ========================================================`, '#3b82f6');
+
+            // Apex domain calculation for fallback lookups
+            const domainParts = domain.split('.');
+            const apexDomain = domainParts.length > 2 ? domainParts.slice(-2).join('.') : domain;
+
+            // Step 1: Query DNS
+            appendTerminalLine(`[*] [1/4] Resolviendo infraestructura DNS (A, AAAA, CAA) vía Google DoH...`, '#94a3b8');
+            const [dnsA, dnsAAAA, dnsCAA] = await Promise.all([
+                fetchDns(domain, 'A'),
+                fetchDns(domain, 'AAAA'),
+                fetchDns(domain, 'CAA')
+            ]);
+
+            const aIps = (dnsA?.Answer || []).filter(a => a.type === 1).map(a => a.data);
+            const aaaaIps = (dnsAAAA?.Answer || []).filter(a => a.type === 28).map(a => a.data);
+            const hasA = aIps.length > 0;
+            const hasAAAA = aaaaIps.length > 0;
+            const caaRecords = (dnsCAA?.Answer || []).filter(a => a.type === 257).map(a => a.data.replace(/"/g, ''));
+
+            if (hasA || hasAAAA) {
+                appendTerminalLine(`    [OK] DNS Activo: ${aIps.length} IPv4 (${aIps.slice(0, 2).join(', ')}${aIps.length > 2 ? '...' : ''}), ${aaaaIps.length} IPv6`, '#10b981');
+            } else if (dnsA?.Status === 3) {
+                appendTerminalLine(`    [!] NXDOMAIN: El dominio no existe o no tiene resolución pública activa.`, '#ef4444', true);
+            } else {
+                appendTerminalLine(`    [?] Sin registros A/AAAA directos detectados en este host.`, '#f59e0b');
+            }
+
+            // Step 2: DMARC Anti-Spoofing
+            appendTerminalLine(`[*] [2/4] Auditando autenticación Anti-Spoofing & Phishing (DMARC)...`, '#94a3b8');
+            let dmarcRes = await fetchDns(`_dmarc.${domain}`, 'TXT');
+            if ((!dmarcRes || !dmarcRes.Answer) && apexDomain !== domain) {
+                dmarcRes = await fetchDns(`_dmarc.${apexDomain}`, 'TXT');
+            }
+
+            let dmarcRecord = null;
+            let dmarcPolicy = 'missing'; // 'reject', 'quarantine', 'none', 'missing'
+            if (dmarcRes?.Answer) {
+                for (const ans of dmarcRes.Answer) {
+                    const txt = (ans.data || '').replace(/"/g, '');
+                    if (txt.toLowerCase().includes('v=dmarc1')) {
+                        dmarcRecord = txt;
+                        if (/p=reject/i.test(txt)) dmarcPolicy = 'reject';
+                        else if (/p=quarantine/i.test(txt)) dmarcPolicy = 'quarantine';
+                        else if (/p=none/i.test(txt)) dmarcPolicy = 'none';
+                        break;
                     }
-                    line.innerText = logs[index];
-                    terminalOutput.appendChild(line);
-                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
-                    index++;
-                } else {
-                    clearInterval(interval);
-                    if (scanBtn) scanBtn.disabled = false;
                 }
-            }, 350);
+            }
+
+            if (dmarcPolicy === 'reject' || dmarcPolicy === 'quarantine') {
+                appendTerminalLine(`    [OK] DMARC Blindado: Política '${dmarcPolicy.toUpperCase()}' activa (Inmune a suplantación).`, '#10b981');
+            } else if (dmarcPolicy === 'none') {
+                appendTerminalLine(`    [ALERTA] DMARC Incompleto: Política 'p=none' (Solo monitoreo, no bloquea correos falsos).`, '#f59e0b');
+            } else {
+                appendTerminalLine(`    [CRÍTICO] Sin DMARC: Vulnerable a suplantación corporativa (Email Spoofing).`, '#ef4444', true);
+            }
+
+            // Step 3: SPF Sender Policy
+            appendTerminalLine(`[*] [3/4] Inspeccionando registro de autorización de remitentes (SPF)...`, '#94a3b8');
+            let spfRes = await fetchDns(domain, 'TXT');
+            if ((!spfRes || !spfRes.Answer) && apexDomain !== domain) {
+                spfRes = await fetchDns(apexDomain, 'TXT');
+            }
+
+            let spfRecord = null;
+            if (spfRes?.Answer) {
+                for (const ans of spfRes.Answer) {
+                    const txt = (ans.data || '').replace(/"/g, '');
+                    if (txt.toLowerCase().startsWith('v=spf1') || txt.toLowerCase().includes('v=spf1')) {
+                        spfRecord = txt;
+                        break;
+                    }
+                }
+            }
+
+            if (spfRecord) {
+                appendTerminalLine(`    [OK] SPF Configurado: Lista blanca de servidores de correo autorizados activa.`, '#10b981');
+            } else {
+                appendTerminalLine(`    [ALERTA] Sin SPF: No se detectó política de autorización de remitentes.`, '#f59e0b');
+            }
+
+            // Step 4: SSL/TLS Certificate Analysis
+            appendTerminalLine(`[*] [4/4] Verificando cifrado de transporte y certificado TLS/SSL...`, '#94a3b8');
+            const certRes = await fetchSslCert(domain);
+
+            let sslValid = false;
+            let sslIssuer = 'No detectado';
+            let sslValidTo = null;
+            let sslDaysLeft = 0;
+
+            if (certRes?.status === 'OK' && certRes?.certificate) {
+                const cert = certRes.certificate;
+                sslIssuer = cert.issued_by || cert.issuer || 'Emisor CA Reconocido';
+                if (cert.valid_to) {
+                    sslValidTo = new Date(cert.valid_to);
+                    const now = new Date();
+                    sslDaysLeft = Math.ceil((sslValidTo - now) / (1000 * 60 * 60 * 24));
+                    sslValid = sslDaysLeft > 0;
+                }
+            }
+
+            if (sslValid) {
+                appendTerminalLine(`    [OK] TLS/SSL Válido: Emitido por ${sslIssuer} (Expira en ${sslDaysLeft} días).`, '#10b981');
+            } else if (hasA) {
+                appendTerminalLine(`    [INFO] Inspección remota de certificado TLS limitada por timeout o proxy perimetral.`, '#94a3b8');
+            } else {
+                appendTerminalLine(`    [CRÍTICO] Sin certificado SSL detectable o host no responde en puerto seguro 443.`, '#ef4444');
+            }
+
+            // Calculate Security Score (0 to 100)
+            let score = 0;
+            const remediations = [];
+
+            // Score: SSL (30 pts)
+            if (sslValid) {
+                if (sslDaysLeft < 15) {
+                    score += 15;
+                    remediations.push({
+                        type: 'warn',
+                        title: 'Certificado SSL próximo a expirar',
+                        desc: `El certificado TLS vence en ${sslDaysLeft} días. Programa la renovación de inmediato para evitar bloqueos del navegador.`
+                    });
+                } else {
+                    score += 30;
+                }
+            } else if (hasA) {
+                score += 15;
+                remediations.push({
+                    type: 'info',
+                    title: 'Auditoría SSL / HTTPS Perimetral',
+                    desc: `Verifica que el puerto 443 tenga configurada la redirección 301 obligatoria hacia HTTPS y que la cabecera HSTS esté activa.`
+                });
+            } else {
+                remediations.push({
+                    type: 'fail',
+                    title: 'Certificado SSL Inexistente o Expirado',
+                    desc: 'El sitio no cuenta con cifrado TLS activo. El tráfico viaja en texto plano y los navegadores modernos lo clasificarán como No Seguro.'
+                });
+            }
+
+            // Score: DMARC (30 pts)
+            if (dmarcPolicy === 'reject' || dmarcPolicy === 'quarantine') {
+                score += 30;
+            } else if (dmarcPolicy === 'none') {
+                score += 15;
+                remediations.push({
+                    type: 'warn',
+                    title: 'Política DMARC en modo pasivo (p=none)',
+                    desc: `Tu dominio publica DMARC pero solo en modo de observación. Se recomienda migrar gradualmente a 'p=quarantine' o 'p=reject' para bloquear activamente correos falsificados.`
+                });
+            } else {
+                remediations.push({
+                    type: 'fail',
+                    title: 'Vulnerabilidad Crítica de Suplantación (Sin DMARC)',
+                    desc: `Cualquier atacante puede usurpar la identidad de @${domain} y enviar correos de phishing en tu nombre. Es prioritario configurar el registro _dmarc.${domain}.`
+                });
+            }
+
+            // Score: SPF (25 pts)
+            if (spfRecord) {
+                score += 25;
+            } else {
+                remediations.push({
+                    type: 'fail',
+                    title: 'Falta Registro SPF (Sender Policy Framework)',
+                    desc: `No se encontró registro SPF (v=spf1). Los proveedores de correo receptores pueden rechazar tus correos legítimos o enviarlos a la carpeta de Spam.`
+                });
+            }
+
+            // Score: DNS (10 pts)
+            if (hasA || hasAAAA) {
+                score += 10;
+            } else {
+                remediations.push({
+                    type: 'fail',
+                    title: 'Resolución DNS Incompleta',
+                    desc: 'No se detectaron registros de host IPv4 o IPv6 para este nombre. Revisa la zona DNS en tus servidores de nombres autorizados.'
+                });
+            }
+
+            // Score: CAA (5 pts)
+            if (caaRecords.length > 0) {
+                score += 5;
+            } else {
+                remediations.push({
+                    type: 'info',
+                    title: 'Restricción de Emisión de Certificados (CAA)',
+                    desc: `Se recomienda configurar registros CAA para restringir qué autoridades certificadoras (ej. Let's Encrypt, Cloudflare) pueden emitir certificados para tu dominio.`
+                });
+            }
+
+            if (score >= 90) {
+                remediations.unshift({
+                    type: 'pass',
+                    title: 'Excelente Postura Perimetral Superficial',
+                    desc: 'Tu dominio cuenta con las configuraciones criptográficas y de identidad anti-phishing más robustas recomendadas por las normas OWASP y NIST. Sin embargo, recuerda que la capa profunda (base de datos y APIs) requiere auditoría manual.'
+                });
+            }
+
+            // Determine Grade & Text
+            let grade = 'D';
+            let gradeClass = 'score-d';
+            let statusText = 'Riesgo Crítico';
+
+            if (score >= 90) {
+                grade = 'A';
+                gradeClass = 'score-a';
+                statusText = 'Excelente Protección';
+            } else if (score >= 75) {
+                grade = 'B';
+                gradeClass = 'score-b';
+                statusText = 'Protección Buena';
+            } else if (score >= 50) {
+                grade = 'C';
+                gradeClass = 'score-c';
+                statusText = 'Riesgo Moderado';
+            }
+
+            // Output Terminal Summary
+            appendTerminalLine(`[+] ========================================================`, '#10b981');
+            appendTerminalLine(`[+] AUDITORÍA DE SUPERFICIE FINALIZADA CON ÉXITO`, '#10b981', true);
+            appendTerminalLine(`[+] Puntuación Perimetral: ${score}/100 (Grado ${grade}) - ${statusText}`, '#10b981', true);
+            appendTerminalLine(`[!] ATENCIÓN: Iniciando modelado de amenazas en capa profunda (Base de Datos / APIs)...`, '#f59e0b', true);
+            appendTerminalLine(`[+] Desplegando informe ejecutivo interactivo y plan de blindaje abajo...`, '#3b82f6');
+            appendTerminalLine(`[+] ========================================================`, '#10b981');
+
+            // Render Results Card
+            if (resultsCard) {
+                resultsCard.style.display = 'block';
+
+                // Domain & Timestamp
+                const domainBadge = document.getElementById('report-domain-badge');
+                if (domainBadge) domainBadge.textContent = `DOMINIO: ${domain.toUpperCase()}`;
+
+                const timestampEl = document.getElementById('report-timestamp');
+                if (timestampEl) timestampEl.textContent = `Inspección finalizada: ${new Date().toLocaleString()}`;
+
+                // Score Circle & Status
+                const scoreCircle = document.getElementById('score-circle');
+                if (scoreCircle) {
+                    scoreCircle.className = `score-circle ${gradeClass}`;
+                }
+
+                const scoreGrade = document.getElementById('score-grade');
+                if (scoreGrade) scoreGrade.textContent = grade;
+
+                const scorePct = document.getElementById('score-pct');
+                if (scorePct) scorePct.textContent = `${score}%`;
+
+                const statusTextEl = document.getElementById('score-status-text');
+                if (statusTextEl) statusTextEl.textContent = statusText;
+
+                // Pillar 1: SSL
+                const certBadge = document.getElementById('cert-status-badge');
+                const certMeta = document.getElementById('cert-meta');
+                if (certBadge) {
+                    if (sslValid) {
+                        certBadge.className = `audit-status-badge ${sslDaysLeft < 15 ? 'status-warn' : 'status-pass'}`;
+                        certBadge.textContent = sslDaysLeft < 15 ? 'POR VENCER' : 'VÁLIDO';
+                    } else if (hasA) {
+                        certBadge.className = 'audit-status-badge status-warn';
+                        certBadge.textContent = 'REVISAR';
+                    } else {
+                        certBadge.className = 'audit-status-badge status-fail';
+                        certBadge.textContent = 'NO DETECTADO';
+                    }
+                }
+                if (certMeta) {
+                    if (sslValid) {
+                        certMeta.textContent = `Emisor: ${sslIssuer} | Vence: ${sslValidTo.toLocaleDateString()} (${sslDaysLeft} días)`;
+                    } else if (hasA) {
+                        certMeta.textContent = 'Host resuelve DNS; confirmar redirección 301 HTTPS';
+                    } else {
+                        certMeta.textContent = 'Sin certificado TLS accesible';
+                    }
+                }
+
+                // Pillar 2: DMARC
+                const dmarcBadge = document.getElementById('dmarc-status-badge');
+                const dmarcMeta = document.getElementById('dmarc-meta');
+                if (dmarcBadge) {
+                    if (dmarcPolicy === 'reject' || dmarcPolicy === 'quarantine') {
+                        dmarcBadge.className = 'audit-status-badge status-pass';
+                        dmarcBadge.textContent = 'PROTEGIDO';
+                    } else if (dmarcPolicy === 'none') {
+                        dmarcBadge.className = 'audit-status-badge status-warn';
+                        dmarcBadge.textContent = 'SOLO MONITOREO';
+                    } else {
+                        dmarcBadge.className = 'audit-status-badge status-fail';
+                        dmarcBadge.textContent = 'VULNERABLE';
+                    }
+                }
+                if (dmarcMeta) {
+                    if (dmarcRecord) {
+                        dmarcMeta.textContent = dmarcRecord.length > 70 ? dmarcRecord.substring(0, 70) + '...' : dmarcRecord;
+                    } else {
+                        dmarcMeta.textContent = `Sin registro en _dmarc.${domain}`;
+                    }
+                }
+
+                // Pillar 3: SPF
+                const spfBadge = document.getElementById('spf-status-badge');
+                const spfMeta = document.getElementById('spf-meta');
+                if (spfBadge) {
+                    if (spfRecord) {
+                        spfBadge.className = 'audit-status-badge status-pass';
+                        spfBadge.textContent = 'CONFIGURADO';
+                    } else {
+                        spfBadge.className = 'audit-status-badge status-fail';
+                        spfBadge.textContent = 'NO DETECTADO';
+                    }
+                }
+                if (spfMeta) {
+                    if (spfRecord) {
+                        spfMeta.textContent = spfRecord.length > 70 ? spfRecord.substring(0, 70) + '...' : spfRecord;
+                    } else {
+                        spfMeta.textContent = `Sin registro v=spf1 en DNS de ${domain}`;
+                    }
+                }
+
+                // Pillar 4: DNS & CAA
+                const dnsBadge = document.getElementById('dns-status-badge');
+                const dnsMeta = document.getElementById('dns-meta');
+                if (dnsBadge) {
+                    if (hasA || hasAAAA) {
+                        dnsBadge.className = 'audit-status-badge status-pass';
+                        dnsBadge.textContent = caaRecords.length > 0 ? 'ROBUSTO' : 'BÁSICO';
+                    } else {
+                        dnsBadge.className = 'audit-status-badge status-fail';
+                        dnsBadge.textContent = 'FALLA';
+                    }
+                }
+                if (dnsMeta) {
+                    const ipSummary = aIps.length > 0 ? `IPv4: ${aIps.slice(0, 2).join(', ')}` : (aaaaIps.length > 0 ? 'IPv6 activo' : 'Sin IPs');
+                    const caaSummary = caaRecords.length > 0 ? `CAA: Activo (${caaRecords.length})` : 'CAA: No configurado';
+                    dnsMeta.textContent = `${ipSummary} | ${caaSummary}`;
+                }
+
+                // Remediation List
+                const remediationList = document.getElementById('remediation-list');
+                if (remediationList) {
+                    remediationList.innerHTML = '';
+                    remediations.forEach(rem => {
+                        const li = document.createElement('li');
+                        li.style.marginBottom = '8px';
+                        li.innerHTML = `<strong>${rem.title}:</strong> ${rem.desc}`;
+                        remediationList.appendChild(li);
+                    });
+                }
+
+                // Update Personalized Executive Proposal Box
+                const proposalHeading = document.getElementById('proposal-target-heading');
+                if (proposalHeading) {
+                    proposalHeading.textContent = `Propuesta de Blindaje Integral para ${domain.toUpperCase()}`;
+                }
+
+                const proposalDesc = document.getElementById('proposal-target-desc');
+                if (proposalDesc) {
+                    proposalDesc.textContent = `Con base en el puntaje perimetral (${score}/100 - Grado ${grade}) y la exposición potencial para ${domain}, nuestro equipo recomienda priorizar el aislamiento estricto de base de datos, mitigación de inyecciones SQL y pruebas de penetración OWASP en lógica de negocio.`;
+                }
+
+                // Update 3 Deep Vector Direct CTAs
+                const dbShieldBtn = document.getElementById('db-shield-btn');
+                if (dbShieldBtn) {
+                    const dbMsg = `*Solicitud de Blindaje de Base de Datos*\n\n` +
+                        `*Dominio:* ${domain}\n` +
+                        `*Score Perimetral:* Grado ${grade} (${score}/100)\n\n` +
+                        `Hola Bruiser Tech, deseo cotizar el Blindaje de Base de Datos y mitigación de inyecciones SQLi para mi plataforma.`;
+                    dbShieldBtn.href = `https://wa.me/573053862774?text=${encodeURIComponent(dbMsg)}`;
+                }
+
+                const apiPentestBtn = document.getElementById('api-pentest-btn');
+                if (apiPentestBtn) {
+                    const apiMsg = `*Solicitud de Pentesting de APIs y OWASP*\n\n` +
+                        `*Dominio:* ${domain}\n\n` +
+                        `Hola Bruiser Tech, deseo agendar una prueba de intrusión ética en APIs y lógica de autenticación para mi aplicación.`;
+                    apiPentestBtn.href = `https://wa.me/573053862774?text=${encodeURIComponent(apiMsg)}`;
+                }
+
+                const darkwebAuditBtn = document.getElementById('darkweb-audit-btn');
+                if (darkwebAuditBtn) {
+                    const darkMsg = `*Solicitud de Auditoría Dark Web*\n\n` +
+                        `*Dominio:* ${domain}\n\n` +
+                        `Hola Bruiser Tech, deseo solicitar un reporte de credenciales y correos corporativos @${domain} expuestos en la Dark Web.`;
+                    darkwebAuditBtn.href = `https://wa.me/573053862774?text=${encodeURIComponent(darkMsg)}`;
+                }
+
+                // Pre-fill Main WhatsApp link
+                const waBtn = document.getElementById('remediation-wa-btn');
+                if (waBtn) {
+                    const waText = `*Diagnóstico Preventivo BruiserSec*\n\n` +
+                        `*Dominio:* ${domain}\n` +
+                        `*Calificación:* Grado ${grade} (${score}/100)\n` +
+                        `*Estado Perimetral:* ${statusText}\n` +
+                        `*SSL/TLS:* ${sslValid ? 'Válido' : 'Revisión Requerida'}\n` +
+                        `*DMARC:* ${dmarcPolicy.toUpperCase()}\n` +
+                        `*SPF:* ${spfRecord ? 'Configurado' : 'Faltante'}\n\n` +
+                        `Hola Bruiser Tech, realicé el diagnóstico de mi sitio y deseo contratar una auditoría ética y blindaje de base de datos para proteger mi empresa.`;
+
+                    waBtn.href = `https://wa.me/573053862774?text=${encodeURIComponent(waText)}`;
+                }
+
+                // Smooth scroll down to the card
+                resultsCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+
+            // Restore scan button
+            if (scanBtn) {
+                scanBtn.disabled = false;
+                scanBtn.innerHTML = `
+                    <span data-i18n="scan_btn">${currentLang === 'en' ? 'Run Diagnostic' : 'Ejecutar Diagnóstico'}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                `;
+            }
+        });
+    }
+
+    // 6. Interactive Dark Web Corporate Email Risk Simulator
+    const darkwebForm = document.getElementById('darkweb-test-form');
+    const darkwebInput = document.getElementById('darkweb-email');
+    const darkwebBtn = document.getElementById('darkweb-btn');
+    const darkwebResult = document.getElementById('darkweb-result');
+
+    if (darkwebForm && darkwebInput && darkwebResult) {
+        darkwebForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = darkwebInput.value.trim().toLowerCase();
+            if (!email || !email.includes('@')) return;
+
+            const emailDomain = email.split('@')[1];
+
+            if (darkwebBtn) {
+                darkwebBtn.disabled = true;
+                darkwebBtn.innerHTML = `<span>Consultando Repositorios...</span> <svg class="spin-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>`;
+            }
+
+            setTimeout(() => {
+                darkwebResult.style.display = 'block';
+                darkwebResult.innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                        <span class="audit-status-badge status-warn" style="font-size: 0.76rem;">ALERTA DE VECTOR HUMANO & CREDENCIALES</span>
+                        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">${email}</span>
+                    </div>
+                    <h4 style="font-size: 1.15rem; margin-bottom: 8px; color: var(--text-primary);">Evaluación de Exposición para la Organización @${emailDomain}</h4>
+                    <p style="margin-bottom: 12px; color: var(--text-secondary); font-size: 0.92rem;">
+                        Las bases de datos de ciberinteligencia registran que el <strong>80% de los accesos no autorizados a bases de datos y servidores cloud</strong> se originan mediante credenciales legítimas robadas por troyanos Infostealer (RedLine, Lumma, Vidar) instalados en equipos de empleados.
+                    </p>
+                    <div style="background: var(--bg-secondary); border-left: 3px solid #f59e0b; padding: 14px 16px; margin-bottom: 18px; border-radius: var(--radius-sm); font-size: 0.88rem;">
+                        <strong style="color: #f59e0b;">Riesgo de Intrusión Lateral:</strong> Si un directivo o desarrollador reutiliza contraseñas de @${emailDomain} en plataformas externas vulneradas, los atacantes pueden ingresar a paneles de hosting (cPanel, AWS Console, phpMyAdmin) sin disparar alertas de firewall.
+                    </div>
+                    <div style="text-align: center;">
+                        <a href="https://wa.me/573053862774?text=${encodeURIComponent(`*Consulta de Auditoría Dark Web*\n\n*Correo Evaluado:* ${email}\n*Dominio:* ${emailDomain}\n\nHola Bruiser Tech, deseo solicitar un reporte confidencial de credenciales y contraseñas expuestas para nuestra organización.`)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.9rem; padding: 12px 24px;">
+                            <span>Solicitar Reporte Confidencial Dark Web para @${emailDomain}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                `;
+
+                if (darkwebBtn) {
+                    darkwebBtn.disabled = false;
+                    darkwebBtn.innerHTML = `<span>Verificar Riesgo</span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`;
+                }
+
+                darkwebResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 1000);
         });
     }
 });
